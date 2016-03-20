@@ -9,12 +9,24 @@
 import Foundation
 import UIKit
 
+extension UILabel {
+    func applyStyle(style: FontStyles) {
+        let (font, color) = style.getStyle()
+        
+        self.font = font
+        self.textColor = color
+    }
+}
+
 class ColorPalette: UIColor {
     
     class func textColor() -> UIColor {
-        return UIColor(red: 108/255, green: 244/255, blue: 255/255, alpha: 1)
+        return rgba(108, 244, 255, 1)
     }
     
+    private class func rgba(r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat) -> UIColor {
+        return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
+    }
 }
 
 enum Fonts: String {
