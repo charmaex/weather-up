@@ -25,7 +25,7 @@ enum Fonts: FontList {
 }
 
 
-enum Styles: FontStylesList {
+enum FontStyles: FontStylesList {
     
     case H1, H2, H3, Paragraph, H6, TextStyle
     
@@ -39,17 +39,17 @@ enum Styles: FontStylesList {
     func font() -> UIFont {
         switch self {
         case .H1:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Light), size: 94)!
         case .H2:
-            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 36)!
         case .H3:
-            return UIFont(name: Fonts.GillSans.name(weight: .Light), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 14)!
         case .Paragraph:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 14)!
         case .H6:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 12)!
         case .TextStyle:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 12)!
+            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 11)!
         }
     }
     
