@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1306BB7C1CA1F3870006D397 /* ForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306BB7A1CA1F3870006D397 /* ForecastVC.swift */; };
+		1306BB7D1CA1F3870006D397 /* ForecastVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1306BB7B1CA1F3870006D397 /* ForecastVC.xib */; };
 		136060531C860F0900599733 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060521C860F0900599733 /* AppDelegate.swift */; };
 		136060551C860F0900599733 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060541C860F0900599733 /* MainVC.swift */; };
 		136060581C860F0900599733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136060561C860F0900599733 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1306BB7A1CA1F3870006D397 /* ForecastVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
+		1306BB7B1CA1F3870006D397 /* ForecastVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastVC.xib; sourceTree = "<group>"; };
 		1360604F1C860F0900599733 /* WeatherUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136060521C860F0900599733 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		136060541C860F0900599733 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			children = (
 				136060561C860F0900599733 /* Main.storyboard */,
 				1360605B1C860F0900599733 /* LaunchScreen.storyboard */,
+				1306BB7B1CA1F3870006D397 /* ForecastVC.xib */,
 				13F7AC1C1C9EB58B006BBD86 /* Styles.swift */,
 				13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */,
 				13BF16691CA1DC34003BB4AE /* StyledLabel.swift */,
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				136060541C860F0900599733 /* MainVC.swift */,
+				1306BB7A1CA1F3870006D397 /* ForecastVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				1360605D1C860F0900599733 /* LaunchScreen.storyboard in Resources */,
 				1360605A1C860F0900599733 /* Assets.xcassets in Resources */,
 				136060581C860F0900599733 /* Main.storyboard in Resources */,
+				1306BB7D1CA1F3870006D397 /* ForecastVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1306BB7C1CA1F3870006D397 /* ForecastVC.swift in Sources */,
 				13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */,
 				136060551C860F0900599733 /* MainVC.swift in Sources */,
 				13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */,

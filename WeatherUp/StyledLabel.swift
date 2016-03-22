@@ -48,9 +48,9 @@ class ParagraphLabel: UILabel {
     
 }
 
-class H6Label: UILabel {
+class H5Label: UILabel {
     
-    let style: FontStyles = .H6
+    let style: FontStyles = .H5
     
     override func awakeFromNib() {
         self.applyStyle(style)
@@ -58,9 +58,9 @@ class H6Label: UILabel {
     
 }
 
-class TextStyleLabel: UILabel {
+class H6Label: UILabel {
     
-    let style: FontStyles = .TextStyle
+    let style: FontStyles = .H6
     
     override func awakeFromNib() {
         self.applyStyle(style)

@@ -15,12 +15,19 @@ class MainVC: UIViewController {
     @IBOutlet weak var tempHighLbl: ParagraphLabel!
     
     @IBOutlet weak var infoTextLbl: H3Label!
-    @IBOutlet weak var infoCityLbl: H6Label!
-    @IBOutlet weak var infoTimeLbl: TextStyleLabel!
+    @IBOutlet weak var infoCityLbl: H5Label!
+    @IBOutlet weak var infoTimeLbl: H6Label!
+    
+    @IBOutlet weak var stacker: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        stacker.addArrangedSubview(ForecastVC().view)
+        stacker.addArrangedSubview(ForecastVC().view)
+        stacker.addArrangedSubview(ForecastVC().view)
+        stacker.addArrangedSubview(ForecastVC().view)
+        stacker.addArrangedSubview(ForecastVC().view)
     }
 
 }
