@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ColorPalette {
+class Colors: ColorPalette {
     
     class func textColor() -> UIColor {
         return rgba(108, 244, 255, 1)
@@ -18,27 +18,21 @@ class ColorPalette {
 }
 
 
-enum Fonts: String {
+enum Fonts: FontList {
     
     case GillSans
     
-    enum Weights: String {
-        case Regular = ""
-        case Italic = "-Italic"
-        case Light = "-Light"
-    }
-    
 }
 
-    
-enum FontStyles {
+
+enum Styles: FontStylesList {
     
     case H1, H2, H3, Paragraph, H6, TextStyle
     
     func color() -> UIColor {
         switch self {
         default:
-            return ColorPalette.textColor()
+            return Colors.textColor()
         }
     }
     
@@ -59,26 +53,4 @@ enum FontStyles {
         }
     }
     
-}
-
-
-// supporting extensions
-
-extension UILabel {
-    func applyStyle(style: FontStyles) {
-        self.font = style.font()
-        self.textColor = style.color()
-    }
-}
-
-extension ColorPalette {
-    private class func rgba(r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat) -> UIColor {
-        return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
-    }
-}
-
-extension Fonts {
-    func name(weight weight: Weights) -> String {
-        return "\(self.rawValue)\(weight.rawValue)"
-    }
 }
