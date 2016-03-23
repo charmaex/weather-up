@@ -8,62 +8,64 @@
 
 import UIKit
 
-class H1Label: UILabel {
-    
-    let style: FontStyles = .H1
+class StyledLabel: UILabel {
+    private var style: FontStyles?
     
     override func awakeFromNib() {
+        guard let style = style else {
+            return
+        }
         self.applyStyle(style)
+        self.minimumScaleFactor = 0.8
+    }
+}
+
+class H1Label: StyledLabel {
+    
+    override func awakeFromNib() {
+        style = .H1
+        super.awakeFromNib()
     }
 
 }
 
-class H2Label: UILabel {
-    
-    let style: FontStyles = .H2
+class H2Label: StyledLabel {
     
     override func awakeFromNib() {
-        self.applyStyle(style)
+        style = .H2
+        super.awakeFromNib()
     }
     
 }
 
-class H3Label: UILabel {
-    
-    let style: FontStyles = .H3
+class H3Label: StyledLabel {
     
     override func awakeFromNib() {
-        self.applyStyle(style)
+        style = .H3
+        super.awakeFromNib()
     }
-    
 }
 
-class ParagraphLabel: UILabel {
-    
-    let style: FontStyles = .Paragraph
+class ParagraphLabel: StyledLabel {
     
     override func awakeFromNib() {
-        self.applyStyle(style)
+        style = .Paragraph
+        super.awakeFromNib()
     }
-    
 }
 
-class H5Label: UILabel {
-    
-    let style: FontStyles = .H5
+class H5Label: StyledLabel {
     
     override func awakeFromNib() {
-        self.applyStyle(style)
+        style = .H5
+        super.awakeFromNib()
     }
-    
 }
 
-class H6Label: UILabel {
-    
-    let style: FontStyles = .H6
+class H6Label: StyledLabel {
     
     override func awakeFromNib() {
-        self.applyStyle(style)
+        style = .H6
+        super.awakeFromNib()
     }
-    
 }
