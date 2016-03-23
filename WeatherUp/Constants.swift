@@ -6,6 +6,8 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-import Foundation
+let API_BASE = ""
+let API_WEATHER = ""
+let API_FORECAST = ""
 
 typealias Completion = () -> ()

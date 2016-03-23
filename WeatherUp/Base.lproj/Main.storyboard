@@ -134,6 +134,7 @@
                         <outlet property="tempActLbl" destination="Tgf-BN-y2w" id="JgT-hw-gAf"/>
                         <outlet property="tempHighLbl" destination="nNN-AD-DC5" id="QJd-Bt-8Pu"/>
                         <outlet property="tempLowLbl" destination="HQW-Xa-x96" id="bbC-JJ-RiN"/>
+                        <outlet property="weatherPlaceholder" destination="tAD-zT-ZZc" id="CX2-GO-dv9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

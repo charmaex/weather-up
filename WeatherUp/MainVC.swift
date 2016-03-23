@@ -14,6 +14,8 @@ class MainVC: UIViewController {
     @IBOutlet weak var tempLowLbl: ParagraphLabel!
     @IBOutlet weak var tempHighLbl: ParagraphLabel!
     
+    @IBOutlet weak var weatherPlaceholder: UIView!
+    
     @IBOutlet weak var infoView: UIStackView!
     @IBOutlet weak var infoTextLbl: H3Label!
     @IBOutlet weak var infoCityLbl: H5Label!
