@@ -18,8 +18,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zm1-RZ-3qT" userLabel="1">
                     <rect key="frame" x="0.0" y="0.0" width="56" height="98"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-aB-K7e" customClass="H6Label" customModule="WeatherUp" customModuleProvider="target">
-                            <rect key="frame" x="7" y="0.0" width="42" height="13"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-aB-K7e" customClass="H6Label" customModule="WeatherUp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="H3f-94-cMb"/>
                             </constraints>
@@ -34,8 +34,8 @@
                                 <constraint firstAttribute="height" constant="55" id="EoV-Wk-KSC"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y62-Bx-LdN" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
-                            <rect key="frame" x="15" y="84" width="26" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y62-Bx-LdN" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="84" width="56" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="zSa-mS-fyf"/>
                             </constraints>

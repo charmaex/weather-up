@@ -14,17 +14,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-pO-aDM">
-                                <rect key="frame" x="0.0" y="40" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="40" width="600" height="540"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-02-qZ1" userLabel="Degrees">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-BN-y2w" customClass="H1Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="196" height="106"/>
+                                                <rect key="frame" x="202" y="0.0" width="196" height="106"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="106" id="4oE-vf-20v"/>
                                                 </constraints>
@@ -33,7 +33,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K67-hg-3w1">
-                                                <rect key="frame" x="90" y="106" width="196" height="16"/>
+                                                <rect key="frame" x="202" y="106" width="196" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="nNN-AD-DC5" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="98" height="16"/>
@@ -61,17 +61,17 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAD-zT-ZZc" userLabel="Placeholder">
-                                        <rect key="frame" x="0.0" y="168" width="375" height="184"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="146" width="600" height="184"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="184" id="KaU-2d-pMJ"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Yz-6w-arF" userLabel="Info">
-                                        <rect key="frame" x="0.0" y="398" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="353" width="600" height="65"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just enjoy the sunshine" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zi2-XS-aXR" customClass="H3Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="ag5-bG-ztB"/>
                                                 </constraints>
@@ -80,7 +80,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shuzenji, JP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-u8-xgM" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="35" width="375" height="14"/>
+                                                <rect key="frame" x="0.0" y="35" width="600" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="uWV-3P-8ME"/>
                                                 </constraints>
@@ -89,7 +89,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at: 9:41" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1f-Nf-2x4" customClass="H6Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="52" width="375" height="13"/>
+                                                <rect key="frame" x="0.0" y="52" width="600" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="kr0-DS-qlF"/>
                                                 </constraints>
@@ -100,7 +100,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-gM-nfU" userLabel="Forecast">
-                                        <rect key="frame" x="30" y="509" width="315" height="98"/>
+                                        <rect key="frame" x="30" y="442" width="540" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="5N9-7u-Ug3"/>
                                         </constraints>
@@ -125,13 +125,12 @@
                             <constraint firstAttribute="trailing" secondItem="1HE-pO-aDM" secondAttribute="trailing" id="fUe-QO-gcn"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="forecastView" destination="I1l-gM-nfU" id="TNm-QO-brZ"/>
                         <outlet property="infoCityLbl" destination="dfe-u8-xgM" id="ecJ-sa-1gh"/>
                         <outlet property="infoTextLbl" destination="Zi2-XS-aXR" id="5CR-BJ-i8d"/>
                         <outlet property="infoTimeLbl" destination="w1f-Nf-2x4" id="7ZD-CN-TYD"/>
-                        <outlet property="stacker" destination="I1l-gM-nfU" id="3yL-ow-P9t"/>
+                        <outlet property="infoView" destination="4Yz-6w-arF" id="48o-sw-pec"/>
                         <outlet property="tempActLbl" destination="Tgf-BN-y2w" id="JgT-hw-gAf"/>
                         <outlet property="tempHighLbl" destination="nNN-AD-DC5" id="QJd-Bt-8Pu"/>
                         <outlet property="tempLowLbl" destination="HQW-Xa-x96" id="bbC-JJ-RiN"/>
