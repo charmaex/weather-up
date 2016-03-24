@@ -25,6 +25,10 @@ class Weather: NSObject, NSCoding {
     }
     
     override init() {
+        _degrees = ""
+        _minDegr = ""
+        _maxDegr = ""
+        _img = ""
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

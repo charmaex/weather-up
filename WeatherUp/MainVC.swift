@@ -34,6 +34,8 @@ class MainVC: UIViewController {
         infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
         
         createForecasts()
+        
+        LocationService.inst.getLocation()
     }
     
     func createForecasts() {

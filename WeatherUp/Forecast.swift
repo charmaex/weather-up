@@ -23,6 +23,9 @@ class Forecast: NSObject, NSCoding {
     }
     
     override init() {
+        _day = ""
+        _img = ""
+        _degrees = ""
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
