@@ -9,13 +9,38 @@
 import Foundation
 import MapKit
 
-class LocationService {
+class LocationService: NSObject, CLLocationManagerDelegate {
     static let inst = LocationService()
     
     let locationManager = CLLocationManager()
     
+    private var _lat: String!
+    private var _lon: String!
+    
+    var apiLocation: String {
+        guard _lat != nil && _lon != nil else {
+            return ""
+        }
+        return "\(API_LAT)\(_lat)\(API_LON)\(_lon)"
+    }
+    
     func getLocation() {
         locationAuthStatus()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = manager.location else {
+            locationIsNotAvailable()
+            return
+        }
+        
+        locationManager.stopUpdatingLocation()
+        
+        let position = location.coordinate
+        _lat = "\(position.latitude)"
+        _lon = "\(position.longitude)"
+        
+        locationIsAvailable()
     }
 
     private func locationAuthStatus() {
@@ -23,18 +48,32 @@ class LocationService {
         
         switch status {
         case .AuthorizedWhenInUse, .AuthorizedAlways:
-            setLocation()
+            locationRequest()
         case .NotDetermined:
             locationManager.requestWhenInUseAuthorization()
             locationAuthStatus()
         default:
-            break
+            locationAuthError()
         }
         
     }
     
-    private func setLocation() {
-        print("set location")
+    private func locationRequest() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
     }
     
+    private func locationAuthError() {
+        NSNotificationCenter.defaultCenter().postNotificationName("locationAuthError", object: nil)
+    }
+    
+    private func locationIsNotAvailable() {
+        print("no location")
+    }
+    
+    private func locationIsAvailable() {
+        NSNotificationCenter.defaultCenter().postNotificationName("locationIsAvailable", object: nil)
+    }
+
 }

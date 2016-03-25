@@ -35,7 +35,36 @@ class MainVC: UIViewController {
         
         createForecasts()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.locationNoAuth), name: "locationAuthError", object: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         LocationService.inst.getLocation()
+    }
+    
+    func updateWeather() {
+        print(LocationService.inst.apiLocation)
+    }
+    
+    func locationNoAuth() {
+        let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: .Alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (UIAlertAction) in
+            self.openPref()
+        }
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(settingsAction)
+        alert.addAction(okAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func openPref() {
+        let url = NSURL(string: "prefs:root=LOCATION_SERVICES")!
+        
+        UIApplication.sharedApplication().openURL(url)
     }
     
     func createForecasts() {

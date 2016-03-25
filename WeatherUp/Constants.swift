@@ -6,8 +6,14 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-let API_BASE = ""
-let API_WEATHER = ""
-let API_FORECAST = ""
+
+let API_BASE = "http://api.openweathermap.org/data/2.5/"
+let API_WEATHER = "weather?"
+let API_FORECAST = "forecast?"
+
+let API_LAT = "lat="
+let API_LON = "&lon="
+
+let API_APPID = "&appid=895dda6bdb806219783fba988907b8fd"
 
 typealias Completion = () -> ()
