@@ -38,7 +38,9 @@ class WeatherService {
         return _forecasts
     }
     
-    func getData() {
+    func getData(destination: String?) {
+        
+        
         getNSUD()
         
         _downloadCount = 0

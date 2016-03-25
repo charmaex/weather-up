@@ -37,8 +37,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         let position = location.coordinate
-        _lat = "\(position.latitude)"
-        _lon = "\(position.longitude)"
+        _lat = "\(position.latitude.roundTo(decimals: 1))"
+        _lon = "\(position.longitude.roundTo(decimals: 1))"
         
         locationIsAvailable()
     }
@@ -60,7 +60,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     private func locationRequest() {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.startUpdatingLocation()
     }
     
