@@ -12,13 +12,13 @@ import Alamofire
 class WeatherService {
     static let inst = WeatherService()
     
-    private var _apiLocation: String!
+    private var _apiLocation = ""
     private var _apiLocationNew = true
     
     private var _weather: Weather!
     private var _forecasts = [Forecast]()
-    private var _lastWeather: String!
-    private var _lastForecast: String!
+    private var _lastWeather: NSDate!
+    private var _lastForecast: NSDate!
     
     private var _downloadCount = 0
     private var _downloadCountTarget = 0
@@ -50,18 +50,10 @@ class WeatherService {
         _downloadCountTarget = 0
         
         //if _lastWeather + 59 min >= now || _apiLocationNew
-        _downloadCountTarget += 1
-        downloadWeather {
-            self._downloadCount += 1
-            self.finishGetData()
-        }
+        downloadWeather()
         
         //if _lastForecast + 5:59 min >= now || _apiLocationNew
-        _downloadCountTarget += 1
-        downloadForecast {
-            self._downloadCount += 1
-            self.finishGetData()
-        }
+        downloadForecast()
         
     }
     
@@ -90,10 +82,11 @@ class WeatherService {
             }
         }
         
-        if let w = NSUserDefaults.standardUserDefaults().valueForKey("lastWeather") as? String {
+        if let w = NSUserDefaults.standardUserDefaults().objectForKey("lastWeather") as? NSDate {
             _lastWeather = w
         }
-        if let f = NSUserDefaults.standardUserDefaults().valueForKey("lastForecast") as? String {
+        
+        if let f = NSUserDefaults.standardUserDefaults().objectForKey("lastForecast") as? NSDate {
             _lastForecast = f
         }
     }
@@ -105,18 +98,115 @@ class WeatherService {
         let forecastsData = NSKeyedArchiver.archivedDataWithRootObject(_forecasts)
         NSUserDefaults.standardUserDefaults().setObject(forecastsData, forKey: "forecasts")
         
-        NSUserDefaults.standardUserDefaults().setValue(_lastWeather, forKey: "lastWeather")
-        NSUserDefaults.standardUserDefaults().setValue(_lastForecast, forKey: "lastForecast")
+        NSUserDefaults.standardUserDefaults().setObject(_lastWeather, forKey: "lastWeather")
+        NSUserDefaults.standardUserDefaults().setObject(_lastForecast, forKey: "lastForecast")
         
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
+    private func downloadWeather() {
+        _downloadCountTarget += 1
+        downloadWeather {
+            self._downloadCount += 1
+            self.finishGetData()
+        }
+    }
+    
+    private func downloadForecast() {
+        _downloadCountTarget += 1
+        downloadForecast {
+            self._downloadCount += 1
+            self.finishGetData()
+        }
+    }
+    
     private func downloadWeather(completion: Completion) {
+        guard let url = NSURL(string: "\(API_BASE)\(API_WEATHER)\(_apiLocation)\(API_APPID)") else {
+            print("wrong url")
+            return
+        }
         
+        Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
+            guard let result = response.result.value as? [String: AnyObject] else {
+                return self.downloadWeather()
+            }
+
+            var degrees = DEF_DEGREES
+            var minDegr = DEF_DEGREES
+            var maxDegr = DEF_DEGREES
+            var desc = ""
+            var img = ""
+            var city = ""
+            var country = ""
+            
+            if let res = result["main"] as? Dictionary<String, Double> {
+                if let a = res["temp"] {
+                    degrees = a
+                }
+                if let a = res["temp_min"] {
+                    minDegr = a
+                }
+                if let a = res["temp_max"] {
+                    maxDegr = a
+                }
+            }
+            
+            if let res = result["weather"] as? Dictionary<String, String> {
+                if let a = res["description"] {
+                    desc = a
+                }
+                if let a =  res["icon"] {
+                    img = a
+                }
+            }
+            
+            if let res = result["name"] as? String {
+                city = res
+            }
+
+            if let res = result["sys"] as? Dictionary<String, AnyObject> {
+                if let a = res["country"] as? String {
+                    country = a
+                }
+            }
+            
+            let time = NSDate()
+            
+            self._lastWeather = time
+            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, desc: desc, time: time, city: city, country: country)
+
+            completion()
+        }
     }
     
     private func downloadForecast(completion: Completion) {
+        guard let url = NSURL(string: "\(API_BASE)\(API_FORECAST)\(_apiLocation)\(API_APPID)") else {
+            print("wrong url")
+            return completion()
+        }
         
+        Alamofire.request(.GET, url).responseJSON { response -> Void in
+            guard let result = response.result.value as? [String: AnyObject] else {
+                return self.downloadForecast()
+            }
+            
+            guard let list = result["list"] as? [Dictionary<String, AnyObject>] else {
+                print("corrupt data")
+                return completion()
+            }
+            
+            
+            var forecasts = [Forecast]()
+            
+            //iterate list
+            
+            
+            
+            
+            
+            self._lastForecast = NSDate()
+            self._forecasts = forecasts
+        }
     }
     
 }

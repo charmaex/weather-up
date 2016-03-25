@@ -14,14 +14,11 @@ let API_FORECAST = "forecast?"
 let API_LAT = "lat="
 let API_LON = "&lon="
 
-let API_APPID = "&appid=895dda6bdb806219783fba988907b8fd"
+let API_APPID = "&appid=60531fc50ee5f20d8cd9e8bbe24d8976"
 
 // Defaults
 let DEF_UNIT_C = " °C"
 let DEF_UNIT_F = " °F"
-
-let DEF_DEGREES_C = "-\(DEF_UNIT_C)"
-let DEF_DEGREES_F = "-\(DEF_UNIT_F)"
-
+let DEF_DEGREES = -460.0
 
 typealias Completion = () -> ()

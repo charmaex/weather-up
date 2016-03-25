@@ -14,18 +14,18 @@ class Forecast: NSObject, NSCoding {
     
     private var _day: String!
     private var _img: String!
-    private var _degrees: String!
+    private var _degrees: Double!
     
-    init(day: String, img: String, degrees: String) {
+    init(day: String, img: String, degrees: Double) {
         _day = day
         _img = img
-        _degrees = "\(degrees)\(DEF_UNIT_C)"
+        _degrees = degrees
     }
     
     override init() {
         _day = ""
         _img = ""
-        _degrees = DEF_DEGREES_C
+        _degrees = DEF_DEGREES
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -33,7 +33,7 @@ class Forecast: NSObject, NSCoding {
         
         self._day = aDecoder.decodeObjectForKey("day") as? String
         self._img = aDecoder.decodeObjectForKey("img") as? String
-        self._degrees = aDecoder.decodeObjectForKey("degrees") as? String
+        self._degrees = aDecoder.decodeObjectForKey("degrees") as? Double
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
