@@ -12,6 +12,9 @@ import Alamofire
 class WeatherService {
     static let inst = WeatherService()
     
+    private var _apiLocation: String!
+    private var _apiLocationNew = true
+    
     private var _weather: Weather!
     private var _forecasts = [Forecast]()
     private var _lastWeather: String!
@@ -19,13 +22,6 @@ class WeatherService {
     
     private var _downloadCount = 0
     private var _downloadCountTarget = 0
-    
-    var time: String {
-        guard let x = _lastWeather else {
-            return ""
-        }
-        return x
-    }
     
     var weather: Weather {
         guard let x = _weather else {
@@ -40,20 +36,27 @@ class WeatherService {
     
     func getData(destination: String?) {
         
+        if let destination = destination {
+            _apiLocationNew = _apiLocation == destination
+            _apiLocation = destination
+        } else {
+            _apiLocationNew = _apiLocation == LocationService.inst.apiLocation
+            _apiLocation = LocationService.inst.apiLocation
+        }
         
         getNSUD()
         
         _downloadCount = 0
         _downloadCountTarget = 0
         
-        //if _lastWeather + 59 min >= now
+        //if _lastWeather + 59 min >= now || _apiLocationNew
         _downloadCountTarget += 1
         downloadWeather {
             self._downloadCount += 1
             self.finishGetData()
         }
         
-        //if _lastForecast + 5:59 min >= now
+        //if _lastForecast + 5:59 min >= now || _apiLocationNew
         _downloadCountTarget += 1
         downloadForecast {
             self._downloadCount += 1
@@ -115,4 +118,5 @@ class WeatherService {
     private func downloadForecast(completion: Completion) {
         
     }
+    
 }

@@ -19,13 +19,13 @@ class Forecast: NSObject, NSCoding {
     init(day: String, img: String, degrees: String) {
         _day = day
         _img = img
-        _degrees = degrees
+        _degrees = "\(degrees)\(DEF_UNIT_C)"
     }
     
     override init() {
         _day = ""
         _img = ""
-        _degrees = ""
+        _degrees = DEF_DEGREES_C
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -41,4 +41,5 @@ class Forecast: NSObject, NSCoding {
         aCoder.encodeObject(self._img, forKey: "img")
         aCoder.encodeObject(self._degrees, forKey: "degrees")
     }
+    
 }

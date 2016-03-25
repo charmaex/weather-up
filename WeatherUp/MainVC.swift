@@ -45,7 +45,7 @@ class MainVC: UIViewController {
     }
     
     func updateWeather() {
-        print(LocationService.inst.apiLocation)
+        WeatherService.inst.getData(nil)
     }
     
     func locationNoAuth() {

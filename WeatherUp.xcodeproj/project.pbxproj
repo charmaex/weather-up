@@ -201,8 +201,8 @@
 		13F7AC1B1C9EB573006BBD86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1306BB841CA331270006D397 /* Forecast.swift */,
 				1306BB861CA331A20006D397 /* Weather.swift */,
+				1306BB841CA331270006D397 /* Forecast.swift */,
 				1306BB8D1CA537710006D397 /* ModelExtensions.swift */,
 			);
 			name = Model;

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-
+// API
 let API_BASE = "http://api.openweathermap.org/data/2.5/"
 let API_WEATHER = "weather?"
 let API_FORECAST = "forecast?"
@@ -15,5 +15,13 @@ let API_LAT = "lat="
 let API_LON = "&lon="
 
 let API_APPID = "&appid=895dda6bdb806219783fba988907b8fd"
+
+// Defaults
+let DEF_UNIT_C = " °C"
+let DEF_UNIT_F = " °F"
+
+let DEF_DEGREES_C = "-\(DEF_UNIT_C)"
+let DEF_DEGREES_F = "-\(DEF_UNIT_F)"
+
 
 typealias Completion = () -> ()
