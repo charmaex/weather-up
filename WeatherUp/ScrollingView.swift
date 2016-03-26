@@ -34,12 +34,16 @@ class ScrollingView: UIView {
     private enum Direction {
         case Left
         case Right
+        case None
         
         var opposite: Direction {
             if self == .Left {
                 return .Right
             }
-            return .Left
+            if self == . Right {
+                return .Left
+            }
+            return .None
         }
     }
     
@@ -48,10 +52,16 @@ class ScrollingView: UIView {
         let dragAct = dragStart - pos
         let percent = abs(dragAct / fullDrag)
         
-        let dir: Direction = dragAct > 0 ? .Left : .Right
-        let x = percent <= 1 ? percent : 1
+        let dir: Direction
+        if dragAct > 0 {
+            dir = .Left
+        } else if dragAct < 0 {
+            dir = .Right
+        } else {
+            dir = .None
+        }
         
-        print(dir, x, dragAct)
+        let x = percent <= 1 ? percent : 1
         
         return (dir, x)
     }
@@ -95,6 +105,8 @@ class ScrollingView: UIView {
         case .Right:
             delegate.weatherSV.alpha = percent
             delegate.infoSV.alpha = 1 - percent
+        case .None:
+            return
         }
         
     }
@@ -110,10 +122,10 @@ class ScrollingView: UIView {
         
         let direction: Direction
         
-        if dragPos > left || dragPos < right {
+        if dragPos < left || dragPos > right {
             direction = dir
         } else {
-            direction = percent > 0.4 ? dir : dir.opposite
+            direction = percent >= 0.25 ? dir : dir.opposite
         }
         
         let newCenter: CGFloat
@@ -129,13 +141,15 @@ class ScrollingView: UIView {
             newCenter = right
             alphaWeather = 1
             alphaInfo = 0
+        case .None:
+            return
         }
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
             self.center = CGPointMake(newCenter, self.horizontalPostion)
             self.delegate.weatherSV.alpha = alphaWeather
             self.delegate.infoSV.alpha = alphaInfo
-            }
+        }) {_ in}
         
     }
     
