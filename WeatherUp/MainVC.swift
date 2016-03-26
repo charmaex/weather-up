@@ -30,6 +30,8 @@ class MainVC: UIViewController {
         
         infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
         
+        
+        
         positionWeather()
         createForecasts()
         
@@ -43,6 +45,10 @@ class MainVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         LocationService.inst.getLocation()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     func updateWeather() {

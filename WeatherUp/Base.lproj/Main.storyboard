@@ -117,7 +117,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10293327686312186" green="0.24848037895878977" blue="0.72335737179487181" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.094117647060000004" green="0.20784313730000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tAD-zT-ZZc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="QIf-xA-u5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1HE-pO-aDM" secondAttribute="bottom" constant="20" id="TeJ-xU-JdV"/>
@@ -126,6 +126,7 @@
                             <constraint firstAttribute="trailing" secondItem="1HE-pO-aDM" secondAttribute="trailing" id="fUe-QO-gcn"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="forecastView" destination="I1l-gM-nfU" id="TNm-QO-brZ"/>
                         <outlet property="infoCityLbl" destination="dfe-u8-xgM" id="ecJ-sa-1gh"/>
