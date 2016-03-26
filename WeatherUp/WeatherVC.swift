@@ -11,31 +11,38 @@ import UIKit
 class WeatherVC: UIViewController {
     
     @IBOutlet weak var scrollView: ScrollingView!
+    
+    @IBOutlet weak var weatherConstraint: NSLayoutConstraint!
+    @IBOutlet weak var weatherSV: UIStackView!
     @IBOutlet weak var weatherImV: UIImageView!
     @IBOutlet weak var weatherLbl: ParagraphLabel!
     
-    @IBOutlet weak var weatherConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
+    @IBOutlet weak var infoSV: UIStackView!
     
     private var screenWidth: CGFloat!
-    private var frameWidth: CGFloat!
+    private var spacing: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        screenWidth = UIScreen.mainScreen().bounds.width
-        frameWidth = (screenWidth - 160) / 2
-        
-        weatherConstraint.constant = frameWidth
-        infoConstraint.constant = frameWidth
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        let width = screenWidth * 2 - frameWidth + 20
+        infoSV.alpha = 0
         
-        view.frame = CGRectMake(0, 0, width, 184)
+        screenWidth = UIScreen.mainScreen().bounds.width
+        spacing = (screenWidth - 160) / 2
+        
+        weatherConstraint.constant = spacing
+        infoConstraint.constant = spacing
+        
+        let viewWidth = screenWidth * 2 - spacing + 20
+        
+        view.frame = CGRectMake(0, 0, viewWidth, 184)
+        
+        scrollView.delegate = self
         
     }
 
