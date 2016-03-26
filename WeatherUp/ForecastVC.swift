@@ -16,7 +16,6 @@ class ForecastVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 

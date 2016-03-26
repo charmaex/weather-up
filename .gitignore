@@ -4,6 +4,8 @@
 
 WeatherUp.xcworkspace/xcuserdata
 
+WeatherUp/ApiKey.swift
+
 ## Build generated
 build/
 DerivedData

@@ -50,9 +50,11 @@ class WeatherService {
         _downloadCountTarget = 0
         
         //if _lastWeather + 59 min >= now || _apiLocationNew
+        _downloadCountTarget += 1
         downloadWeather()
         
         //if _lastForecast + 5:59 min >= now || _apiLocationNew
+        _downloadCountTarget += 1
         downloadForecast()
         
     }
@@ -105,7 +107,6 @@ class WeatherService {
     }
     
     private func downloadWeather() {
-        _downloadCountTarget += 1
         downloadWeather {
             self._downloadCount += 1
             self.finishGetData()
@@ -113,7 +114,6 @@ class WeatherService {
     }
     
     private func downloadForecast() {
-        _downloadCountTarget += 1
         downloadForecast {
             self._downloadCount += 1
             self.finishGetData()
@@ -151,12 +151,15 @@ class WeatherService {
                 }
             }
             
-            if let res = result["weather"] as? Dictionary<String, String> {
-                if let a = res["description"] {
-                    desc = a
-                }
-                if let a =  res["icon"] {
-                    img = a
+            if let res = result["weather"] as? [Dictionary<String, AnyObject>] {
+                if res.count >= 1 {
+                    let re = res[0]
+                    if let a = re["description"] as? String {
+                        desc = a
+                    }
+                    if let a =  re["icon"] as? String {
+                        img = a
+                    }
                 }
             }
             
@@ -194,18 +197,44 @@ class WeatherService {
                 print("corrupt data")
                 return completion()
             }
-            
-            
+
             var forecasts = [Forecast]()
             
-            //iterate list
-            
-            
-            
-            
+            for item in list {
+                
+                guard let d = item["dt_txt"] as? String, let date = d.toDate() else {
+                    continue
+                }
+                
+                guard date.timeToString() == "12:00" else {
+                    continue
+                }
+                
+                var img = ""
+                var degrees = DEF_DEGREES
+                
+                if let res = item["weather"] as? [Dictionary<String, AnyObject>] {
+                    if res.count >= 1 {
+                        if let a =  res[0]["icon"] as? String {
+                            img = a
+                        }
+                    }
+                }
+                
+                if let res = item["main"] as? Dictionary<String, Double> {
+                    if let a = res["temp"] {
+                        degrees = a
+                    }
+                }
+                
+                let forecast = Forecast(day: date, img: img, degrees: degrees)
+                forecasts.append(forecast)
+            }
             
             self._lastForecast = NSDate()
             self._forecasts = forecasts
+            
+            completion()
         }
     }
     

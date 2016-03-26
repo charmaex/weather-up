@@ -21,3 +21,31 @@ extension CLLocationDegrees {
     }
     
 }
+
+extension String {
+    
+    func toDate(withFormat format: String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.dateFromString(self)
+    }
+    
+    func toDate() -> NSDate? {
+        return self.toDate(withFormat: "yyyy-MM-dd HH:mm:ss")
+    }
+    
+}
+
+extension NSDate {
+    
+    func timeToString(withFormat format: String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func timeToString() -> String {
+        return self.timeToString(withFormat: "HH:mm")
+    }
+    
+}

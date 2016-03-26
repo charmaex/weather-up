@@ -14,15 +14,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-WeatherUpTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WeatherUpUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>6A470531E882D38E3AD096ECEC287A0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDB5F0F708F56CB007D00209D94B5558</key>
+		<key>DAE5664BB7D9B1FDE62F493742724335</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA83B1C689C3B8C3A7CF008A1D8DDF53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
