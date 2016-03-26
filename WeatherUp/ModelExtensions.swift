@@ -22,6 +22,18 @@ extension CLLocationDegrees {
     
 }
 
+extension Double {
+    
+    func kelvinToCelcius() -> Double {
+        return self - 273.15
+    }
+    
+    func kelvinToFahrenheit() -> Double {
+        return 1.8 * (self.kelvinToCelcius()) + 32
+    }
+    
+}
+
 extension String {
     
     func toDate(withFormat format: String) -> NSDate? {
@@ -46,6 +58,10 @@ extension NSDate {
     
     func timeToString() -> String {
         return self.timeToString(withFormat: "HH:mm")
+    }
+    
+    func weekday() -> String {
+        return self.timeToString(withFormat: "eeee")
     }
     
 }

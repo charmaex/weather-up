@@ -3,3 +3,5 @@ http://openweathermap.org/current #current weather
 http://openweathermap.org/weather-conditions #interpreting weather id
 
 http://openweathermap.org/forecast5 #forecast
+
+http://openweathermap.org/faq#error401 #upgrade api?

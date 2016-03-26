@@ -134,6 +134,7 @@ class WeatherService {
             var degrees = DEF_DEGREES
             var minDegr = DEF_DEGREES
             var maxDegr = DEF_DEGREES
+            var mainDesc = ""
             var desc = ""
             var img = ""
             var city = ""
@@ -154,6 +155,9 @@ class WeatherService {
             if let res = result["weather"] as? [Dictionary<String, AnyObject>] {
                 if res.count >= 1 {
                     let re = res[0]
+                    if let a = re["main"] as? String {
+                        mainDesc = a
+                    }
                     if let a = re["description"] as? String {
                         desc = a
                     }
@@ -173,10 +177,10 @@ class WeatherService {
                 }
             }
             
-            let time = NSDate()
+            let date = NSDate()
             
-            self._lastWeather = time
-            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, desc: desc, time: time, city: city, country: country)
+            self._lastWeather = date
+            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country)
 
             completion()
         }
@@ -206,7 +210,7 @@ class WeatherService {
                     continue
                 }
                 
-                guard date.timeToString() == "12:00" else {
+                guard date.timeToString() == "15:00" else {
                     continue
                 }
                 
@@ -227,7 +231,7 @@ class WeatherService {
                     }
                 }
                 
-                let forecast = Forecast(day: date, img: img, degrees: degrees)
+                let forecast = Forecast(date: date, img: img, degrees: degrees)
                 forecasts.append(forecast)
             }
             
