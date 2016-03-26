@@ -17,3 +17,20 @@ extension UILabel {
     }
     
 }
+
+extension UIView {
+    
+    func layerGradient(colors: [CGColor]) {
+        let layer = CAGradientLayer()
+        layer.frame.size = self.frame.size
+        layer.frame.origin = CGPointMake(0.0,0.0)
+        
+        layer.colors = colors
+        self.layer.insertSublayer(layer, atIndex: 0)
+    }
+    
+    func backgroundGradient() {
+        self.layerGradient(Colors.gradientColors())
+    }
+    
+}

@@ -15,6 +15,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var tempMaxLbl: ParagraphLabel!
     
     @IBOutlet weak var weatherPlaceholder: UIView!
+    var weather: WeatherVC!
     
     @IBOutlet weak var infoView: UIStackView!
     @IBOutlet weak var infoTextLbl: H3Label!
@@ -29,7 +30,10 @@ class MainVC: UIViewController {
         
         infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
         
+        positionWeather()
         createForecasts()
+        
+        view.backgroundGradient()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.locationNoAuth), name: "locationAuthError", object: nil)
@@ -52,11 +56,13 @@ class MainVC: UIViewController {
         tempActLbl.text = w.degrees(unit: unit)
         tempMinLbl.text = w.minDegr(unit: unit)
         tempMaxLbl.text = w.maxDegr(unit: unit)
-        
+
+        weather.initWithWeather(w)
+
         infoTextLbl.text = w.desc
         infoCityLbl.text = w.location
         infoTimeLbl.text = w.time
-        
+
         fillForecasts()
     }
     
@@ -75,8 +81,14 @@ class MainVC: UIViewController {
     
     func openPref() {
         let url = NSURL(string: "prefs:root=LOCATION_SERVICES")!
-        
+
         UIApplication.sharedApplication().openURL(url)
+    }
+    
+    func positionWeather() {
+        weather = WeatherVC()
+        
+        weatherPlaceholder.addSubview(weather.view)
     }
     
     func createForecasts() {

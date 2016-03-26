@@ -15,6 +15,23 @@ class Colors: ColorPalette {
         return rgba(108, 244, 255, 1)
     }
     
+    class func gradientTop() -> UIColor {
+        return rgba(52, 100, 143, 1)
+    }
+    
+    class func gradientBottom() -> UIColor {
+        return rgba(24, 53, 86, 1)
+    }
+    
+    class func gradientColors() -> [CGColor] {
+        var out = [CGColor]()
+        
+        out.append(gradientTop().CGColor)
+        out.append(gradientBottom().CGColor)
+        
+        return out
+    }
+    
 }
 
 

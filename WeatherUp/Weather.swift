@@ -19,7 +19,8 @@ class Weather: NSObject, NSCoding {
     private var _mainDesc: String!
     private var _desc: String!
     private var _date: NSDate!
-    private var _location: String!
+    private var _city: String!
+    private var _country: String!
     
     func degrees(unit unit: TemperatureUnits) -> String {
         return _degrees.toDegrees(unit: unit)
@@ -38,15 +39,17 @@ class Weather: NSObject, NSCoding {
     }
     
     var mainDesc: String {
-        return _mainDesc
+        return _mainDesc.capitalizedString
     }
     
     var desc: String {
-        return _desc
+        return _desc.capitalizedString
     }
     
     var location: String {
-        return _location
+        let city = _city.capitalizedString
+        let country = _country
+        return "\(city), \(country)"
     }
     
     var time: String {
@@ -62,7 +65,8 @@ class Weather: NSObject, NSCoding {
         _desc = desc
         _img = img
         _date = date
-        _location = "\(city), \(country)"
+        _city = city
+        _country = country
     }
     
     override init() {
@@ -73,7 +77,8 @@ class Weather: NSObject, NSCoding {
         _desc = ""
         _img = DEF_IMG
         _date = DEF_DATE
-        _location = ""
+        _city = ""
+        _country = ""
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -84,7 +89,8 @@ class Weather: NSObject, NSCoding {
         self._maxDegr = aDecoder.decodeObjectForKey("maxDegr") as? Double
         self._img = aDecoder.decodeObjectForKey("img") as? String
         self._date = aDecoder.decodeObjectForKey("date") as? NSDate
-        self._location = aDecoder.decodeObjectForKey("location") as? String
+        self._city = aDecoder.decodeObjectForKey("city") as? String
+        self._country = aDecoder.decodeObjectForKey("country") as?  String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -93,7 +99,8 @@ class Weather: NSObject, NSCoding {
         aCoder.encodeObject(self._maxDegr, forKey: "maxDegr")
         aCoder.encodeObject(self._img, forKey: "img")
         aCoder.encodeObject(self._date, forKey: "date")
-        aCoder.encodeObject(self._location, forKey: "location")
+        aCoder.encodeObject(self._city, forKey: "city")
+        aCoder.encodeObject(self._country, forKey: "country")
     }
     
 }

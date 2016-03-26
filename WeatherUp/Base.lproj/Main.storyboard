@@ -23,20 +23,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-02-qZ1" userLabel="Degrees">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-BN-y2w" customClass="H1Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-BN-y2w" customClass="H1Label" customModule="WeatherUp" customModuleProvider="target">
+                                                <rect key="frame" x="225" y="0.0" width="150" height="106"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="106" id="4oE-vf-20v"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="X5v-nk-inr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="94"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K67-hg-3w1">
-                                                <rect key="frame" x="0.0" y="106" width="600" height="16"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K67-hg-3w1">
+                                                <rect key="frame" x="225" y="106" width="150" height="16"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="nNN-AD-DC5" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="nNN-AD-DC5" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="nwg-RZ-mDE"/>
                                                         </constraints>
@@ -44,8 +45,8 @@
                                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-Xa-x96" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
-                                                        <rect key="frame" x="300" y="0.0" width="300" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-Xa-x96" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                                        <rect key="frame" x="75" y="0.0" width="75" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="sem-tO-Ua6"/>
                                                         </constraints>
@@ -57,7 +58,7 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="K67-hg-3w1" firstAttribute="width" secondItem="Tgf-BN-y2w" secondAttribute="width" id="Aff-Ha-zmh"/>
+                                            <constraint firstItem="K67-hg-3w1" firstAttribute="width" secondItem="Tgf-BN-y2w" secondAttribute="width" id="oya-Rd-tNh"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAD-zT-ZZc" userLabel="Placeholder">

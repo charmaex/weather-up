@@ -23,6 +23,8 @@
 		136060681C860F0900599733 /* WeatherUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060671C860F0900599733 /* WeatherUpTests.swift */; };
 		136060731C860F0900599733 /* WeatherUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060721C860F0900599733 /* WeatherUpUITests.swift */; };
 		136A6BBC1CA6776E00347216 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6BBB1CA6776E00347216 /* ApiKey.swift */; };
+		136A6BBF1CA69F5F00347216 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6BBD1CA69F5F00347216 /* WeatherVC.swift */; };
+		136A6BC01CA69F5F00347216 /* WeatherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A6BBE1CA69F5F00347216 /* WeatherVC.xib */; };
 		13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */; };
 		13BF16681CA1D2E5003BB4AE /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */; };
 		13BF166A1CA1DC34003BB4AE /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16691CA1DC34003BB4AE /* StyledLabel.swift */; };
@@ -73,6 +75,8 @@
 		136060721C860F0900599733 /* WeatherUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpUITests.swift; sourceTree = "<group>"; };
 		136060741C860F0900599733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		136A6BBB1CA6776E00347216 /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		136A6BBD1CA69F5F00347216 /* WeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
+		136A6BBE1CA69F5F00347216 /* WeatherVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherVC.xib; sourceTree = "<group>"; };
 		13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideProtocols.swift; sourceTree = "<group>"; };
 		13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		13BF16691CA1DC34003BB4AE /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				136060561C860F0900599733 /* Main.storyboard */,
 				1360605B1C860F0900599733 /* LaunchScreen.storyboard */,
 				1306BB7B1CA1F3870006D397 /* ForecastVC.xib */,
+				136A6BBE1CA69F5F00347216 /* WeatherVC.xib */,
 				13F7AC1C1C9EB58B006BBD86 /* Styles.swift */,
 				13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */,
 				13BF16691CA1DC34003BB4AE /* StyledLabel.swift */,
@@ -207,6 +212,7 @@
 			children = (
 				136060541C860F0900599733 /* MainVC.swift */,
 				1306BB7A1CA1F3870006D397 /* ForecastVC.swift */,
+				136A6BBD1CA69F5F00347216 /* WeatherVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			files = (
 				1360605D1C860F0900599733 /* LaunchScreen.storyboard in Resources */,
 				1360605A1C860F0900599733 /* Assets.xcassets in Resources */,
+				136A6BC01CA69F5F00347216 /* WeatherVC.xib in Resources */,
 				136060581C860F0900599733 /* Main.storyboard in Resources */,
 				1306BB7D1CA1F3870006D397 /* ForecastVC.xib in Resources */,
 			);
@@ -514,6 +521,7 @@
 				1306BB891CA33F2B0006D397 /* Constants.swift in Sources */,
 				1306BB7C1CA1F3870006D397 /* ForecastVC.swift in Sources */,
 				13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */,
+				136A6BBF1CA69F5F00347216 /* WeatherVC.swift in Sources */,
 				136A6BBC1CA6776E00347216 /* ApiKey.swift in Sources */,
 				136060551C860F0900599733 /* MainVC.swift in Sources */,
 				1306BB871CA331A20006D397 /* Weather.swift in Sources */,
