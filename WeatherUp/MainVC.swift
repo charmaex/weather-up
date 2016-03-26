@@ -30,8 +30,6 @@ class MainVC: UIViewController {
         
         infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
         
-        
-        
         positionWeather()
         createForecasts()
         
@@ -115,4 +113,3 @@ class MainVC: UIViewController {
     }
 
 }
-

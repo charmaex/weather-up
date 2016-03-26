@@ -28,6 +28,7 @@
 		13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */; };
 		13BF16681CA1D2E5003BB4AE /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */; };
 		13BF166A1CA1DC34003BB4AE /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16691CA1DC34003BB4AE /* StyledLabel.swift */; };
+		13DAC4B71CA71C3900D7A246 /* ScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */; };
 		13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F7AC1C1C9EB58B006BBD86 /* Styles.swift */; };
 		2C073F2FF96914E742CBCA20 /* Pods_WeatherUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD850ACCAE07AD704E35AB20 /* Pods_WeatherUp.framework */; };
 		439D30F5CAEB32DA71C9FE14 /* Pods_WeatherUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5C64A6250A6EF21F30433A /* Pods_WeatherUpTests.framework */; };
@@ -80,6 +81,7 @@
 		13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideProtocols.swift; sourceTree = "<group>"; };
 		13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		13BF16691CA1DC34003BB4AE /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
+		13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingView.swift; sourceTree = "<group>"; };
 		13F7AC1C1C9EB58B006BBD86 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		4C997C7D1EC7BE3DB742892C /* Pods-WeatherUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherUpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherUpTests/Pods-WeatherUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B5C64A6250A6EF21F30433A /* Pods_WeatherUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				13F7AC1C1C9EB58B006BBD86 /* Styles.swift */,
 				13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */,
 				13BF16691CA1DC34003BB4AE /* StyledLabel.swift */,
+				13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */,
 				136A6BBF1CA69F5F00347216 /* WeatherVC.swift in Sources */,
 				136A6BBC1CA6776E00347216 /* ApiKey.swift in Sources */,
+				13DAC4B71CA71C3900D7A246 /* ScrollingView.swift in Sources */,
 				136060551C860F0900599733 /* MainVC.swift in Sources */,
 				1306BB871CA331A20006D397 /* Weather.swift in Sources */,
 				1306BB851CA331270006D397 /* Forecast.swift in Sources */,
