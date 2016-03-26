@@ -9,7 +9,17 @@
 import Foundation
 import MapKit
 
-extension CLLocationDegrees {
+extension Double {
+    
+    func kelvinToCelcius() -> Double {
+        let x = self - 273.15
+        return x.roundTo(decimals: 0)
+    }
+    
+    func kelvinToFahrenheit() -> Double {
+        let x = 1.8 * (self.kelvinToCelcius()) + 32
+        return x.roundTo(decimals: 0)
+    }
     
     func roundTo(decimals i: Int) -> Double {
         guard i >= 0 else {
@@ -20,16 +30,19 @@ extension CLLocationDegrees {
         return round(self * inc) / inc
     }
     
-}
-
-extension Double {
-    
-    func kelvinToCelcius() -> Double {
-        return self - 273.15
-    }
-    
-    func kelvinToFahrenheit() -> Double {
-        return 1.8 * (self.kelvinToCelcius()) + 32
+    func toDegrees(unit unit: TemperatureUnits) -> String {
+        let degr: Double
+        
+        switch unit {
+        case .Celsius:
+            degr = self.kelvinToCelcius()
+        case .Fahrenheit:
+            degr = self.kelvinToFahrenheit()
+        }
+        
+        let degrStr = String(degr).stringByReplacingOccurrencesOfString(".0", withString: "")
+        
+        return "\(degrStr)\(unit.rawValue)"
     }
     
 }

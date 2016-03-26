@@ -26,20 +26,7 @@ class Forecast: NSObject, NSCoding {
     }
     
     func degrees(unit unit: TemperatureUnits) -> String {
-        return degreeConvert(_degrees, unit: unit)
-    }
-    
-    private func degreeConvert(value: Double, unit: TemperatureUnits) -> String {
-        let degr: Double
-        
-        switch unit {
-        case .Celcius:
-            degr = value.kelvinToCelcius()
-        case .Fahrenheit:
-            degr = value.kelvinToFahrenheit()
-        }
-        
-        return "\(degr)\(unit.rawValue)"
+        return _degrees.toDegrees(unit: unit)
     }
     
     init(date: NSDate, img: String, degrees: Double) {
@@ -49,7 +36,8 @@ class Forecast: NSObject, NSCoding {
     }
     
     override init() {
-        _img = ""
+        _date = DEF_DATE
+        _img = DEF_IMG
         _degrees = DEF_DEGREES
     }
     

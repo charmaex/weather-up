@@ -17,6 +17,13 @@ class ForecastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    func initWithForecast(f: Forecast) {
+        let img = UIImage(named: f.imageName)
+        
+        dayLbl.text = f.weekday
+        weatherImg.image = img
+        degreesLbl.text = f.degrees(unit: .Celsius)
+    }
 
 }

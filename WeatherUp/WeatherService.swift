@@ -69,7 +69,7 @@ class WeatherService {
     }
     
     private func postNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName("gotData", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("gotWeatherData", object: nil)
     }
     
     private func getNSUD() {

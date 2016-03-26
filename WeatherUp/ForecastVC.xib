@@ -37,7 +37,7 @@
                                 <constraint firstAttribute="height" constant="55" id="EoV-Wk-KSC"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y62-Bx-LdN" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y62-Bx-LdN" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="84" width="55" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="zSa-mS-fyf"/>

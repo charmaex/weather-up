@@ -18,42 +18,40 @@ class Weather: NSObject, NSCoding {
     private var _img: String!
     private var _mainDesc: String!
     private var _desc: String!
-    private var _date: NSDate?
+    private var _date: NSDate!
     private var _location: String!
     
     func degrees(unit unit: TemperatureUnits) -> String {
-        return degreeConvert(_degrees, unit: unit)
+        return _degrees.toDegrees(unit: unit)
     }
     
     func minDegr(unit unit: TemperatureUnits) -> String {
-        return degreeConvert(_minDegr, unit: unit)
+        return _minDegr.toDegrees(unit: unit)
     }
     
     func maxDegr(unit unit: TemperatureUnits) -> String {
-        return degreeConvert(_maxDegr, unit: unit)
+        return _maxDegr.toDegrees(unit: unit)
     }
     
     var imageName: String {
         return "\(_img)\(IMG_SIZE)"
     }
     
+    var mainDesc: String {
+        return _mainDesc
+    }
+    
     var desc: String {
         return _desc
     }
     
+    var location: String {
+        return _location
+    }
     
-    
-    private func degreeConvert(value: Double, unit: TemperatureUnits) -> String {
-        let degr: Double
-        
-        switch unit {
-        case .Celcius:
-            degr = value.kelvinToCelcius()
-        case .Fahrenheit:
-            degr = value.kelvinToFahrenheit()
-        }
-        
-        return "\(degr)\(unit.rawValue)"
+    var time: String {
+        let x = _date.timeToString()
+        return "at: \(x)"
     }
     
     init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String) {
@@ -73,7 +71,8 @@ class Weather: NSObject, NSCoding {
         _maxDegr = DEF_DEGREES
         _mainDesc = ""
         _desc = ""
-        _img = ""
+        _img = DEF_IMG
+        _date = DEF_DATE
         _location = ""
     }
     

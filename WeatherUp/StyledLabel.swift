@@ -17,6 +17,7 @@ class StyledLabel: UILabel {
         }
         self.applyStyle(style)
         self.minimumScaleFactor = 0.8
+        self.textAlignment = .Center
     }
 }
 

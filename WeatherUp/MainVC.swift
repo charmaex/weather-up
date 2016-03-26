@@ -11,8 +11,8 @@ import UIKit
 class MainVC: UIViewController {
     
     @IBOutlet weak var tempActLbl: H1Label!
-    @IBOutlet weak var tempLowLbl: ParagraphLabel!
-    @IBOutlet weak var tempHighLbl: ParagraphLabel!
+    @IBOutlet weak var tempMinLbl: ParagraphLabel!
+    @IBOutlet weak var tempMaxLbl: ParagraphLabel!
     
     @IBOutlet weak var weatherPlaceholder: UIView!
     
@@ -22,11 +22,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var infoTimeLbl: H6Label!
     
     @IBOutlet weak var forecastView: UIStackView!
-    var forecast1: ForecastVC!
-    var forecast2: ForecastVC!
-    var forecast3: ForecastVC!
-    var forecast4: ForecastVC!
-    var forecast5: ForecastVC?
+    var forecasts = [ForecastVC]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +33,7 @@ class MainVC: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.locationNoAuth), name: "locationAuthError", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: "gotWeatherData", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -46,6 +43,21 @@ class MainVC: UIViewController {
     
     func updateWeather() {
         WeatherService.inst.getData(nil)
+    }
+    
+    func displayWeather() {
+        let w = WeatherService.inst.weather
+        let unit: TemperatureUnits = .Celsius
+        
+        tempActLbl.text = w.degrees(unit: unit)
+        tempMinLbl.text = w.minDegr(unit: unit)
+        tempMaxLbl.text = w.maxDegr(unit: unit)
+        
+        infoTextLbl.text = w.desc
+        infoCityLbl.text = w.location
+        infoTimeLbl.text = w.time
+        
+        fillForecasts()
     }
     
     func locationNoAuth() {
@@ -68,21 +80,19 @@ class MainVC: UIViewController {
     }
     
     func createForecasts() {
-        forecast1 = ForecastVC()
-        forecastView.addArrangedSubview(forecast1.view)
+        let fcount = UIScreen.mainScreen().bounds.width <= 320 ? 4 : 5
         
-        forecast2 = ForecastVC()
-        forecastView.addArrangedSubview(forecast2.view)
-        
-        forecast3 = ForecastVC()
-        forecastView.addArrangedSubview(forecast3.view)
-        
-        forecast4 = ForecastVC()
-        forecastView.addArrangedSubview(forecast4.view)
-        
-        if UIScreen.mainScreen().bounds.width > 320 {
-            forecast5 = ForecastVC()
-            forecastView.addArrangedSubview(forecast5!.view)
+        for _ in 1...fcount {
+            let fc = ForecastVC()
+            forecasts.append(fc)
+            forecastView.addArrangedSubview(fc.view)
+        }
+    }
+    
+    func fillForecasts() {
+        for (i, fc) in forecasts.enumerate() {
+            let forecast = WeatherService.inst.forecasts[i]
+            fc.initWithForecast(forecast)
         }
     }
 
