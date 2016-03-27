@@ -139,6 +139,11 @@ class WeatherService {
             var img = ""
             var city = ""
             var country = ""
+            var clouds = ""
+            var rain = ""
+            var wind = ""
+            var windDir = ""
+            var humidity = ""
             
             if let res = result["main"] as? Dictionary<String, Double> {
                 if let a = res["temp"] {
@@ -180,7 +185,7 @@ class WeatherService {
             let date = NSDate()
             
             self._lastWeather = date
-            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country)
+            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, windDir: windDir, humidity: humidity)
 
             completion()
         }

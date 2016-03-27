@@ -21,6 +21,11 @@ class Weather: NSObject, NSCoding {
     private var _date: NSDate!
     private var _city: String!
     private var _country: String!
+    private var _clouds: String!
+    private var _rain: String!
+    private var _wind: String!
+    private var _windDir: String!
+    private var _humidity: String!
     
     func degrees(unit unit: TemperatureUnits) -> String {
         return _degrees.toDegrees(unit: unit)
@@ -57,7 +62,27 @@ class Weather: NSObject, NSCoding {
         return "at: \(x)"
     }
     
-    init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String) {
+    var clouds: String {
+        return _clouds
+    }
+    
+    var rain: String {
+        return _rain
+    }
+    
+    var wind: String {
+        return _wind
+    }
+    
+    var windDir: String {
+        return _windDir
+    }
+    
+    var humidity: String {
+        return _humidity
+    }
+    
+    init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: String, rain: String, wind: String, windDir: String, humidity: String) {
         _degrees = degrees
         _minDegr = minDegr
         _maxDegr = maxDegr
@@ -67,6 +92,11 @@ class Weather: NSObject, NSCoding {
         _date = date
         _city = city
         _country = country
+        _clouds = clouds
+        _rain = rain
+        _wind = wind
+        _windDir = windDir
+        _humidity = humidity
     }
     
     override init() {
@@ -79,6 +109,11 @@ class Weather: NSObject, NSCoding {
         _date = DEF_DATE
         _city = ""
         _country = ""
+        _clouds = ""
+        _rain = ""
+        _wind = ""
+        _windDir = ""
+        _humidity = ""
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

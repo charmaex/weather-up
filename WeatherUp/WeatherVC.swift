@@ -61,6 +61,12 @@ class WeatherVC: UIViewController {
         
         weatherImV.image = img
         weatherLbl.text = w.mainDesc
+        
+        cloudsLbl.text = w.clouds
+        rainLbl.text = w.rain
+        windLbl.text = w.wind
+        windDirLbl.text = w.windDir
+        humidityLbl.text = w.humidity
     }
     
 }
