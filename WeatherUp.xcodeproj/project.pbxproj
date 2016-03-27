@@ -205,8 +205,8 @@
 				1306BB7B1CA1F3870006D397 /* ForecastVC.xib */,
 				136A6BBE1CA69F5F00347216 /* WeatherVC.xib */,
 				13F7AC1C1C9EB58B006BBD86 /* Styles.swift */,
-				13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */,
 				13BF16691CA1DC34003BB4AE /* StyledLabel.swift */,
+				13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */,
 				13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */,
 			);
 			name = View;

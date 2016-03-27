@@ -86,3 +86,11 @@ class H6Label: StyledLabel {
         super.awakeFromNib()
     }
 }
+
+class TextStyleLabel: StyledLabel {
+    
+    override func awakeFromNib() {
+        style = .TextStyle
+        super.awakeFromNib()
+    }
+}
