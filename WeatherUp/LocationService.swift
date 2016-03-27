@@ -42,6 +42,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         
         locationIsAvailable()
     }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        locationManager.stopUpdatingLocation()
+        locationIsNotAvailable()
+    }
 
     private func locationAuthStatus() {
         let status = CLLocationManager.authorizationStatus()
@@ -60,7 +65,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     private func locationRequest() {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
     }
     
@@ -69,7 +74,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func locationIsNotAvailable() {
-        print("no location")
+        NSNotificationCenter.defaultCenter().postNotificationName("locationIsNotAvailable", object: nil)
     }
     
     private func locationIsAvailable() {

@@ -40,6 +40,7 @@ class MainVC: UIViewController {
         view.backgroundGradient()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.noLocation), name: "locationIsNotAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.locationNoAuth), name: "locationAuthError", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: "gotWeatherData", object: nil)
         
@@ -52,10 +53,12 @@ class MainVC: UIViewController {
     }
     
     func updateLocation() {
+        infoTextLbl.text = MES_LOCATE
         LocationService.inst.getLocation()
     }
     
     func updateWeather() {
+        infoTextLbl.text = MES_WEATHER
         WeatherService.inst.getData(nil)
     }
     
@@ -76,7 +79,14 @@ class MainVC: UIViewController {
         fillForecasts()
     }
     
+    func noLocation() {
+        infoTextLbl.text = ERR_LOCATE
+    }
+    
     func locationNoAuth() {
+        
+        infoTextLbl.text = ERR_NOAUTH
+        
         let alert = AlertVC()
         alert.configureLocationAlert()
         
