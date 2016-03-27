@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="infoConstraint" destination="r8H-Xd-Yxk" id="eNc-kb-Dgf"/>
                 <outlet property="infoSV" destination="AmS-Ob-s0v" id="Wqh-Us-XJq"/>
+                <outlet property="leftArrow" destination="RVn-U4-3vh" id="uwY-W3-qFV"/>
+                <outlet property="rightArrow" destination="wmb-dl-GBH" id="hr6-Vj-eLK"/>
                 <outlet property="scrollView" destination="AOX-GI-gwB" id="FGY-rb-fqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherConstraint" destination="fwI-ki-kAN" id="MsZ-10-rfg"/>
@@ -35,7 +37,7 @@
                                         <constraint firstAttribute="height" constant="160" id="0qU-no-zRb"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yK-pH-bHB" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yK-pH-bHB" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="168" width="160" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,13 +49,109 @@
                                 <constraint firstAttribute="height" constant="184" id="gou-nc-yVZ"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="AmS-Ob-s0v">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AmS-Ob-s0v">
                             <rect key="frame" x="820" y="0.0" width="160" height="184"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-IE-xH7">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="184"/>
-                                    <color key="backgroundColor" red="1" green="0.20784313730000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-S2-Zlh">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="184"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-W1-62P" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="aX7-rW-cdY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaQ-BC-F9p" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="42" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="QAH-LJ-8hq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pf-Xv-dpb" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="84" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="Fjb-Y9-mto"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-y6-MfC" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="126" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="Zl3-UX-6nU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bd-dc-qXk" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="168" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="4Ec-Kr-QBu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-4S-gzw">
+                                    <rect key="frame" x="80" y="0.0" width="80" height="184"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-90-deX" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="4Po-MY-UCs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-Wv-rq9" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="42" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="3JM-dN-R1V"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-Cs-PpE" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="84" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="7jD-5Q-iwO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0K-iV-0wk" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="126" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="zXa-Hv-xEO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEE-5G-3fV" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="168" width="80" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="O2c-u3-8co"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="184" id="2yv-fw-JmI"/>
@@ -62,14 +160,30 @@
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ela-22-s3V">
                             <rect key="frame" x="465" y="67" width="50" height="50"/>
-                            <color key="backgroundColor" red="0.90418946739999995" green="0.087854765360000003" blue="0.19258099789999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-dl-GBH">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowLeft" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-U4-3vh">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="RVn-U4-3vh" firstAttribute="leading" secondItem="Ela-22-s3V" secondAttribute="leading" id="4Bg-D6-lGE"/>
+                                <constraint firstAttribute="bottom" secondItem="RVn-U4-3vh" secondAttribute="bottom" id="5AB-r9-Sxd"/>
+                                <constraint firstAttribute="trailing" secondItem="RVn-U4-3vh" secondAttribute="trailing" id="7o1-v0-guJ"/>
                                 <constraint firstAttribute="width" secondItem="Ela-22-s3V" secondAttribute="height" id="KQn-MB-psu"/>
                                 <constraint firstAttribute="height" constant="50" id="RZi-QN-vo6"/>
+                                <constraint firstItem="wmb-dl-GBH" firstAttribute="top" secondItem="Ela-22-s3V" secondAttribute="top" id="ajd-jA-KrJ"/>
+                                <constraint firstItem="wmb-dl-GBH" firstAttribute="leading" secondItem="Ela-22-s3V" secondAttribute="leading" id="cm7-IP-OoT"/>
+                                <constraint firstAttribute="bottom" secondItem="wmb-dl-GBH" secondAttribute="bottom" id="hdf-MZ-bP4"/>
+                                <constraint firstAttribute="trailing" secondItem="wmb-dl-GBH" secondAttribute="trailing" id="j1i-1I-W3v"/>
+                                <constraint firstItem="RVn-U4-3vh" firstAttribute="top" secondItem="Ela-22-s3V" secondAttribute="top" id="vrg-tn-2dw"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="AmS-Ob-s0v" secondAttribute="bottom" id="0zv-bV-Afj"/>
                         <constraint firstAttribute="height" constant="184" id="62f-hr-JMR"/>
@@ -97,4 +211,8 @@
             <point key="canvasLocation" x="245" y="160"/>
         </view>
     </objects>
+    <resources>
+        <image name="ArrowLeft" width="27" height="55"/>
+        <image name="ArrowRight" width="27" height="55"/>
+    </resources>
 </document>

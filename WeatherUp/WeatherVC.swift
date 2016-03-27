@@ -17,8 +17,17 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var weatherImV: UIImageView!
     @IBOutlet weak var weatherLbl: ParagraphLabel!
     
+    //replace with native animation
+    @IBOutlet weak var leftArrow: UIImageView!
+    @IBOutlet weak var rightArrow: UIImageView!
+    
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoSV: UIStackView!
+    @IBOutlet weak var cloudsLbl: ParagraphLabel!
+    @IBOutlet weak var rainLbl: ParagraphLabel!
+    @IBOutlet weak var windLbl: ParagraphLabel!
+    @IBOutlet weak var windDirLbl: ParagraphLabel!
+    @IBOutlet weak var humidityLbl: ParagraphLabel!
     
     private var screenWidth: CGFloat!
     private var spacing: CGFloat!
@@ -30,6 +39,7 @@ class WeatherVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        leftArrow.alpha = 0
         infoSV.alpha = 0
         
         screenWidth = UIScreen.mainScreen().bounds.width

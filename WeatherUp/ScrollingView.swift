@@ -101,10 +101,14 @@ class ScrollingView: UIView {
         switch dir {
         case .Left:
             delegate.weatherSV.alpha = 1 - percent
+            delegate.rightArrow.alpha = 1 - percent
             delegate.infoSV.alpha = percent
+            delegate.leftArrow.alpha = percent
         case .Right:
             delegate.weatherSV.alpha = percent
+            delegate.rightArrow.alpha = percent
             delegate.infoSV.alpha = 1 - percent
+            delegate.leftArrow.alpha = 1 - percent
         case .None:
             return
         }
@@ -149,6 +153,8 @@ class ScrollingView: UIView {
             self.center = CGPointMake(newCenter, self.horizontalPostion)
             self.delegate.weatherSV.alpha = alphaWeather
             self.delegate.infoSV.alpha = alphaInfo
+            self.delegate.leftArrow.alpha = alphaInfo
+            self.delegate.rightArrow.alpha = alphaWeather
         }) {_ in}
         
     }
