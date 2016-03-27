@@ -143,6 +143,8 @@ class WeatherService {
             guard let result = response.result.value as? [String: AnyObject] else {
                 return self.downloadWeather(initial: false)
             }
+            
+            var counter = 12 // 14 items (rain/snow optional)
 
             var degrees = DEF_DEGREES
             var minDegr = DEF_DEGREES
@@ -161,18 +163,23 @@ class WeatherService {
             if let res = result["main"] as? Dictionary<String, Double> {
                 if let a = res["temp"] {
                     degrees = a
+                    counter -= 1
                 }
                 if let a = res["temp_min"] {
                     minDegr = a
+                    counter -= 1
                 }
                 if let a = res["temp_max"] {
                     maxDegr = a
+                    counter -= 1
                 }
                 if let a = res["humidity"] {
                     humidity = a
+                    counter -= 1
                 }
                 if let a = res["pressure"] {
                     pressure = a
+                    counter -= 1
                 }
             }
             
@@ -181,47 +188,56 @@ class WeatherService {
                     let re = res[0]
                     if let a = re["main"] as? String {
                         mainDesc = a
+                        counter -= 1
                     }
                     if let a = re["description"] as? String {
                         desc = a
+                        counter -= 1
                     }
                     if let a =  re["icon"] as? String {
                         img = a
+                        counter -= 1
                     }
                 }
             }
             
             if let res = result["name"] as? String {
                 city = res
+                counter -= 1
             }
 
             if let res = result["sys"] as? Dictionary<String, AnyObject> {
                 if let a = res["country"] as? String {
                     country = a
+                    counter -= 1
                 }
             }
             
             if let res = result["clouds"] as? Dictionary<String, Double> {
                 if let a = res["all"] {
                     clouds = a
+                    counter -= 1
                 }
             }
             
             if let res = result["rain"] as? Dictionary<String, Double> {
                 if let a = res["3h"] {
                     preRain += a
+                    counter -= 1
                 }
             }
             
             if let res = result["snow"] as? Dictionary<String, Double> {
                 if let a = res["3h"] {
                     preRain += a
+                    counter -= 1
                 }
             }
             
             if let res = result["wind"] as? Dictionary<String, Double> {
                 if let a = res["speed"] {
                     wind = a
+                    counter -= 1
                 }
             }
             
@@ -229,8 +245,12 @@ class WeatherService {
             
             let rain = preRain == 0 ? DEF_DOUBLE : preRain
             
+            let weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, pressure: pressure, humidity: humidity)
+            
+            self._lastWeatherIncomplete = counter > 0
+            
             self._lastWeather = date
-            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, pressure: pressure, humidity: humidity)
+            self._weather = weather
 
             completion()
         }
@@ -254,6 +274,8 @@ class WeatherService {
 
             var forecasts = [Forecast]()
             
+            var counter = 2 * 5
+            
             for item in list {
                 
                 guard let d = item["dt_txt"] as? String, let date = d.toDate() else {
@@ -271,6 +293,7 @@ class WeatherService {
                     if res.count >= 1 {
                         if let a =  res[0]["icon"] as? String {
                             img = a
+                            counter -= 1
                         }
                     }
                 }
@@ -278,12 +301,15 @@ class WeatherService {
                 if let res = item["main"] as? Dictionary<String, Double> {
                     if let a = res["temp"] {
                         degrees = a
+                        counter -= 1
                     }
                 }
                 
                 let forecast = Forecast(date: date, img: img, degrees: degrees)
                 forecasts.append(forecast)
             }
+            
+            self._lastForecastIncomplete = counter > 0
             
             self._lastForecast = NSDate()
             self._forecasts = forecasts
