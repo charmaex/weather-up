@@ -21,6 +21,14 @@ extension Double {
         return x.roundTo(decimals: 0)
     }
     
+    func msTokmh() -> Double {
+        return self * 3.6
+    }
+    
+    func msTomph() -> Double {
+        return self * 2.23694
+    }
+    
     func roundTo(decimals i: Int) -> Double {
         guard i >= 0 else {
             return self
@@ -28,6 +36,16 @@ extension Double {
         let inc = pow(10, Double(i))
         
         return round(self * inc) / inc
+    }
+    
+    func roundToString(decimals i: Int) -> String {
+        let x = self.roundTo(decimals: i)
+        return x.toString()
+    }
+    
+    
+    func toString() -> String {
+        return String(self).stringByReplacingOccurrencesOfString(".0", withString: "")
     }
     
     func toDegrees(unit unit: TemperatureUnits) -> String {
@@ -40,7 +58,7 @@ extension Double {
             degr = self.kelvinToFahrenheit()
         }
         
-        let degrStr = String(degr).stringByReplacingOccurrencesOfString(".0", withString: "")
+        let degrStr = degr.toString()
         
         return "\(degrStr)\(unit.rawValue)"
     }

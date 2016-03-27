@@ -23,11 +23,11 @@ class WeatherVC: UIViewController {
     
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoSV: UIStackView!
-    @IBOutlet weak var cloudsLbl: ParagraphLabel!
-    @IBOutlet weak var rainLbl: ParagraphLabel!
-    @IBOutlet weak var windLbl: ParagraphLabel!
-    @IBOutlet weak var windDirLbl: ParagraphLabel!
-    @IBOutlet weak var humidityLbl: ParagraphLabel!
+    @IBOutlet weak var cloudsLbl: ParagraphRightLabel!
+    @IBOutlet weak var rainLbl: ParagraphRightLabel!
+    @IBOutlet weak var windLbl: ParagraphRightLabel!
+    @IBOutlet weak var pressureLbl: ParagraphRightLabel!
+    @IBOutlet weak var humidityLbl: ParagraphRightLabel!
     
     private var screenWidth: CGFloat!
     private var spacing: CGFloat!
@@ -65,7 +65,7 @@ class WeatherVC: UIViewController {
         cloudsLbl.text = w.clouds
         rainLbl.text = w.rain
         windLbl.text = w.wind
-        windDirLbl.text = w.windDir
+        pressureLbl.text = w.pressure
         humidityLbl.text = w.humidity
     }
     

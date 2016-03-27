@@ -139,11 +139,11 @@ class WeatherService {
             var img = ""
             var city = ""
             var country = ""
-            var clouds = ""
-            var rain = ""
-            var wind = ""
-            var windDir = ""
-            var humidity = ""
+            var clouds = DEF_DOUBLE
+            var preRain = 0.0
+            var wind = DEF_DOUBLE
+            var pressure = DEF_DOUBLE
+            var humidity = DEF_DOUBLE
             
             if let res = result["main"] as? Dictionary<String, Double> {
                 if let a = res["temp"] {
@@ -154,6 +154,12 @@ class WeatherService {
                 }
                 if let a = res["temp_max"] {
                     maxDegr = a
+                }
+                if let a = res["humidity"] {
+                    humidity = a
+                }
+                if let a = res["pressure"] {
+                    pressure = a
                 }
             }
             
@@ -182,10 +188,36 @@ class WeatherService {
                 }
             }
             
+            if let res = result["clouds"] as? Dictionary<String, Double> {
+                if let a = res["all"] {
+                    clouds = a
+                }
+            }
+            
+            if let res = result["rain"] as? Dictionary<String, Double> {
+                if let a = res["3h"] {
+                    preRain += a
+                }
+            }
+            
+            if let res = result["snow"] as? Dictionary<String, Double> {
+                if let a = res["3h"] {
+                    preRain += a
+                }
+            }
+            
+            if let res = result["wind"] as? Dictionary<String, Double> {
+                if let a = res["speed"] {
+                    wind = a
+                }
+            }
+            
             let date = NSDate()
             
+            let rain = preRain == 0 ? DEF_DOUBLE : preRain
+            
             self._lastWeather = date
-            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, windDir: windDir, humidity: humidity)
+            self._weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, pressure: pressure, humidity: humidity)
 
             completion()
         }

@@ -21,11 +21,11 @@ class Weather: NSObject, NSCoding {
     private var _date: NSDate!
     private var _city: String!
     private var _country: String!
-    private var _clouds: String!
-    private var _rain: String!
-    private var _wind: String!
-    private var _windDir: String!
-    private var _humidity: String!
+    private var _clouds: Double!
+    private var _rain: Double!
+    private var _wind: Double!
+    private var _pressure: Double!
+    private var _humidity: Double!
     
     func degrees(unit unit: TemperatureUnits) -> String {
         return _degrees.toDegrees(unit: unit)
@@ -63,26 +63,27 @@ class Weather: NSObject, NSCoding {
     }
     
     var clouds: String {
-        return _clouds
+        return "\(_clouds.roundToString(decimals: 0))%"
     }
     
     var rain: String {
-        return _rain
+        return "\(_rain.roundToString(decimals: 0))mm"
     }
     
     var wind: String {
-        return _wind
+        let x = _wind.msTokmh()
+        return "\(x.roundToString(decimals: 0))km/h"
     }
     
-    var windDir: String {
-        return _windDir
+    var pressure: String {
+        return "\(_pressure.roundToString(decimals: 0))mbar"
     }
     
     var humidity: String {
-        return _humidity
+        return "\(_humidity.roundToString(decimals: 0))%"
     }
     
-    init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: String, rain: String, wind: String, windDir: String, humidity: String) {
+    init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: Double, rain: Double, wind: Double, pressure: Double, humidity: Double) {
         _degrees = degrees
         _minDegr = minDegr
         _maxDegr = maxDegr
@@ -95,7 +96,7 @@ class Weather: NSObject, NSCoding {
         _clouds = clouds
         _rain = rain
         _wind = wind
-        _windDir = windDir
+        _pressure = pressure
         _humidity = humidity
     }
     
@@ -109,11 +110,11 @@ class Weather: NSObject, NSCoding {
         _date = DEF_DATE
         _city = ""
         _country = ""
-        _clouds = ""
-        _rain = ""
-        _wind = ""
-        _windDir = ""
-        _humidity = ""
+        _clouds = DEF_DOUBLE
+        _rain = DEF_DOUBLE
+        _wind = DEF_DOUBLE
+        _pressure = DEF_DOUBLE
+        _humidity = DEF_DOUBLE
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

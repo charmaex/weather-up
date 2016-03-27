@@ -13,6 +13,7 @@
                 <outlet property="infoConstraint" destination="r8H-Xd-Yxk" id="eNc-kb-Dgf"/>
                 <outlet property="infoSV" destination="AmS-Ob-s0v" id="Wqh-Us-XJq"/>
                 <outlet property="leftArrow" destination="RVn-U4-3vh" id="uwY-W3-qFV"/>
+                <outlet property="pressureLbl" destination="w0K-iV-0wk" id="Kgk-yD-5p0"/>
                 <outlet property="rainLbl" destination="Smi-Wv-rq9" id="WLd-40-imm"/>
                 <outlet property="rightArrow" destination="wmb-dl-GBH" id="hr6-Vj-eLK"/>
                 <outlet property="scrollView" destination="AOX-GI-gwB" id="FGY-rb-fqG"/>
@@ -21,7 +22,6 @@
                 <outlet property="weatherImV" destination="vDb-0r-HNb" id="yot-IB-INa"/>
                 <outlet property="weatherLbl" destination="2yK-pH-bHB" id="cr4-2E-qyx"/>
                 <outlet property="weatherSV" destination="hVQ-VA-3Vq" id="chL-fA-ysn"/>
-                <outlet property="windDirLbl" destination="w0K-iV-0wk" id="kCp-3e-3gK"/>
                 <outlet property="windLbl" destination="PKi-Cs-PpE" id="OrP-SQ-AfO"/>
             </connections>
         </placeholder>
@@ -60,7 +60,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-S2-Zlh">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="184"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-W1-62P" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-W1-62P" customClass="ParagraphLeftLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="aX7-rW-cdY"/>
@@ -69,7 +69,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaQ-BC-F9p" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rain/snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaQ-BC-F9p" customClass="ParagraphLeftLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="42" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="QAH-LJ-8hq"/>
@@ -78,7 +78,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pf-Xv-dpb" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pf-Xv-dpb" customClass="ParagraphLeftLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="84" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Fjb-Y9-mto"/>
@@ -87,7 +87,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-y6-MfC" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-y6-MfC" customClass="ParagraphLeftLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="126" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Zl3-UX-6nU"/>
@@ -96,7 +96,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bd-dc-qXk" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bd-dc-qXk" customClass="ParagraphLeftLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="168" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="4Ec-Kr-QBu"/>
@@ -110,7 +110,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-4S-gzw">
                                     <rect key="frame" x="80" y="0.0" width="80" height="184"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-90-deX" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-90-deX" customClass="ParagraphRightLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="4Po-MY-UCs"/>
@@ -119,7 +119,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-Wv-rq9" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-Wv-rq9" customClass="ParagraphRightLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="42" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="3JM-dN-R1V"/>
@@ -128,7 +128,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-Cs-PpE" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-Cs-PpE" customClass="ParagraphRightLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="84" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="7jD-5Q-iwO"/>
@@ -137,7 +137,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0K-iV-0wk" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0K-iV-0wk" customClass="ParagraphRightLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="126" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="zXa-Hv-xEO"/>
@@ -146,7 +146,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEE-5G-3fV" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEE-5G-3fV" customClass="ParagraphRightLabel" customModule="WeatherUp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="168" width="80" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="O2c-u3-8co"/>

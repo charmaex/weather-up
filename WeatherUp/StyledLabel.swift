@@ -55,6 +55,22 @@ class ParagraphLabel: StyledLabel {
     }
 }
 
+class ParagraphLeftLabel: ParagraphLabel {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.textAlignment = .Left
+    }
+}
+
+class ParagraphRightLabel: ParagraphLabel {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.textAlignment = .Right
+    }
+}
+
 class H5Label: StyledLabel {
     
     override func awakeFromNib() {
