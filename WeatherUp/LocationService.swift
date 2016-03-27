@@ -17,6 +17,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     private var _lat: String!
     private var _lon: String!
     
+    private var _lastUpdate: NSDate!
+    
     var apiLocation: String {
         guard _lat != nil && _lon != nil else {
             return ""
@@ -24,8 +26,14 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         return "\(API_LAT)\(_lat)\(API_LON)\(_lon)"
     }
     
-    func getLocation() {
+    func getLocation() -> Bool {
+        guard _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
+            print("no updated needed")
+            return false
+        }
+        
         locationAuthStatus()
+        return true
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -39,6 +47,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let position = location.coordinate
         _lat = "\(position.latitude.roundTo(decimals: 2))"
         _lon = "\(position.longitude.roundTo(decimals: 2))"
+        
+        _lastUpdate = NSDate()
         
         locationIsAvailable()
     }

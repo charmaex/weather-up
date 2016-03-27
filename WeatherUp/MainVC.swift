@@ -53,8 +53,11 @@ class MainVC: UIViewController {
     }
     
     func updateLocation() {
-        infoTextLbl.text = MES_LOCATE
-        LocationService.inst.getLocation()
+        
+        if LocationService.inst.getLocation() {
+            infoTextLbl.text = MES_LOCATE
+        }
+        
     }
     
     func updateWeather() {

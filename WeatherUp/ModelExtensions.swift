@@ -95,4 +95,8 @@ extension NSDate {
         return self.timeToString(withFormat: "eeee")
     }
     
+    func olderThan(inMinutes m: Double) -> Bool {
+        return self.timeIntervalSinceNow < -m * 60
+    }
+    
 }

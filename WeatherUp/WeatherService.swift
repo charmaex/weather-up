@@ -13,12 +13,14 @@ class WeatherService {
     static let inst = WeatherService()
     
     private var _apiLocation = ""
-    private var _apiLocationNew = true
+    private var _locationNew = true
     
     private var _weather: Weather!
     private var _forecasts = [Forecast]()
     private var _lastWeather: NSDate!
     private var _lastForecast: NSDate!
+    private var _lastWeatherIncomplete = true
+    private var _lastForecastIncomplete = true
     
     private var _downloadCount = 0
     private var _downloadCountTarget = 0
@@ -37,10 +39,10 @@ class WeatherService {
     func getData(destination: String?) {
         
         if let destination = destination {
-            _apiLocationNew = _apiLocation == destination
+            _locationNew = _apiLocation == destination
             _apiLocation = destination
         } else {
-            _apiLocationNew = _apiLocation == LocationService.inst.apiLocation
+            _locationNew = _apiLocation == LocationService.inst.apiLocation
             _apiLocation = LocationService.inst.apiLocation
         }
         
@@ -49,13 +51,16 @@ class WeatherService {
         _downloadCount = 0
         _downloadCountTarget = 0
         
-        //if _lastWeather + 59 min >= now || _apiLocationNew
-        _downloadCountTarget += 1
-        downloadWeather()
+        if _lastWeather.olderThan(inMinutes: 30) || _locationNew || _lastWeatherIncomplete {
+            downloadWeather(initial: true)
+        }
+        if _lastForecast.olderThan(inMinutes: 120) || _locationNew || _lastForecastIncomplete {
+            downloadForecast(initial: true)
+        }
         
-        //if _lastForecast + 5:59 min >= now || _apiLocationNew
-        _downloadCountTarget += 1
-        downloadForecast()
+        if _downloadCountTarget == 0 {
+            postNotification()
+        }
         
     }
     
@@ -106,14 +111,22 @@ class WeatherService {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    private func downloadWeather() {
+    private func downloadWeather(initial b: Bool) {
+        if b {
+            _downloadCountTarget += 1
+        }
+        
         downloadWeather {
             self._downloadCount += 1
             self.finishGetData()
         }
     }
     
-    private func downloadForecast() {
+    private func downloadForecast(initial b: Bool) {
+        if b {
+            _downloadCountTarget += 1
+        }
+        
         downloadForecast {
             self._downloadCount += 1
             self.finishGetData()
@@ -128,7 +141,7 @@ class WeatherService {
         
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard let result = response.result.value as? [String: AnyObject] else {
-                return self.downloadWeather()
+                return self.downloadWeather(initial: false)
             }
 
             var degrees = DEF_DEGREES
@@ -231,7 +244,7 @@ class WeatherService {
         
         Alamofire.request(.GET, url).responseJSON { response -> Void in
             guard let result = response.result.value as? [String: AnyObject] else {
-                return self.downloadForecast()
+                return self.downloadForecast(initial: false)
             }
             
             guard let list = result["list"] as? [Dictionary<String, AnyObject>] else {
