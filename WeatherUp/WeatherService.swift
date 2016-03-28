@@ -52,13 +52,16 @@ class WeatherService {
         _downloadCountTarget = 0
         
         if _lastWeather.olderThan(inMinutes: 30) || _locationNew || _lastWeatherIncomplete {
+            print("weather update")
             downloadWeather(initial: true)
         }
         if _lastForecast.olderThan(inMinutes: 120) || _locationNew || _lastForecastIncomplete {
+            print("forecast update")
             downloadForecast(initial: true)
         }
         
         if _downloadCountTarget == 0 {
+            print("no weather update needed")
             postNotification()
         }
         

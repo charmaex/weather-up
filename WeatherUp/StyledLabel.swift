@@ -22,25 +22,20 @@ class StyledLabel: UILabel {
 }
 
 class H1Label: StyledLabel {
-    
     override func awakeFromNib() {
         style = .H1
         super.awakeFromNib()
     }
-
 }
 
 class H2Label: StyledLabel {
-    
     override func awakeFromNib() {
         style = .H2
         super.awakeFromNib()
     }
-    
 }
 
 class H3Label: StyledLabel {
-    
     override func awakeFromNib() {
         style = .H3
         super.awakeFromNib()
@@ -48,7 +43,6 @@ class H3Label: StyledLabel {
 }
 
 class ParagraphLabel: StyledLabel {
-    
     override func awakeFromNib() {
         style = .Paragraph
         super.awakeFromNib()
@@ -56,7 +50,6 @@ class ParagraphLabel: StyledLabel {
 }
 
 class ParagraphLeftLabel: ParagraphLabel {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textAlignment = .Left
@@ -64,7 +57,6 @@ class ParagraphLeftLabel: ParagraphLabel {
 }
 
 class ParagraphRightLabel: ParagraphLabel {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textAlignment = .Right
@@ -72,7 +64,6 @@ class ParagraphRightLabel: ParagraphLabel {
 }
 
 class H5Label: StyledLabel {
-    
     override func awakeFromNib() {
         style = .H5
         super.awakeFromNib()
@@ -80,7 +71,6 @@ class H5Label: StyledLabel {
 }
 
 class H6Label: StyledLabel {
-    
     override func awakeFromNib() {
         style = .H6
         super.awakeFromNib()
@@ -88,9 +78,9 @@ class H6Label: StyledLabel {
 }
 
 class TextStyleLabel: StyledLabel {
-    
     override func awakeFromNib() {
         style = .TextStyle
         super.awakeFromNib()
     }
 }
+

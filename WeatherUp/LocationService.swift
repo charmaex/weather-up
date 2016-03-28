@@ -28,7 +28,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     func getLocation() -> Bool {
         guard _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
-            print("no updated needed")
+            print("no location updated needed")
+            locationIsAvailable()
             return false
         }
         
