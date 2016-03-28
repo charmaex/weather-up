@@ -10,6 +10,12 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    @IBOutlet weak var introLogo: UILabel!
+    @IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
+    @IBOutlet weak var introCloud2: NSLayoutConstraint!
+    @IBOutlet weak var introCloud3: NSLayoutConstraint!
+    @IBOutlet weak var introHill: NSLayoutConstraint!
+    
     @IBOutlet weak var tempView: TappableStackView!
     @IBOutlet weak var tempActLbl: H1Label!
     @IBOutlet weak var tempMinLbl: ParagraphLabel!
@@ -52,7 +58,20 @@ class MainVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        introAnimation()
         updateLocation()
+    }
+    
+    func introAnimation() {
+        introCloud1Disable.active = false
+        introCloud2.constant = -240
+        introCloud3.constant = -240
+        introHill.constant = -200
+        
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveLinear, animations: {
+                self.view.layoutIfNeeded()
+                self.introLogo.alpha = 0
+            }) { _ in }
     }
     
     func updateLocation() {

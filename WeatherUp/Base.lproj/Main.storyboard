@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MainVC-->
@@ -125,16 +126,75 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan Dammshäuser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-xP-4Wv" customClass="TextStyleLabel" customModule="WeatherUp" customModuleProvider="target">
+                                <rect key="frame" x="2" y="587" width="143" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="GPc-Cp-MRP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 1" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-pl-xnj">
+                                <rect key="frame" x="112" y="216" width="240" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="jtg-Aq-H47"/>
+                                    <constraint firstAttribute="width" constant="240" id="l6x-xE-H27"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 2" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-vX-4GQ">
+                                <rect key="frame" x="436" y="301" width="240" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="4xy-fs-zEB"/>
+                                    <constraint firstAttribute="height" constant="130" id="Bfz-z3-fFu"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 3" translatesAutoresizingMaskIntoConstraints="NO" id="Utm-jp-qKj">
+                                <rect key="frame" x="381" y="20" width="240" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="0JL-Jt-DDB"/>
+                                    <constraint firstAttribute="width" constant="240" id="nhf-Zj-3vp"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hill" translatesAutoresizingMaskIntoConstraints="NO" id="NnO-ZS-hmI">
+                                <rect key="frame" x="-130" y="400" width="860" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="GW2-QV-Bw3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-8x-EDP">
+                                <rect key="frame" x="155" y="133" width="290" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="Lu0-w8-1gz"/>
+                                    <constraint firstAttribute="height" constant="41" id="mdZ-2q-u1Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Italic" family="Gill Sans" pointSize="36"/>
+                                <color key="textColor" red="0.42352941179999998" green="0.95686274510000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.094117647060000004" green="0.20784313730000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="UFN-pl-xnj" firstAttribute="bottom" secondItem="tAD-zT-ZZc" secondAttribute="bottom" constant="-24" id="4qR-rv-Zbi"/>
+                            <constraint firstItem="k0a-8x-EDP" firstAttribute="bottom" secondItem="tAD-zT-ZZc" secondAttribute="top" constant="-12" id="D5D-v9-cA7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NnO-ZS-hmI" secondAttribute="bottom" id="LK1-2z-KVm"/>
+                            <constraint firstItem="k0a-8x-EDP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OpW-X9-VP7"/>
                             <constraint firstItem="tAD-zT-ZZc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="QIf-xA-u5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1HE-pO-aDM" secondAttribute="bottom" constant="20" id="TeJ-xU-JdV"/>
                             <constraint firstItem="1HE-pO-aDM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V5D-yj-xNV"/>
                             <constraint firstAttribute="trailing" secondItem="22O-I5-zHU" secondAttribute="trailing" constant="2" id="VOX-ty-ppd"/>
                             <constraint firstItem="1HE-pO-aDM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="cWc-ar-33N"/>
+                            <constraint firstAttribute="trailing" secondItem="Utm-jp-qKj" secondAttribute="trailing" constant="-21" id="d0j-ma-oQb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="22O-I5-zHU" secondAttribute="bottom" constant="2" id="eB9-sB-ulh"/>
+                            <constraint firstItem="UFN-pl-xnj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="52" id="fKb-cw-64e"/>
                             <constraint firstAttribute="trailing" secondItem="1HE-pO-aDM" secondAttribute="trailing" id="fUe-QO-gcn"/>
+                            <constraint firstAttribute="trailing" secondItem="sS3-vX-4GQ" secondAttribute="trailing" constant="-76" id="fgA-Jq-KQu"/>
+                            <constraint firstItem="NnO-ZS-hmI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gTR-pt-6EF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sS3-vX-4GQ" secondAttribute="bottom" constant="169" id="kjs-QN-LOq"/>
+                            <constraint firstItem="Utm-jp-qKj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nc8-uG-dXi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OBf-xP-4Wv" secondAttribute="bottom" constant="2" id="rky-4W-d6Q"/>
+                            <constraint firstItem="OBf-xP-4Wv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="v53-0w-WEq"/>
+                            <constraint firstItem="UFN-pl-xnj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="999" constant="-240" id="xkp-Sf-iJz"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -144,6 +204,11 @@
                         <outlet property="infoTextLbl" destination="Zi2-XS-aXR" id="5CR-BJ-i8d"/>
                         <outlet property="infoTimeLbl" destination="w1f-Nf-2x4" id="7ZD-CN-TYD"/>
                         <outlet property="infoView" destination="4Yz-6w-arF" id="48o-sw-pec"/>
+                        <outlet property="introCloud1Disable" destination="fKb-cw-64e" id="s97-se-Lph"/>
+                        <outlet property="introCloud2" destination="fgA-Jq-KQu" id="1ze-RE-ve0"/>
+                        <outlet property="introCloud3" destination="d0j-ma-oQb" id="ivj-Kl-5cc"/>
+                        <outlet property="introHill" destination="LK1-2z-KVm" id="7B1-go-wL6"/>
+                        <outlet property="introLogo" destination="k0a-8x-EDP" id="pBB-Yb-F0V"/>
                         <outlet property="tempActLbl" destination="Tgf-BN-y2w" id="JgT-hw-gAf"/>
                         <outlet property="tempMaxLbl" destination="HQW-Xa-x96" id="WDd-tX-Ax7"/>
                         <outlet property="tempMinLbl" destination="nNN-AD-DC5" id="6Da-gY-Mdb"/>
@@ -153,7 +218,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="226.5" y="330.5"/>
+            <point key="canvasLocation" x="348" y="218"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cloud 1" width="240" height="130"/>
+        <image name="Cloud 2" width="240" height="130"/>
+        <image name="Cloud 3" width="240" height="130"/>
+        <image name="Hill" width="860" height="250"/>
+    </resources>
 </document>

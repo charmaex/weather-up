@@ -36,7 +36,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hVQ-VA-3Vq">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="184"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vDb-0r-HNb">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d160" translatesAutoresizingMaskIntoConstraints="NO" id="vDb-0r-HNb">
                                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="160" id="0qU-no-zRb"/>
@@ -217,6 +217,7 @@
         </view>
     </objects>
     <resources>
+        <image name="01d160" width="160" height="160"/>
         <image name="ArrowLeft" width="27" height="55"/>
         <image name="ArrowRight" width="27" height="55"/>
     </resources>
