@@ -132,7 +132,7 @@ class ScrollingView: UIView {
         
         let (dir, percent) = dragPercent(position.x)
         
-        let direction: Direction
+        var direction: Direction
         
         if dragPos < left || dragPos > right {
             direction = dir
@@ -143,6 +143,31 @@ class ScrollingView: UIView {
         let newCenter: CGFloat
         let alphaWeather: CGFloat
         let alphaInfo: CGFloat
+        
+        var delay = 0.0
+        
+        if direction == .None {
+            let x = center.x
+            let off: CGFloat
+            switch x {
+            case left:
+                off = -15
+                direction = .Left
+            case right:
+                off = 15
+                direction = .Right
+            default:
+                return
+            }
+            
+            let centerPoint = CGPointMake(x - off, horizontalPostion)
+            
+            delay = 0.1
+            
+            UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseIn, animations: {
+                self.center = centerPoint
+                }, completion: { _ in })
+        }
         
         switch direction {
         case .Left:
@@ -157,17 +182,17 @@ class ScrollingView: UIView {
             return
         }
         
-        let center = CGPointMake(newCenter, horizontalPostion)
+        let centerPoint = CGPointMake(newCenter, horizontalPostion)
         
-        positionInView = center
+        positionInView = centerPoint
         
-        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
-            self.center = center
+        UIView.animateWithDuration(0.3, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
+            self.center = centerPoint
             self.delegate.weatherSV.alpha = alphaWeather
             self.delegate.infoSV.alpha = alphaInfo
             self.delegate.leftArrow.alpha = alphaInfo
             self.delegate.rightArrow.alpha = alphaWeather
-        }) {_ in}
+        }) { _ in }
         
     }
     
