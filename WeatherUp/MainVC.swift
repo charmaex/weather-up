@@ -65,6 +65,11 @@ class MainVC: UIViewController {
         WeatherService.inst.getData(nil)
     }
     
+    func switchUnits() {
+        UnitService.inst.switchUnit()
+        displayWeather()
+    }
+    
     func displayWeather() {
         let w = WeatherService.inst.weather
         

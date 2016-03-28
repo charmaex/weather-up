@@ -11,6 +11,8 @@ import UIKit
 class WeatherVC: UIViewController {
     
     @IBOutlet weak var scrollView: ScrollingView!
+    @IBOutlet weak var svLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var svRightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var weatherConstraint: NSLayoutConstraint!
     @IBOutlet weak var weatherSV: UIStackView!
@@ -34,10 +36,6 @@ class WeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
         
         leftArrow.alpha = 0
         infoSV.alpha = 0
@@ -48,12 +46,19 @@ class WeatherVC: UIViewController {
         weatherConstraint.constant = spacing
         infoConstraint.constant = spacing
         
+        scrollView.delegate = self
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         let viewWidth = screenWidth * 2 - spacing + 20
         
         view.frame = CGRectMake(0, 0, viewWidth, 184)
-        
-        scrollView.delegate = self
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        scrollView.positionView()
     }
 
     func initWithWeather(w: Weather) {

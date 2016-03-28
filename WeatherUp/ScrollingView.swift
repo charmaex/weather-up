@@ -14,6 +14,8 @@ class ScrollingView: UIView {
     
     private var tappable = true
     
+    private var positionInView: CGPoint!
+    
     private var fullDrag: CGFloat!
     private var dragStart: CGFloat!
     private var horizontalPostion: CGFloat!
@@ -44,6 +46,12 @@ class ScrollingView: UIView {
                 return .Left
             }
             return .None
+        }
+    }
+    
+    func positionView() {
+        if positionInView != nil {
+            center = positionInView
         }
     }
     
@@ -150,6 +158,8 @@ class ScrollingView: UIView {
         }
         
         let center = CGPointMake(newCenter, horizontalPostion)
+        
+        positionInView = center
         
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
             self.center = center

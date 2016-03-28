@@ -18,9 +18,7 @@ class UnitService {
     }
     
     init() {
-        print("check data")
         if let data = NSUserDefaults.standardUserDefaults().valueForKey("unit") as? String, let unit = Units(rawValue: data) {
-            print("got data")
             _unit = unit
         }
     }
