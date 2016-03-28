@@ -15,8 +15,15 @@ protocol WeatherObject {
 extension WeatherObject {
     
     func valueSaveUnit(d: Double, type: UnitsType) -> String {
-        guard d != DEF_VALUE else {
-            return UnitService.inst.unit.unitForValue(DEF_EMPTY, type: type)
+        if d == DEF_VALUE  {
+            let defStr: String
+            switch type {
+            case .Temperature:
+                defStr = DEF_EMPTY_TEMP
+            default:
+                defStr = DEF_EMPTY
+            }
+            return UnitService.inst.unit.unitForValue(defStr, type: type)
         }
         return UnitService.inst.unit.unitForValue(d, type: type)
     }
