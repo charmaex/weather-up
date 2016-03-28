@@ -28,7 +28,7 @@ class ScrollingView: UIView {
     }
     
     private var damping: CGFloat {
-        return (left + right) * 0.2
+        return ((left + right) / 2) * 0.25
     }
     
     private enum Direction {
@@ -149,8 +149,10 @@ class ScrollingView: UIView {
             return
         }
         
+        let center = CGPointMake(newCenter, horizontalPostion)
+        
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
-            self.center = CGPointMake(newCenter, self.horizontalPostion)
+            self.center = center
             self.delegate.weatherSV.alpha = alphaWeather
             self.delegate.infoSV.alpha = alphaInfo
             self.delegate.leftArrow.alpha = alphaInfo

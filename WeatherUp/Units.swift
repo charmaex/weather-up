@@ -16,7 +16,7 @@ enum UnitsType {
     case Volume
 }
 
-enum Units {
+enum Units: String {
     case Imperial
     case Metric
     

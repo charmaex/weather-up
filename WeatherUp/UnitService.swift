@@ -11,10 +11,32 @@ import Foundation
 class UnitService {
     static let inst = UnitService()
     
-    private var _unit: Units = .Imperial
+    private var _unit: Units = .Metric
     
     var unit: Units {
         return _unit
     }
     
+    init() {
+        print("check data")
+        if let data = NSUserDefaults.standardUserDefaults().valueForKey("unit") as? String, let unit = Units(rawValue: data) {
+            print("got data")
+            _unit = unit
+        }
+    }
+    
+    func switchUnit() {
+        switch _unit {
+        case .Metric:
+            _unit = .Imperial
+        case .Imperial:
+            _unit = .Metric
+        }
+        saveUnit()
+    }
+    
+    private func saveUnit() {
+        NSUserDefaults.standardUserDefaults().setValue(_unit.rawValue, forKey: "unit")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
 }
