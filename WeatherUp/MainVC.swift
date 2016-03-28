@@ -10,6 +10,7 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    @IBOutlet weak var tempView: TappableStackView!
     @IBOutlet weak var tempActLbl: H1Label!
     @IBOutlet weak var tempMinLbl: ParagraphLabel!
     @IBOutlet weak var tempMaxLbl: ParagraphLabel!
@@ -37,6 +38,8 @@ class MainVC: UIViewController {
         positionWeather()
         createForecasts()
         
+        tempView.delegate = self
+        
         view.backgroundGradient()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
@@ -53,11 +56,9 @@ class MainVC: UIViewController {
     }
     
     func updateLocation() {
-        
         if LocationService.inst.getLocation() {
             infoTextLbl.text = MES_LOCATE
         }
-        
     }
     
     func updateWeather() {

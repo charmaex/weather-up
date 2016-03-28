@@ -147,6 +147,7 @@
                         <outlet property="tempActLbl" destination="Tgf-BN-y2w" id="JgT-hw-gAf"/>
                         <outlet property="tempMaxLbl" destination="HQW-Xa-x96" id="WDd-tX-Ax7"/>
                         <outlet property="tempMinLbl" destination="nNN-AD-DC5" id="6Da-gY-Mdb"/>
+                        <outlet property="tempView" destination="aTK-02-qZ1" id="yZf-6e-JxG"/>
                         <outlet property="weatherPlaceholder" destination="tAD-zT-ZZc" id="CX2-GO-dv9"/>
                     </connections>
                 </viewController>
