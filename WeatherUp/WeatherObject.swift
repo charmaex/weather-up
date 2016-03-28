@@ -9,12 +9,12 @@
 import Foundation
 
 protocol WeatherObject {
-    func valueSaveUnit(d: Double, type: UnitsType) -> String
+    func valueSaveUnit(d: Double, type: UnitSystem.Unit) -> String
 }
 
 extension WeatherObject {
     
-    func valueSaveUnit(d: Double, type: UnitsType) -> String {
+    func valueSaveUnit(d: Double, type: UnitSystem.Unit) -> String {
         if d == DEF_VALUE  {
             let defStr: String
             switch type {

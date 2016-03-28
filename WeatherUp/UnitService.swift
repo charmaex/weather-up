@@ -11,14 +11,14 @@ import Foundation
 class UnitService {
     static let inst = UnitService()
     
-    private var _unit: Units = .Metric
+    private var _unit: UnitSystem = .Metric
     
-    var unit: Units {
+    var unit: UnitSystem {
         return _unit
     }
     
     init() {
-        if let data = NSUserDefaults.standardUserDefaults().valueForKey("unit") as? String, let unit = Units(rawValue: data) {
+        if let data = NSUserDefaults.standardUserDefaults().valueForKey("unit") as? String, let unit = UnitSystem(rawValue: data) {
             _unit = unit
         }
     }

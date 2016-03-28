@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum UnitsType {
-    case Percent
-    case Pressure
-    case Speed
-    case Temperature
-    case Volume
-}
-
-enum Units: String {
+enum UnitSystem: String {
     case Imperial
     case Metric
     
-    func unitForValue(v: String, type t: UnitsType) -> String {
+    enum Unit {
+        case Percent
+        case Pressure
+        case Speed
+        case Temperature
+        case Volume
+    }
+    
+    func unitForValue(v: String, type t: Unit) -> String {
         let unit: String
         
         switch t {
@@ -47,7 +47,7 @@ enum Units: String {
         return "\(v)\(unit)"
     }
     
-    func unitForValue(v: Double, type t: UnitsType) -> String {
+    func unitForValue(v: Double, type t: Unit) -> String {
         let value: Double
         
         switch t {
