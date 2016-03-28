@@ -35,8 +35,8 @@ extension Double {
         return self * 3 / 64
     }
     
-    func hpaToinchaq() -> Double {
-        return self * 0.401463078662
+    func hpaToinhg() -> Double {
+        return self * 0.0295299830714
     }
     
     func roundTo(decimals i: Int) -> Double {

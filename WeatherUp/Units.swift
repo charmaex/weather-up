@@ -27,7 +27,7 @@ enum Units: String {
         case .Percent:
             unit = "%"
         case .Pressure where self == .Imperial:
-            unit = "inch"
+            unit = "in-Hg"
         case .Pressure:
             unit = "hpa"
         case .Speed where self == .Imperial:
@@ -51,6 +51,8 @@ enum Units: String {
         let value: Double
         
         switch t {
+        case .Pressure where self == .Imperial:
+            value = v.hpaToinhg()
         case .Speed where self == .Imperial:
             value = v.msTomph()
         case .Speed:
