@@ -63,15 +63,29 @@ class MainVC: UIViewController {
     }
     
     func introAnimation() {
+        infoTextLbl.alpha = 0
         introCloud1Disable.active = false
         introCloud2.constant = -240
         introCloud3.constant = -240
         introHill.constant = -200
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveLinear, animations: {
-                self.view.layoutIfNeeded()
-                self.introLogo.alpha = 0
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+            self.introLogo.alpha = 0
             }) { _ in }
+        
+        UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: { 
+            self.infoTextLbl.alpha = 1
+            }) { _ in }
+    }
+    
+    func updateWeatherAnimation() {
+        tempView.alpha = 0
+        weatherPlaceholder.alpha = 0
+        infoView.alpha = 0
+        forecastView.alpha = 0
+        
+        
     }
     
     func updateLocation() {
@@ -91,6 +105,8 @@ class MainVC: UIViewController {
     }
     
     func displayWeather() {
+        updateWeatherAnimation()
+        
         let w = WeatherService.inst.weather
         
         tempActLbl.text = w.degrees
