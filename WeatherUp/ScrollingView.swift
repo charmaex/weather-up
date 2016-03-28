@@ -137,7 +137,7 @@ class ScrollingView: UIView {
         if dragPos < left || dragPos > right {
             direction = dir
         } else {
-            direction = percent >= 0.25 ? dir : dir.opposite
+            direction = percent >= 0.2 ? dir : dir.opposite
         }
         
         let newCenter: CGFloat
