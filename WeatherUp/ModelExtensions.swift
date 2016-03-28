@@ -22,11 +22,21 @@ extension Double {
     }
     
     func msTokmh() -> Double {
-        return self * 3.6
+        let x = self * 3.6
+        return x.roundTo(decimals: 0)
     }
     
     func msTomph() -> Double {
-        return self * 2.23694
+        let x = self * 2.2369362920544025
+        return x.roundTo(decimals: 0)
+    }
+    
+    func mmToinch() -> Double {
+        return self * 3 / 64
+    }
+    
+    func hpaToinchaq() -> Double {
+        return self * 0.401463078662
     }
     
     func roundTo(decimals i: Int) -> Double {
@@ -43,29 +53,20 @@ extension Double {
         return x.toString()
     }
     
-    
     func toString() -> String {
         return String(self).stringByReplacingOccurrencesOfString(".0", withString: "")
-    }
-    
-    func toDegrees(unit unit: TemperatureUnits) -> String {
-        let degr: Double
-        
-        switch unit {
-        case .Celsius:
-            degr = self.kelvinToCelcius()
-        case .Fahrenheit:
-            degr = self.kelvinToFahrenheit()
-        }
-        
-        let degrStr = degr.toString()
-        
-        return "\(degrStr)\(unit.rawValue)"
     }
     
 }
 
 extension String {
+    
+    func append(s: String, separator: String) -> String {
+        guard self != "" && s != "" else {
+            return self
+        }
+        return "\(self)\(separator)\(s)"
+    }
     
     func toDate(withFormat format: String) -> NSDate? {
         let dateFormatter = NSDateFormatter()

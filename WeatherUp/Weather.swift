@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Weather: NSObject, NSCoding {
+class Weather: NSObject, NSCoding, WeatherObject {
     
     private let IMG_SIZE = "160"
     
@@ -27,16 +27,16 @@ class Weather: NSObject, NSCoding {
     private var _pressure: Double!
     private var _humidity: Double!
     
-    func degrees(unit unit: TemperatureUnits) -> String {
-        return _degrees.toDegrees(unit: unit)
+    var degrees: String {
+        return valueSaveUnit(_degrees, type: .Temperature)
     }
     
-    func minDegr(unit unit: TemperatureUnits) -> String {
-        return _minDegr.toDegrees(unit: unit)
+    var minDegr: String {
+        return valueSaveUnit(_minDegr, type: .Temperature)
     }
     
-    func maxDegr(unit unit: TemperatureUnits) -> String {
-        return _maxDegr.toDegrees(unit: unit)
+    var maxDegr: String {
+        return valueSaveUnit(_maxDegr, type: .Temperature)
     }
     
     var imageName: String {
@@ -53,8 +53,8 @@ class Weather: NSObject, NSCoding {
     
     var location: String {
         let city = _city.capitalizedString
-        let country = _country
-        return "\(city), \(country)"
+        
+        return city.append(_country, separator: ", ")
     }
     
     var time: String {
@@ -63,24 +63,23 @@ class Weather: NSObject, NSCoding {
     }
     
     var clouds: String {
-        return "\(_clouds.roundToString(decimals: 0))%"
+        return valueSaveUnit(_clouds, type: .Percent)
     }
     
     var rain: String {
-        return "\(_rain.roundToString(decimals: 0))mm"
+        return valueSaveUnit(_rain, type: .Volume)
     }
     
     var wind: String {
-        let x = _wind.msTokmh()
-        return "\(x.roundToString(decimals: 0))km/h"
+        return valueSaveUnit(_wind, type: .Speed)
     }
     
     var pressure: String {
-        return "\(_pressure.roundToString(decimals: 0))mbar"
+        return valueSaveUnit(_pressure, type: .Pressure)
     }
     
     var humidity: String {
-        return "\(_humidity.roundToString(decimals: 0))%"
+        return valueSaveUnit(_humidity, type: .Percent)
     }
     
     init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: Double, rain: Double, wind: Double, pressure: Double, humidity: Double) {
@@ -101,20 +100,20 @@ class Weather: NSObject, NSCoding {
     }
     
     override init() {
-        _degrees = DEF_DEGREES
-        _minDegr = DEF_DEGREES
-        _maxDegr = DEF_DEGREES
+        _degrees = DEF_VALUE
+        _minDegr = DEF_VALUE
+        _maxDegr = DEF_VALUE
         _mainDesc = ""
         _desc = ""
         _img = DEF_IMG
         _date = DEF_DATE
         _city = ""
         _country = ""
-        _clouds = DEF_DOUBLE
-        _rain = DEF_DOUBLE
-        _wind = DEF_DOUBLE
-        _pressure = DEF_DOUBLE
-        _humidity = DEF_DOUBLE
+        _clouds = DEF_VALUE
+        _rain = DEF_VALUE
+        _wind = DEF_VALUE
+        _pressure = DEF_VALUE
+        _humidity = DEF_VALUE
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

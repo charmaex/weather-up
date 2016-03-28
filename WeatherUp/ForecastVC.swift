@@ -23,7 +23,7 @@ class ForecastVC: UIViewController {
         
         dayLbl.text = f.weekday
         weatherImg.image = img
-        degreesLbl.text = f.degrees(unit: .Celsius)
+        degreesLbl.text = f.degrees
     }
 
 }

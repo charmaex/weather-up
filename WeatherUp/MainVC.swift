@@ -67,11 +67,10 @@ class MainVC: UIViewController {
     
     func displayWeather() {
         let w = WeatherService.inst.weather
-        let unit: TemperatureUnits = .Celsius
         
-        tempActLbl.text = w.degrees(unit: unit)
-        tempMinLbl.text = w.minDegr(unit: unit)
-        tempMaxLbl.text = w.maxDegr(unit: unit)
+        tempActLbl.text = w.degrees
+        tempMinLbl.text = w.minDegr
+        tempMaxLbl.text = w.maxDegr
 
         weather.initWithWeather(w)
 

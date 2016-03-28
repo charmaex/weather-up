@@ -21,8 +21,8 @@ let API_LON = "&lon="
 // Defaults
 let DEF_DATE = NSDate(timeIntervalSince1970: 0)
 let DEF_IMG = ""
-let DEF_DEGREES = -1.0
-let DEF_DOUBLE = -1.0
+let DEF_VALUE = -1.0
+let DEF_EMPTY = "--"
 
 // Errors
 let ERR_NOAUTH = "Location services disabled."
@@ -31,10 +31,5 @@ let ERR_LOCATE = "Could not locate."
 // Messages
 let MES_LOCATE = "Locating..."
 let MES_WEATHER = "Downloading weather info..."
-
-enum TemperatureUnits: String {
-    case Celsius = "°C"
-    case Fahrenheit = "°F"
-}
 
 typealias Completion = () -> ()

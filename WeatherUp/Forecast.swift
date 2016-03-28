@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Forecast: NSObject, NSCoding {
+class Forecast: NSObject, NSCoding, WeatherObject {
     
     private let IMG_SIZE = "55"
     
@@ -25,8 +25,8 @@ class Forecast: NSObject, NSCoding {
         return "\(_img)\(IMG_SIZE)"
     }
     
-    func degrees(unit unit: TemperatureUnits) -> String {
-        return _degrees.toDegrees(unit: unit)
+    var degrees: String {
+        return valueSaveUnit(_degrees, type: .Temperature)
     }
     
     init(date: NSDate, img: String, degrees: Double) {
@@ -38,7 +38,7 @@ class Forecast: NSObject, NSCoding {
     override init() {
         _date = DEF_DATE
         _img = DEF_IMG
-        _degrees = DEF_DEGREES
+        _degrees = DEF_VALUE
     }
     
     convenience required init?(coder aDecoder: NSCoder) {

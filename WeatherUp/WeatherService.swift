@@ -146,19 +146,19 @@ class WeatherService {
             
             var counter = 12 // 14 items (rain/snow optional)
 
-            var degrees = DEF_DEGREES
-            var minDegr = DEF_DEGREES
-            var maxDegr = DEF_DEGREES
+            var degrees = DEF_VALUE
+            var minDegr = DEF_VALUE
+            var maxDegr = DEF_VALUE
             var mainDesc = ""
             var desc = ""
             var img = ""
             var city = ""
             var country = ""
-            var clouds = DEF_DOUBLE
+            var clouds = DEF_VALUE
             var preRain = 0.0
-            var wind = DEF_DOUBLE
-            var pressure = DEF_DOUBLE
-            var humidity = DEF_DOUBLE
+            var wind = DEF_VALUE
+            var pressure = DEF_VALUE
+            var humidity = DEF_VALUE
             
             if let res = result["main"] as? Dictionary<String, Double> {
                 if let a = res["temp"] {
@@ -243,7 +243,7 @@ class WeatherService {
             
             let date = NSDate()
             
-            let rain = preRain == 0 ? DEF_DOUBLE : preRain
+            let rain = preRain == 0 ? DEF_VALUE : preRain
             
             let weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, pressure: pressure, humidity: humidity)
             
@@ -287,7 +287,7 @@ class WeatherService {
                 }
                 
                 var img = ""
-                var degrees = DEF_DEGREES
+                var degrees = DEF_VALUE
                 
                 if let res = item["weather"] as? [Dictionary<String, AnyObject>] {
                     if res.count >= 1 {
