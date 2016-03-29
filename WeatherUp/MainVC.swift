@@ -111,7 +111,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     
     func appEnteredForeground() {
         reopenedApp = true
-        updateWeather()
+        updateLocation()
     }
     
     private func setObservers() {
@@ -245,6 +245,9 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     
     private func displayForecasts() {
         for (i, fc) in forecasts.enumerate() {
+            guard WeatherService.inst.forecasts.count > i else {
+                continue
+            }
             let forecast = WeatherService.inst.forecasts[i]
             fc.initWithForecast(forecast)
         }
