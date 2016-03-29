@@ -90,6 +90,10 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         displayWeatherData(animated: false)
     }
     
+    func displayWeather() {
+        displayWeatherData(animated: false)
+    }
+    
     func displayWeatherAnimated() {
         let t: Double
         if reopenedApp {
@@ -114,7 +118,8 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: "locationIsNotAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: "locationAuthError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "gotWeatherData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "updatedWeatherData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: "hadWeatherData", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
     }

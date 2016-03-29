@@ -36,6 +36,11 @@ class WeatherService {
         return _forecasts
     }
     
+    private enum WeatherNotifications: String {
+        case Updated = "updatedWeatherData"
+        case OldData = "hadWeatherData"
+    }
+    
     func getData(destination: String?) {
         
         if let dest = destination {
@@ -62,7 +67,7 @@ class WeatherService {
         
         if _downloadCountTarget == 0 {
             print("no weather update needed")
-            postNotification()
+            postNotification(.OldData)
         }
         
     }
@@ -73,11 +78,11 @@ class WeatherService {
         }
         
         saveNSUD()
-        postNotification()
+        postNotification(.Updated)
     }
     
-    private func postNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName("gotWeatherData", object: nil)
+    private func postNotification(type: WeatherNotifications) {
+        NSNotificationCenter.defaultCenter().postNotificationName(type.rawValue, object: nil)
     }
     
     private func getNSUD() {
