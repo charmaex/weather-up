@@ -48,6 +48,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         
         tempView.delegate = self
         
+        view.backgroundColor = Colors.background()
         view.backgroundGradient()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)

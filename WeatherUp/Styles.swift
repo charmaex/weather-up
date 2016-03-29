@@ -15,11 +15,15 @@ class Colors: ColorPalette {
         return rgba(108, 244, 255, 1)
     }
     
+    class func arrowColor() -> UIColor {
+        return rgba(108, 244, 255, 0.6)
+    }
+    
     class func gradientTop() -> UIColor {
         return rgba(52, 100, 143, 1)
     }
     
-    class func gradientBottom() -> UIColor {
+    class func background() -> UIColor {
         return rgba(24, 53, 86, 1)
     }
     
@@ -27,7 +31,7 @@ class Colors: ColorPalette {
         var out = [CGColor]()
         
         out.append(gradientTop().CGColor)
-        out.append(gradientBottom().CGColor)
+        out.append(UIColor.clearColor().CGColor)
         
         return out
     }
