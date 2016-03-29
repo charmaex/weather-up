@@ -10,23 +10,22 @@ import Foundation
 
 class Forecast: NSObject, NSCoding, WeatherObject {
     
-    private let IMG_SIZE = "55"
+    let IMG_SIZE = "55"
     
     private var _date: NSDate!
     private var _img: String!
     private var _degrees: Double!
     
     var weekday: String {
-        let x: String = _date.weekday()
-        return x.capitalizedString
+        return saveWDay(_date)
     }
     
     var imageName: String {
-        return "\(_img)\(IMG_SIZE)"
+        return saveImageName(_img)
     }
     
     var degrees: String {
-        return valueSaveUnit(_degrees, type: .Temperature)
+        return saveUnit(_degrees, type: .Temperature)
     }
     
     init(date: NSDate, img: String, degrees: Double) {

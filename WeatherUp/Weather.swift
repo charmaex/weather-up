@@ -10,7 +10,7 @@ import Foundation
 
 class Weather: NSObject, NSCoding, WeatherObject {
     
-    private let IMG_SIZE = "160"
+    let IMG_SIZE = "160"
     
     private var _degrees: Double!
     private var _minDegr: Double!
@@ -29,59 +29,60 @@ class Weather: NSObject, NSCoding, WeatherObject {
     private var _humidity: Double!
     
     var degrees: String {
-        return valueSaveUnit(_degrees, type: .Temperature)
+        return saveUnit(_degrees, type: .Temperature)
     }
     
     var minDegr: String {
-        return valueSaveUnit(_minDegr, type: .Temperature)
+        return saveUnit(_minDegr, type: .Temperature)
     }
     
     var maxDegr: String {
-        return valueSaveUnit(_maxDegr, type: .Temperature)
+        return saveUnit(_maxDegr, type: .Temperature)
     }
     
     var imageName: String {
-        return "\(_img)\(IMG_SIZE)"
+        return saveImageName(_img)
     }
     
     var mainDesc: String {
-        return _mainDesc.capitalizedString
+        return saveCaseCapString(_mainDesc)
     }
     
     var desc: String {
-        return _desc.capitalizedString
+        return saveCaseCapString(_desc)
     }
     
     var location: String {
-        let city = _city.capitalizedString
+        let city = saveCaseCapString(_desc)
+        let country = saveCaseUppString(_country)
         
-        return city.append(_country, separator: ", ")
+        return city.append(country, separator: ", ")
     }
     
     var time: String {
-        let x = _date.timeToString()
-        return "at: \(x)"
+        let x = saveTime(_date)
+        return x == "" ? "" : "at: \(x)"
     }
     
     var clouds: String {
-        return valueSaveUnit(_clouds, type: .Percent)
+        return saveUnit(_clouds, type: .Percent)
     }
     
     var rain: String {
-        let x = _snow + _rain
-        return valueSaveUnit(x, type: .Volume)
+        let x = saveSum(d1: _rain, d2: _snow)
+        return saveUnit(x, type: .Volume)
     }
     
     var wind: String {
-        return valueSaveUnit(_wind, type: .Speed)
+        return saveUnit(_wind, type: .Speed)
     }
     
     var pressure: String {
-        return valueSaveUnit(_pressure, type: .Pressure)
+        return saveUnit(_pressure, type: .Pressure)
     }
     
     var humidity: String {
-        return valueSaveUnit(_humidity, type: .Percent)
+        return saveUnit(_humidity, type: .Percent)
     }
     
     init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: Double, rain: Double, snow: Double, wind: Double, pressure: Double, humidity: Double) {
