@@ -155,8 +155,6 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     }
     
     private func layoutView() {
-        infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
-        
         view.backgroundColor = Colors.background()
         view.backgroundGradient()
     }

@@ -26,7 +26,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="FgI-9e-WDh"/>
-                                            <constraint firstAttribute="height" constant="132" id="eVP-Rm-60K"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="101" id="RfB-i8-iag"/>
+                                            <constraint firstAttribute="height" priority="800" constant="132" id="eVP-Rm-60K"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOm-wD-Gwb">

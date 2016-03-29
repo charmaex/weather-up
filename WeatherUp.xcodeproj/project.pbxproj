@@ -36,7 +36,7 @@
 		13DAC4BF1CA91E8000D7A246 /* UnitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4BE1CA91E8000D7A246 /* UnitService.swift */; };
 		13DAC4C11CA94EAF00D7A246 /* TappableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4C01CA94EAF00D7A246 /* TappableStackView.swift */; };
 		13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F7AC1C1C9EB58B006BBD86 /* Styles.swift */; };
-		2C073F2FF96914E742CBCA20 /* Pods_WeatherUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD850ACCAE07AD704E35AB20 /* Pods_WeatherUp.framework */; };
+		2C073F2FF96914E742CBCA20 /* Pods_WeatherUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD850ACCAE07AD704E35AB20 /* Pods_WeatherUp.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		439D30F5CAEB32DA71C9FE14 /* Pods_WeatherUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5C64A6250A6EF21F30433A /* Pods_WeatherUpTests.framework */; };
 		A6FC64657041B0F3CF2188C1 /* Pods_WeatherUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF80F133058F8ED98A45C6A /* Pods_WeatherUpUITests.framework */; };
 /* End PBXBuildFile section */
