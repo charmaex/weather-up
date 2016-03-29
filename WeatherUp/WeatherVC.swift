@@ -37,14 +37,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        arrowToLeft.alpha = 0
-        infoSV.alpha = 0
-        
-        screenWidth = UIScreen.mainScreen().bounds.width
-        spacing = (screenWidth - 160) / 2
-        
-        weatherConstraint.constant = spacing
-        infoConstraint.constant = spacing
+        initializeView()
         
         scrollView.delegate = self
     }
@@ -52,12 +45,12 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let viewWidth = screenWidth * 2 - spacing + 20
-        
-        view.frame = CGRectMake(0, 0, viewWidth, 184)
+        setViewWidth()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         scrollView.positionView()
     }
 
@@ -79,6 +72,23 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         windLbl.text = w.wind
         pressureLbl.text = w.pressure
         humidityLbl.text = w.humidity
+    }
+    
+    private func setViewWidth() {
+        let viewWidth = screenWidth * 2 - spacing + 20
+        
+        view.frame = CGRectMake(0, 0, viewWidth, 184)
+    }
+    
+    private func initializeView() {
+        arrowToLeft.alpha = 0
+        infoSV.alpha = 0
+        
+        screenWidth = UIScreen.mainScreen().bounds.width
+        spacing = (screenWidth - 160) / 2
+        
+        weatherConstraint.constant = spacing
+        infoConstraint.constant = spacing
     }
     
 }

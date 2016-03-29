@@ -41,36 +41,75 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
+        layoutView()
         
         positionWeather()
-        createForecasts()
+        positionForecasts()
         
         tempView.delegate = self
         
-        view.backgroundColor = Colors.background()
-        view.backgroundGradient()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.noLocation), name: "locationIsNotAvailable", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.locationNoAuth), name: "locationAuthError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "gotWeatherData", object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateLocation), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+        setObservers()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.introAnimation()
-        })
+        introAnimation(delayed: 0.3)
         
         updateLocation()
     }
     
-    func introAnimation() {
+    func updateLocation() {
+        if LocationService.inst.getLocation() {
+            infoTextLbl.text = MES_LOCATE
+        }
+    }
+    
+    func updateWeather() {
+        infoTextLbl.text = MES_WEATHER
+        WeatherService.inst.getData(nil)
+    }
+    
+    func notifNoLocation() {
+        infoTextLbl.text = ERR_LOCATE
+    }
+    
+    func notifLocationNoAuth() {
+        
+        infoTextLbl.text = ERR_NOAUTH
+        
+        let alert = AlertVC()
+        alert.configureLocationAlert()
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func switchUnits() {
+        UnitService.inst.switchUnit()
+        displayWeatherData(animated: false)
+    }
+    
+    func displayWeatherAnimated() {
+        displayWeatherData(animated: true)
+    }
+    
+    private func setObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: "locationIsNotAvailable", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: "locationAuthError", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "gotWeatherData", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateLocation), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+    }
+    
+    private func introAnimation(delayed t: Double) {
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(t * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.introAnimation()
+        })
+    }
+    
+    private func introAnimation() {
         infoTextLbl.alpha = 0
         introCloud1Disable.active = false
         introCloud2.constant = -240
@@ -90,7 +129,21 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         
     }
     
-    func updateWeatherAnimation() {
+    private func layoutView() {
+        infoView.hidden = UIScreen.mainScreen().bounds.height <= 480
+        
+        view.backgroundColor = Colors.background()
+        view.backgroundGradient()
+    }
+    
+    private func prepareUpdateWeatherAnimation() {
+        tempView.alpha = 0
+        weatherPlaceholder.alpha = 0
+        infoView.alpha = 0
+        forecastView.alpha = 0
+    }
+    
+    private func updateWeatherAnimation() {
         
         prepareUpdateWeatherAnimation()
         
@@ -121,34 +174,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         }) { _ in }
     }
     
-    func prepareUpdateWeatherAnimation() {
-        tempView.alpha = 0
-        weatherPlaceholder.alpha = 0
-        infoView.alpha = 0
-        forecastView.alpha = 0
-    }
-    
-    func updateLocation() {
-        if LocationService.inst.getLocation() {
-            infoTextLbl.text = MES_LOCATE
-        }
-    }
-    
-    func updateWeather() {
-        infoTextLbl.text = MES_WEATHER
-        WeatherService.inst.getData(nil)
-    }
-    
-    func switchUnits() {
-        UnitService.inst.switchUnit()
-        displayWeather(animated: false)
-    }
-    
-    func displayWeatherAnimated() {
-        displayWeather(animated: true)
-    }
-    
-    func displayWeather(animated b: Bool) {
+    private func displayWeatherData(animated b: Bool) {
         if b {
             updateWeatherAnimation()
         }
@@ -165,30 +191,16 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         infoCityLbl.text = w.location
         infoTimeLbl.text = w.time
 
-        fillForecasts()
+        displayForecasts()
     }
     
-    func noLocation() {
-        infoTextLbl.text = ERR_LOCATE
-    }
-    
-    func locationNoAuth() {
-        
-        infoTextLbl.text = ERR_NOAUTH
-        
-        let alert = AlertVC()
-        alert.configureLocationAlert()
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func positionWeather() {
+    private func positionWeather() {
         weather = WeatherVC()
         
         weatherPlaceholder.addSubview(weather.view)
     }
     
-    func createForecasts() {
+    private func positionForecasts() {
         let fcount = UIScreen.mainScreen().bounds.width <= 320 ? 4 : 5
         
         for _ in 1...fcount {
@@ -198,7 +210,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         }
     }
     
-    func fillForecasts() {
+    private func displayForecasts() {
         for (i, fc) in forecasts.enumerate() {
             let forecast = WeatherService.inst.forecasts[i]
             fc.initWithForecast(forecast)

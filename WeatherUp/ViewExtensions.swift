@@ -6,12 +6,11 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UILabel {
     
-    func applyStyle(style: FontStyles) {
+    func applyFontStyle(style: FontStyles) {
         self.font = style.font()
         self.textColor = style.color()
     }
@@ -20,17 +19,17 @@ extension UILabel {
 
 extension UIView {
     
-    func layerGradient(colors: [CGColor]) {
-        let layer = CAGradientLayer()
-        layer.frame.size = self.frame.size
-        layer.frame.origin = CGPointMake(0.0,0.0)
+    private func addGradientLayer(colors: [CGColor]) {
+        let gradient = CAGradientLayer()
+        gradient.frame.size = self.frame.size
+        gradient.frame.origin = CGPointMake(0.0,0.0)
         
-        layer.colors = colors
-        self.layer.insertSublayer(layer, atIndex: 0)
+        gradient.colors = colors
+        self.layer.insertSublayer(gradient, atIndex: 0)
     }
     
     func backgroundGradient() {
-        self.layerGradient(Colors.backgroundGradient())
+        self.addGradientLayer(Colors.backgroundGradient())
     }
     
 }

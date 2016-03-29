@@ -33,14 +33,12 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             return false
         }
         
-        locationAuthStatus()
-        return true
+        return locationAuthStatus()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else {
-            locationIsNotAvailable()
-            return
+            return locationIsNotAvailable()
         }
         
         locationManager.stopUpdatingLocation()
@@ -59,29 +57,30 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationIsNotAvailable()
     }
 
-    private func locationAuthStatus() {
+    private func locationAuthStatus() -> Bool {
         let status = CLLocationManager.authorizationStatus()
         
         switch status {
         case .AuthorizedWhenInUse, .AuthorizedAlways:
-            locationRequest()
+            return locationRequest()
         case .NotDetermined:
             locationManager.requestWhenInUseAuthorization()
-            locationAuthStatus()
+            return locationAuthStatus()
         default:
-            locationAuthError()
+            return locationAuthError()
         }
-        
     }
     
-    private func locationRequest() {
+    private func locationRequest() -> Bool {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
+        return true
     }
     
-    private func locationAuthError() {
+    private func locationAuthError() -> Bool {
         NSNotificationCenter.defaultCenter().postNotificationName("locationAuthError", object: nil)
+        return false
     }
     
     private func locationIsNotAvailable() {

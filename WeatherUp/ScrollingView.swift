@@ -59,10 +59,10 @@ class ScrollingView: UIView {
         }
     }
     
-    private func dragPercent(pos: CGFloat) -> (Direction, CGFloat) {
+    private func dragPercent(pos: CGFloat) -> (Direction, CGFloat, CGFloat) {
         
         let dragAct = dragStart - pos
-        let percent = abs(dragAct / fullDrag)
+        let percentFull = abs(dragAct / fullDrag)
         
         let dir: Direction
         if dragAct > 0 {
@@ -73,9 +73,9 @@ class ScrollingView: UIView {
             dir = .None
         }
         
-        let x = percent <= 1 ? percent : 1
+        let percent = percentFull <= 1 ? percentFull : 1
         
-        return (dir, x)
+        return (dir, percent, percentFull) // percentFull needed in Version 1.1
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -108,7 +108,7 @@ class ScrollingView: UIView {
             return
         }
         
-        let (dir, percent) = dragPercent(position.x)
+        let (dir, percent, _) = dragPercent(position.x)
         
         let leftAlpha: CGFloat
         let rightAlpha: CGFloat
@@ -135,7 +135,7 @@ class ScrollingView: UIView {
         
         let dragPos = position.x + offset
         
-        let (dir, percent) = dragPercent(position.x)
+        let (dir, percent, _) = dragPercent(position.x)
         
         var direction: Direction
         

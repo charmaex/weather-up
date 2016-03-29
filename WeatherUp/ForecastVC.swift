@@ -13,10 +13,6 @@ class ForecastVC: UIViewController {
     @IBOutlet weak var dayLbl: H6Label!
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var degreesLbl: H5Label!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     func initWithForecast(f: Forecast) {
         let img = UIImage(named: f.imageName)

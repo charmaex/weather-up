@@ -38,9 +38,9 @@ class WeatherService {
     
     func getData(destination: String?) {
         
-        if let destination = destination {
-            _locationNew = _apiLocation != destination
-            _apiLocation = destination
+        if let dest = destination {
+            _locationNew = _apiLocation != dest
+            _apiLocation = dest
         } else {
             _locationNew = _apiLocation != LocationService.inst.apiLocation
             _apiLocation = LocationService.inst.apiLocation
@@ -94,10 +94,14 @@ class WeatherService {
         
         if let w = NSUserDefaults.standardUserDefaults().objectForKey("lastWeather") as? NSDate {
             _lastWeather = w
+        } else if _lastWeather == nil {
+            _lastWeather = NSDate(timeIntervalSince1970: 0)
         }
         
         if let f = NSUserDefaults.standardUserDefaults().objectForKey("lastForecast") as? NSDate {
             _lastForecast = f
+        } else if _lastForecast == nil {
+            _lastForecast = NSDate(timeIntervalSince1970: 0)
         }
     }
     
@@ -205,8 +209,8 @@ class WeatherService {
                 }
             }
             
-            if let res = result["name"] as? String {
-                city = res
+            if let a = result["name"] as? String {
+                city = a
                 counter -= 1
             }
 

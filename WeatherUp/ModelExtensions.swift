@@ -35,6 +35,10 @@ extension Double {
         return self * 0.0295299830714
     }
     
+    func roundToStringForUnits() -> String {
+        return roundToString(decimals: 0)
+    }
+    
     func roundTo(decimals i: Int) -> Double {
         guard i >= 0 else {
             return self
@@ -44,16 +48,12 @@ extension Double {
         return round(self * inc) / inc
     }
     
-    func roundToString(decimals i: Int) -> String {
+    private func roundToString(decimals i: Int) -> String {
         let x = self.roundTo(decimals: i)
         return x.toString()
     }
     
-    func roundToStringForUnits() -> String {
-        return roundToString(decimals: 0)
-    }
-    
-    func toString() -> String {
+    private func toString() -> String {
         return String(self).stringByReplacingOccurrencesOfString(".0", withString: "")
     }
     

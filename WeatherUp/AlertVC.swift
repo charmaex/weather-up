@@ -19,7 +19,7 @@ class AlertVC: UIAlertController {
         title = "Location Services Disabled"
         message = "Please enable location services for this app in Settings."
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (UIAlertAction) in
+        let settingsAction = UIAlertAction(title: "Settings", style: .Cancel) { (UIAlertAction) in
             
             let url = NSURL(string: "prefs:root=LOCATION_SERVICES")!
             UIApplication.sharedApplication().openURL(url)
@@ -29,6 +29,8 @@ class AlertVC: UIAlertController {
         
         addAction(settingsAction)
         addAction(okAction)
+        
+        preferredAction = settingsAction
     }
 
 }

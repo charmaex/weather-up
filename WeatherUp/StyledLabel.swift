@@ -15,7 +15,7 @@ class StyledLabel: UILabel {
         guard let style = style else {
             return
         }
-        self.applyStyle(style)
+        self.applyFontStyle(style)
         self.minimumScaleFactor = 0.8
         self.textAlignment = .Center
     }

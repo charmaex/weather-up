@@ -53,7 +53,7 @@ class Weather: NSObject, NSCoding, WeatherObject {
     }
     
     var location: String {
-        let city = saveCaseCapString(_desc)
+        let city = saveCaseCapString(_city)
         let country = saveCaseUppString(_country)
         
         return city.append(country, separator: ", ")
