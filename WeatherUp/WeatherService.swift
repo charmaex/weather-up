@@ -147,7 +147,7 @@ class WeatherService {
                 return self.downloadWeather(initial: false)
             }
             
-            var counter = 12 // 14 items (rain/snow optional)
+            var counter = 12
 
             var degrees = DEF_VALUE
             var minDegr = DEF_VALUE
@@ -158,7 +158,8 @@ class WeatherService {
             var city = ""
             var country = ""
             var clouds = DEF_VALUE
-            var preRain = 0.0
+            var rain = DEF_VALUE
+            var snow = DEF_VALUE
             var wind = DEF_VALUE
             var pressure = DEF_VALUE
             var humidity = DEF_VALUE
@@ -225,15 +226,13 @@ class WeatherService {
             
             if let res = result["rain"] as? Dictionary<String, Double> {
                 if let a = res["3h"] {
-                    preRain += a
-                    counter -= 1
+                    rain = a
                 }
             }
             
             if let res = result["snow"] as? Dictionary<String, Double> {
                 if let a = res["3h"] {
-                    preRain += a
-                    counter -= 1
+                    snow = a
                 }
             }
             
@@ -246,9 +245,7 @@ class WeatherService {
             
             let date = NSDate()
             
-            let rain = preRain == 0 ? DEF_VALUE : preRain
-            
-            let weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, wind: wind, pressure: pressure, humidity: humidity)
+            let weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, snow: snow, wind: wind, pressure: pressure, humidity: humidity)
             
             self._lastWeatherIncomplete = counter > 0
             

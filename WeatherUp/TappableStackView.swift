@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol TappableStackViewDelegate {
+    func switchUnits()
+}
+
 class TappableStackView: UIStackView {
     
-    var delegate: MainVC!
+    var delegate: TappableStackViewDelegate!
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         alpha = 0.5

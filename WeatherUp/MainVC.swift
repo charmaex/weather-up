@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, TappableStackViewDelegate {
     
     @IBOutlet weak var introLogo: UILabel!
     @IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
