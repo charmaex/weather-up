@@ -347,7 +347,7 @@
 				TargetAttributes = {
 					1360604E1C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 6N9Z26P656;
+						DevelopmentTeam = 7TCLF98BX7;
 					};
 					136060621C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -702,11 +702,13 @@
 			baseConfigurationReference = 0C34741C9DF0EE301FE6018E /* Pods-WeatherUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jan Dammshaeuser (29635PPUKY)";
 				INFOPLIST_FILE = WeatherUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUp;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c6d5b5d0-5b46-4ce1-b37f-1acd79bc311d";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -715,11 +717,13 @@
 			baseConfigurationReference = 8CB5E59C80AF90036433B101 /* Pods-WeatherUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jan Dammshaeuser (29635PPUKY)";
 				INFOPLIST_FILE = WeatherUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUp;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c6d5b5d0-5b46-4ce1-b37f-1acd79bc311d";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

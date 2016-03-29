@@ -38,14 +38,13 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initializeView()
-        
         scrollView.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        initializeView()
         setViewWidth()
     }
     
