@@ -33,6 +33,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     var forecasts = [ForecastVC]()
     
     var introDone = false
+    var reopenedApp = false
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -90,7 +91,23 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     }
     
     func displayWeatherAnimated() {
-        displayWeatherData(animated: true)
+        let t: Double
+        if reopenedApp {
+            layoutForWeatherAnimations()
+            t = 0.6
+        } else {
+            t = 0
+        }
+        
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(t * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.displayWeatherData(animated: true)
+        })
+    }
+    
+    func appEnteredForeground() {
+        reopenedApp = true
+        updateWeather()
     }
     
     private func setObservers() {
@@ -99,10 +116,12 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: "locationAuthError", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "gotWeatherData", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateLocation), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
     }
     
     private func introAnimation(delayed t: Double) {
+        layoutForAnimations()
+        
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(t * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.introAnimation()
@@ -110,7 +129,8 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     }
     
     private func introAnimation() {
-        infoTextLbl.alpha = 0
+        layoutForAnimations()
+        
         introCloud1Disable.active = false
         introCloud2.constant = -240
         introCloud3.constant = -240
@@ -119,13 +139,13 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.introLogo.alpha = 0
-            }) { _ in
-                self.introDone = true
+            }) { b in
+                self.introDone = b
         }
         
         UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
-            self.infoTextLbl.alpha = 1
-            }) { _ in }
+            self.infoView.alpha = 1
+        }) { _ in }
         
     }
     
@@ -136,16 +156,20 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         view.backgroundGradient()
     }
     
-    private func prepareUpdateWeatherAnimation() {
+    private func layoutForAnimations() {
         tempView.alpha = 0
-        weatherPlaceholder.alpha = 0
         infoView.alpha = 0
         forecastView.alpha = 0
+        weather.arrowView.alpha = 0
+    }
+    
+    private func layoutForWeatherAnimations() {
+        weatherPlaceholder.alpha = 0
+        layoutForAnimations()
     }
     
     private func updateWeatherAnimation() {
-        
-        prepareUpdateWeatherAnimation()
+        layoutForWeatherAnimations()
         
         guard introDone else {
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
@@ -171,6 +195,10 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         
         UIView.animateWithDuration(0.5, delay: delayInc * 3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
             self.forecastView.alpha = 1
+        }) { _ in }
+        
+        UIView.animateWithDuration(0.5, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+            self.weather.arrowView.alpha = 1
         }) { _ in }
     }
     

@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="arrowToLeft" destination="RVn-U4-3vh" id="aBo-nn-9ZP"/>
                 <outlet property="arrowToRight" destination="wmb-dl-GBH" id="oZH-PR-m8j"/>
+                <outlet property="arrowView" destination="Ela-22-s3V" id="Ko5-Mn-Tmv"/>
                 <outlet property="cloudsLbl" destination="ntg-90-deX" id="5cB-JG-iTR"/>
                 <outlet property="humidityLbl" destination="YEE-5G-3fV" id="AVq-1Q-0Ap"/>
                 <outlet property="infoConstraint" destination="r8H-Xd-Yxk" id="eNc-kb-Dgf"/>
@@ -163,7 +164,7 @@
                                 <constraint firstAttribute="width" constant="160" id="Ooc-oe-t3y"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ela-22-s3V">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ela-22-s3V" customClass="ArrowView" customModule="WeatherUp" customModuleProvider="target">
                             <rect key="frame" x="465" y="67" width="50" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-dl-GBH">

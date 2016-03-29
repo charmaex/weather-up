@@ -19,6 +19,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     @IBOutlet weak var weatherImV: UIImageView!
     @IBOutlet weak var weatherLbl: ParagraphLabel!
     
+    @IBOutlet weak var arrowView: ArrowView!
     //replace with native animation
     @IBOutlet weak var arrowToLeft: UIImageView!
     @IBOutlet weak var arrowToRight: UIImageView!

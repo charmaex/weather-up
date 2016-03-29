@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MainVC-->
@@ -25,20 +26,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-BN-y2w" customClass="H1Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="225" y="0.0" width="150" height="106"/>
+                                                <rect key="frame" x="150" y="0.0" width="300" height="106"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="106" id="4oE-vf-20v"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="X5v-nk-inr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="94"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K67-hg-3w1">
-                                                <rect key="frame" x="225" y="116" width="150" height="16"/>
+                                                <rect key="frame" x="150" y="116" width="300" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="nNN-AD-DC5" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="16"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="nwg-RZ-mDE"/>
                                                         </constraints>
@@ -47,7 +47,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-Xa-x96" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
-                                                        <rect key="frame" x="75" y="0.0" width="75" height="16"/>
+                                                        <rect key="frame" x="150" y="0.0" width="150" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="sem-tO-Ua6"/>
                                                         </constraints>
@@ -178,6 +178,7 @@
                             <constraint firstItem="UFN-pl-xnj" firstAttribute="bottom" secondItem="tAD-zT-ZZc" secondAttribute="bottom" constant="-24" id="4qR-rv-Zbi"/>
                             <constraint firstItem="k0a-8x-EDP" firstAttribute="bottom" secondItem="tAD-zT-ZZc" secondAttribute="top" constant="-12" id="D5D-v9-cA7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NnO-ZS-hmI" secondAttribute="bottom" id="LK1-2z-KVm"/>
+                            <constraint firstItem="Tgf-BN-y2w" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Lo3-dx-nGs"/>
                             <constraint firstItem="k0a-8x-EDP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OpW-X9-VP7"/>
                             <constraint firstItem="tAD-zT-ZZc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="QIf-xA-u5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1HE-pO-aDM" secondAttribute="bottom" constant="20" id="TeJ-xU-JdV"/>
