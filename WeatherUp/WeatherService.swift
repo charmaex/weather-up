@@ -39,10 +39,10 @@ class WeatherService {
     func getData(destination: String?) {
         
         if let destination = destination {
-            _locationNew = _apiLocation == destination
+            _locationNew = _apiLocation != destination
             _apiLocation = destination
         } else {
-            _locationNew = _apiLocation == LocationService.inst.apiLocation
+            _locationNew = _apiLocation != LocationService.inst.apiLocation
             _apiLocation = LocationService.inst.apiLocation
         }
         
