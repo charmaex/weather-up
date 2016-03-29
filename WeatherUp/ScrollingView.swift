@@ -184,6 +184,7 @@ class ScrollingView: UIView {
             leftAlpha = 1
             rightAlpha = 0
         case .None:
+            positionInView = center
             return
         }
         

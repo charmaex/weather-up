@@ -38,8 +38,8 @@ extension WeatherObject {
     }
     
     func saveSum(d1 d1: Double!, d2: Double!) -> Double {
-        let d1: Double = d1 == nil ? 0 : d1
-        let d2: Double = d2 == nil ? 0 : d2
+        let d1: Double = d1 == nil || d1 == DEF_VALUE ? 0 : d1
+        let d2: Double = d2 == nil || d2 == DEF_VALUE ? 0 : d2
         return d1 + d2
     }
     
