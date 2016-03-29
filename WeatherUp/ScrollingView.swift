@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol ScrollingViewDelegate: NSObjectProtocol {
+    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat)
+}
+
 class ScrollingView: UIView {
     
-    var delegate: WeatherVC!
+    var delegate: ScrollingViewDelegate!
     
     private var tappable = true
     
@@ -84,7 +88,7 @@ class ScrollingView: UIView {
         dragStart = position.x
         
         offset = center.x - position.x
-        
+
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -106,21 +110,22 @@ class ScrollingView: UIView {
         
         let (dir, percent) = dragPercent(position.x)
         
+        let leftAlpha: CGFloat
+        let rightAlpha: CGFloat
+        
         switch dir {
         case .Left:
-            delegate.weatherSV.alpha = 1 - percent
-            delegate.rightArrow.alpha = 1 - percent
-            delegate.infoSV.alpha = percent
-            delegate.leftArrow.alpha = percent
+            leftAlpha = 1 - percent
+            rightAlpha = percent
         case .Right:
-            delegate.weatherSV.alpha = percent
-            delegate.rightArrow.alpha = percent
-            delegate.infoSV.alpha = 1 - percent
-            delegate.leftArrow.alpha = 1 - percent
+            leftAlpha = percent
+            rightAlpha = 1 - percent
         case .None:
             return
         }
-        
+
+        delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha)
+
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -141,8 +146,8 @@ class ScrollingView: UIView {
         }
         
         let newCenter: CGFloat
-        let alphaWeather: CGFloat
-        let alphaInfo: CGFloat
+        let leftAlpha: CGFloat
+        let rightAlpha: CGFloat
         
         var delay = 0.0
         
@@ -172,12 +177,12 @@ class ScrollingView: UIView {
         switch direction {
         case .Left:
             newCenter = left
-            alphaWeather = 0
-            alphaInfo = 1
+            leftAlpha = 0
+            rightAlpha = 1
         case .Right:
             newCenter = right
-            alphaWeather = 1
-            alphaInfo = 0
+            leftAlpha = 1
+            rightAlpha = 0
         case .None:
             return
         }
@@ -188,10 +193,7 @@ class ScrollingView: UIView {
         
         UIView.animateWithDuration(0.3, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
             self.center = centerPoint
-            self.delegate.weatherSV.alpha = alphaWeather
-            self.delegate.infoSV.alpha = alphaInfo
-            self.delegate.leftArrow.alpha = alphaInfo
-            self.delegate.rightArrow.alpha = alphaWeather
+            self.delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha)
         }) { _ in }
         
     }

@@ -27,7 +27,7 @@ class Colors: ColorPalette {
         return rgba(24, 53, 86, 1)
     }
     
-    class func gradientColors() -> [CGColor] {
+    class func backgroundGradient() -> [CGColor] {
         var out = [CGColor]()
         
         out.append(gradientTop().CGColor)

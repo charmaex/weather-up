@@ -12,23 +12,19 @@ import MapKit
 extension Double {
     
     func kelvinToCelcius() -> Double {
-        let x = self - 273.15
-        return x.roundTo(decimals: 0)
+        return self - 273.15
     }
     
     func kelvinToFahrenheit() -> Double {
-        let x = 1.8 * (self.kelvinToCelcius()) + 32
-        return x.roundTo(decimals: 0)
+        return 1.8 * (self.kelvinToCelcius()) + 32
     }
     
     func msTokmh() -> Double {
-        let x = self * 3.6
-        return x.roundTo(decimals: 0)
+        return self * 3.6
     }
     
     func msTomph() -> Double {
-        let x = self * 2.2369362920544025
-        return x.roundTo(decimals: 0)
+        return self * 2.2369362920544025
     }
     
     func mmToinch() -> Double {
@@ -51,6 +47,10 @@ extension Double {
     func roundToString(decimals i: Int) -> String {
         let x = self.roundTo(decimals: i)
         return x.toString()
+    }
+    
+    func roundToStringForUnits() -> String {
+        return roundToString(decimals: 0)
     }
     
     func toString() -> String {

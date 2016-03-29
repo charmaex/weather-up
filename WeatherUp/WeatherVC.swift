@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherVC: UIViewController {
+class WeatherVC: UIViewController, ScrollingViewDelegate {
     
     @IBOutlet weak var scrollView: ScrollingView!
     @IBOutlet weak var svLeftConstraint: NSLayoutConstraint!
@@ -20,8 +20,8 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var weatherLbl: ParagraphLabel!
     
     //replace with native animation
-    @IBOutlet weak var leftArrow: UIImageView!
-    @IBOutlet weak var rightArrow: UIImageView!
+    @IBOutlet weak var arrowToLeft: UIImageView!
+    @IBOutlet weak var arrowToRight: UIImageView!
     
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoSV: UIStackView!
@@ -37,7 +37,7 @@ class WeatherVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftArrow.alpha = 0
+        arrowToLeft.alpha = 0
         infoSV.alpha = 0
         
         screenWidth = UIScreen.mainScreen().bounds.width
@@ -61,6 +61,13 @@ class WeatherVC: UIViewController {
         scrollView.positionView()
     }
 
+    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat) {
+        weatherSV.alpha = left
+        arrowToRight.alpha = left
+        infoSV.alpha = right
+        arrowToLeft.alpha = right
+    }
+    
     func initWithWeather(w: Weather) {
         let img = UIImage(named: w.imageName)
         

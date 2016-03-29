@@ -8,14 +8,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherVC" customModule="WeatherUp" customModuleProvider="target">
             <connections>
+                <outlet property="arrowToLeft" destination="RVn-U4-3vh" id="aBo-nn-9ZP"/>
+                <outlet property="arrowToRight" destination="wmb-dl-GBH" id="oZH-PR-m8j"/>
                 <outlet property="cloudsLbl" destination="ntg-90-deX" id="5cB-JG-iTR"/>
                 <outlet property="humidityLbl" destination="YEE-5G-3fV" id="AVq-1Q-0Ap"/>
                 <outlet property="infoConstraint" destination="r8H-Xd-Yxk" id="eNc-kb-Dgf"/>
                 <outlet property="infoSV" destination="AmS-Ob-s0v" id="Wqh-Us-XJq"/>
-                <outlet property="leftArrow" destination="RVn-U4-3vh" id="uwY-W3-qFV"/>
                 <outlet property="pressureLbl" destination="w0K-iV-0wk" id="Kgk-yD-5p0"/>
                 <outlet property="rainLbl" destination="Smi-Wv-rq9" id="WLd-40-imm"/>
-                <outlet property="rightArrow" destination="wmb-dl-GBH" id="hr6-Vj-eLK"/>
                 <outlet property="scrollView" destination="AOX-GI-gwB" id="FGY-rb-fqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherConstraint" destination="fwI-ki-kAN" id="MsZ-10-rfg"/>

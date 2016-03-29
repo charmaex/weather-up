@@ -30,7 +30,7 @@ extension UIView {
     }
     
     func backgroundGradient() {
-        self.layerGradient(Colors.gradientColors())
+        self.layerGradient(Colors.backgroundGradient())
     }
     
 }

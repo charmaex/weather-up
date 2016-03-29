@@ -67,7 +67,7 @@ enum UnitSystem: String {
             value = v
         }
         
-        let valueStr = value.roundToString(decimals: 0)
+        let valueStr = value.roundToStringForUnits()
         
         return unitForValue(valueStr, type: t)
     }
