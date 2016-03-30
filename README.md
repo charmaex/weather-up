@@ -2,7 +2,7 @@
 
 ![WeatherUp Promo Image] (http://jandamm.de/wp-content/uploads/2016/03/WeatherUp_Mockup.png)
 
-[![AppStore] (http://jandamm.de/wp-content/uploads/2016/03/AppStoreLink.png)] (https://itunes.apple.com/us/app/weatherup-by-jan-dammshauser/id1097952553?ls=1&mt=8)
+[![AppStore] (http://jandamm.de/wp-content/uploads/2016/03/AppStoreLinkS.png)] (https://itunes.apple.com/us/app/weatherup-by-jan-dammshauser/id1097952553?ls=1&mt=8)
 
 ###Features:
 * Displays Weather data depending on your location
