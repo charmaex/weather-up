@@ -29,15 +29,15 @@ class Weather: NSObject, NSCoding, WeatherObject {
     private var _humidity: Double!
     
     var degrees: String {
-        return saveUnit(_degrees, type: .Temperature)
+        return saveUnit(_degrees, type: .Temperature, nilValue: .Dash)
     }
     
     var minDegr: String {
-        return saveUnit(_minDegr, type: .Temperature)
+        return saveUnit(_minDegr, type: .Temperature, nilValue: .Dash)
     }
     
     var maxDegr: String {
-        return saveUnit(_maxDegr, type: .Temperature)
+        return saveUnit(_maxDegr, type: .Temperature, nilValue: .Dash)
     }
     
     var imageName: String {
@@ -65,24 +65,24 @@ class Weather: NSObject, NSCoding, WeatherObject {
     }
     
     var clouds: String {
-        return saveUnit(_clouds, type: .Percent)
+        return saveUnit(_clouds, type: .Percent, nilValue: .Zero)
     }
     
     var rain: String {
         let x = saveSum(d1: _rain, d2: _snow)
-        return saveUnit(x, type: .Volume)
+        return saveUnit(x, type: .Volume, nilValue: .Zero)
     }
     
     var wind: String {
-        return saveUnit(_wind, type: .Speed)
+        return saveUnit(_wind, type: .Speed, nilValue: .Zero)
     }
     
     var pressure: String {
-        return saveUnit(_pressure, type: .Pressure)
+        return saveUnit(_pressure, type: .Pressure, nilValue: .Dash)
     }
     
     var humidity: String {
-        return saveUnit(_humidity, type: .Percent)
+        return saveUnit(_humidity, type: .Percent, nilValue: .Zero)
     }
     
     init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: NSDate, city: String, country: String, clouds: Double, rain: Double, snow: Double, wind: Double, pressure: Double, humidity: Double) {

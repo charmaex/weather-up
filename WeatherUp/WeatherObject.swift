@@ -14,7 +14,7 @@ protocol WeatherObject {
     func saveImageName(s: String!) -> String
     func saveSum(d1 d1: Double!, d2: Double!) -> Double
     func saveTime(d: NSDate!) -> String
-    func saveUnit(d: Double!, type: UnitSystem.Unit) -> String
+    func saveUnit(d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String
     func saveWDay(d: NSDate!) -> String
     
     var IMG_SIZE: String { get }
@@ -60,19 +60,11 @@ extension WeatherObject {
         return s.uppercaseString
     }
     
-    func saveUnit(d: Double!, type: UnitSystem.Unit) -> String {
-        let val = d == nil ? DEF_VALUE : d
-        if val == DEF_VALUE  {
-            let defStr: String
-            switch type {
-            case .Temperature:
-                defStr = DEF_EMPTY_TEMP
-            default:
-                defStr = DEF_EMPTY
-            }
-            return UnitService.inst.unit.unitForValue(defStr, type: type)
+    func saveUnit(d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String {
+        guard d != nil && d != DEF_VALUE else {
+            return UnitService.inst.unit.unitForValue(nilValue.rawValue, type: type)
         }
-        return UnitService.inst.unit.unitForValue(val, type: type)
+        return UnitService.inst.unit.unitForValue(d, type: type)
     }
     
 }

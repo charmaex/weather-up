@@ -22,8 +22,11 @@ let API_LON = "&lon="
 let DEF_DATE = NSDate(timeIntervalSince1970: 0)
 let DEF_IMG = ""
 let DEF_VALUE = -1.0
-let DEF_EMPTY = "0"
-let DEF_EMPTY_TEMP = "--"
+
+enum DefaultNilValue: String {
+    case Zero = "0"
+    case Dash = "--"
+}
 
 // Errors
 let ERR_NOAUTH = "Location services disabled."
