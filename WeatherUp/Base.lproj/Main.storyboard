@@ -22,21 +22,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-pO-aDM">
                                 <rect key="frame" x="0.0" y="30" width="600" height="550"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-02-qZ1" userLabel="Degrees" customClass="TappableStackView" customModule="WeatherUp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-02-qZ1" userLabel="Degrees" customClass="TappableStackView" customModule="WeatherUp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-BN-y2w" customClass="H1Label" customModule="WeatherUp" customModuleProvider="target">
                                                 <rect key="frame" x="150" y="0.0" width="300" height="106"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="800" constant="75" id="4oE-vf-20v"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="8p1-NA-7eS"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="4oE-vf-20v"/>
+                                                    <constraint firstAttribute="height" priority="800" constant="106" id="8p1-NA-7eS"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="94"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="K67-hg-3w1">
-                                                <rect key="frame" x="150" y="116" width="300" height="16"/>
+                                                <rect key="frame" x="150" y="114" width="300" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="nNN-AD-DC5" customClass="ParagraphLabel" customModule="WeatherUp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="16"/>
@@ -64,14 +64,14 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAD-zT-ZZc" userLabel="Placeholder">
-                                        <rect key="frame" x="0.0" y="156" width="600" height="184"/>
+                                        <rect key="frame" x="0.0" y="154" width="600" height="184"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="184" id="KaU-2d-pMJ"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Yz-6w-arF" userLabel="Info">
-                                        <rect key="frame" x="0.0" y="363" width="600" height="65"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4Yz-6w-arF" userLabel="Info">
+                                        <rect key="frame" x="0.0" y="361" width="600" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zi2-XS-aXR" customClass="H3Label" customModule="WeatherUp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -83,7 +83,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-u8-xgM" customClass="H5Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="35" width="600" height="14"/>
+                                                <rect key="frame" x="0.0" y="36" width="600" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="uWV-3P-8ME"/>
                                                 </constraints>
@@ -92,7 +92,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1f-Nf-2x4" customClass="H6Label" customModule="WeatherUp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="52" width="600" height="13"/>
+                                                <rect key="frame" x="0.0" y="54" width="600" height="13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="kr0-DS-qlF"/>
                                                 </constraints>
@@ -137,14 +137,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 1" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-pl-xnj">
-                                <rect key="frame" x="112" y="216" width="240" height="130"/>
+                                <rect key="frame" x="112" y="214" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="jtg-Aq-H47"/>
                                     <constraint firstAttribute="width" constant="240" id="l6x-xE-H27"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 2" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-vX-4GQ">
-                                <rect key="frame" x="436" y="301" width="240" height="130"/>
+                                <rect key="frame" x="436" y="309" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4xy-fs-zEB"/>
                                     <constraint firstAttribute="height" constant="130" id="Bfz-z3-fFu"/>
@@ -158,13 +158,13 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hill" translatesAutoresizingMaskIntoConstraints="NO" id="NnO-ZS-hmI">
-                                <rect key="frame" x="-130" y="400" width="860" height="200"/>
+                                <rect key="frame" x="-130" y="408" width="860" height="192"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="GW2-QV-Bw3"/>
+                                    <constraint firstAttribute="height" priority="800" constant="200" id="GW2-QV-Bw3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-8x-EDP">
-                                <rect key="frame" x="155" y="133" width="290" height="41"/>
+                                <rect key="frame" x="155" y="131" width="290" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="Lu0-w8-1gz"/>
                                     <constraint firstAttribute="height" constant="41" id="mdZ-2q-u1Y"/>
@@ -194,10 +194,17 @@
                             <constraint firstItem="NnO-ZS-hmI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gTR-pt-6EF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sS3-vX-4GQ" secondAttribute="bottom" constant="169" id="kjs-QN-LOq"/>
                             <constraint firstItem="Utm-jp-qKj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nc8-uG-dXi"/>
+                            <constraint firstItem="NnO-ZS-hmI" firstAttribute="top" secondItem="sS3-vX-4GQ" secondAttribute="bottom" constant="-31" id="nzt-5a-BpB"/>
+                            <constraint firstItem="NnO-ZS-hmI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tAD-zT-ZZc" secondAttribute="bottom" constant="40" id="qf9-Bp-Fyg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OBf-xP-4Wv" secondAttribute="bottom" constant="2" id="rky-4W-d6Q"/>
                             <constraint firstItem="OBf-xP-4Wv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="v53-0w-WEq"/>
                             <constraint firstItem="UFN-pl-xnj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="999" constant="-240" id="xkp-Sf-iJz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kjs-QN-LOq"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
