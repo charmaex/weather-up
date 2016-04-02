@@ -20,9 +20,6 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     @IBOutlet weak var weatherLbl: ParagraphLabel!
     
     @IBOutlet weak var arrowView: ArrowView!
-    //replace with native animation Version 1.1
-    @IBOutlet weak var arrowToLeft: UIImageView!
-    @IBOutlet weak var arrowToRight: UIImageView!
     
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoSV: UIStackView!
@@ -54,11 +51,10 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         scrollView.positionView()
     }
 
-    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat) {
+    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat, arrow: CGFloat) {
         weatherSV.alpha = left
-        arrowToRight.alpha = left
         infoSV.alpha = right
-        arrowToLeft.alpha = right
+        arrowView.test = arrow
     }
     
     func initWithWeather(w: Weather) {
@@ -81,7 +77,6 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     }
     
     private func initializeView() {
-        arrowToLeft.alpha = 0
         infoSV.alpha = 0
         
         screenWidth = UIScreen.mainScreen().bounds.width

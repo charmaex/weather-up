@@ -8,6 +8,19 @@
 
 import UIKit
 
+@IBDesignable
 class ArrowView: UIView {
-    // Version 1.1
+    
+    @IBInspectable var test: CGFloat = 1 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    override func drawRect(rect: CGRect) {
+        
+        WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: Colors.arrowColor(), arrowValue: test)
+        
+    }
+    
 }

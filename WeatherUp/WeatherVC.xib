@@ -8,8 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherVC" customModule="WeatherUp" customModuleProvider="target">
             <connections>
-                <outlet property="arrowToLeft" destination="RVn-U4-3vh" id="aBo-nn-9ZP"/>
-                <outlet property="arrowToRight" destination="wmb-dl-GBH" id="oZH-PR-m8j"/>
                 <outlet property="arrowView" destination="Ela-22-s3V" id="Ko5-Mn-Tmv"/>
                 <outlet property="cloudsLbl" destination="ntg-90-deX" id="5cB-JG-iTR"/>
                 <outlet property="humidityLbl" destination="YEE-5G-3fV" id="AVq-1Q-0Ap"/>
@@ -165,27 +163,11 @@
                             </constraints>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ela-22-s3V" customClass="ArrowView" customModule="WeatherUp" customModuleProvider="target">
-                            <rect key="frame" x="465" y="67" width="50" height="50"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-dl-GBH">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowLeft" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-U4-3vh">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                </imageView>
-                            </subviews>
+                            <rect key="frame" x="453" y="55" width="75" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="RVn-U4-3vh" firstAttribute="leading" secondItem="Ela-22-s3V" secondAttribute="leading" id="4Bg-D6-lGE"/>
-                                <constraint firstAttribute="bottom" secondItem="RVn-U4-3vh" secondAttribute="bottom" id="5AB-r9-Sxd"/>
-                                <constraint firstAttribute="trailing" secondItem="RVn-U4-3vh" secondAttribute="trailing" id="7o1-v0-guJ"/>
                                 <constraint firstAttribute="width" secondItem="Ela-22-s3V" secondAttribute="height" id="KQn-MB-psu"/>
-                                <constraint firstAttribute="height" constant="50" id="RZi-QN-vo6"/>
-                                <constraint firstItem="wmb-dl-GBH" firstAttribute="top" secondItem="Ela-22-s3V" secondAttribute="top" id="ajd-jA-KrJ"/>
-                                <constraint firstItem="wmb-dl-GBH" firstAttribute="leading" secondItem="Ela-22-s3V" secondAttribute="leading" id="cm7-IP-OoT"/>
-                                <constraint firstAttribute="bottom" secondItem="wmb-dl-GBH" secondAttribute="bottom" id="hdf-MZ-bP4"/>
-                                <constraint firstAttribute="trailing" secondItem="wmb-dl-GBH" secondAttribute="trailing" id="j1i-1I-W3v"/>
-                                <constraint firstItem="RVn-U4-3vh" firstAttribute="top" secondItem="Ela-22-s3V" secondAttribute="top" id="vrg-tn-2dw"/>
+                                <constraint firstAttribute="height" constant="75" id="RZi-QN-vo6"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -219,7 +201,5 @@
     </objects>
     <resources>
         <image name="01d160" width="160" height="160"/>
-        <image name="ArrowLeft" width="27" height="55"/>
-        <image name="ArrowRight" width="27" height="55"/>
     </resources>
 </document>
