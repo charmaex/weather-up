@@ -11,15 +11,15 @@ import UIKit
 @IBDesignable
 class ArrowView: UIView {
     
-    @IBInspectable var test: CGFloat = 1 {
+    @IBInspectable var fraction: CGFloat = 1 {
         didSet {
-            self.setNeedsDisplay()
+            setNeedsDisplay()
         }
     }
     
     override func drawRect(rect: CGRect) {
         
-        WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: Colors.arrowColor(), arrowValue: test)
+        WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: Colors.arrowColor(), arrowValue: fraction)
         
     }
     

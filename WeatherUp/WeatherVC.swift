@@ -54,7 +54,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat, arrow: CGFloat) {
         weatherSV.alpha = left
         infoSV.alpha = right
-        arrowView.test = arrow
+        arrowView.fraction = arrow
     }
     
     func initWithWeather(w: Weather) {

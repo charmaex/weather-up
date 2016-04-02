@@ -28,7 +28,7 @@ public class WeatherUpKit : NSObject {
 
 
         //// Subframes
-        let group: CGRect = CGRectMake(frame.minX + 3.2, frame.minY + 3.2, frame.width - 8.4, frame.height - 6.4)
+        let group: CGRect = CGRectMake(frame.minX + 5, frame.minY + 5, frame.width - 10, frame.height - 10)
 
 
         //// Group
@@ -36,20 +36,16 @@ public class WeatherUpKit : NSObject {
         CGContextBeginTransparencyLayer(context, nil)
 
         //// Clip Mask
-        let maskPath = UIBezierPath(ovalInRect: CGRectMake(group.minX + floor(group.width * 0.00000 + 0.5), group.minY + floor(group.height * 0.00000 + 0.5), floor(group.width * 1.00000 - 0.1) - floor(group.width * 0.00000 + 0.5) + 0.6, floor(group.height * 1.00000 - 0.1) - floor(group.height * 0.00000 + 0.5) + 0.6))
+        let maskPath = UIBezierPath(ovalInRect: CGRectMake(group.minX + floor(group.width * 0.00000 + 0.5), group.minY + floor(group.height * 0.00000 + 0.5), floor(group.width * 1.00000 + 0.5) - floor(group.width * 0.00000 + 0.5), floor(group.height * 1.00000 + 0.5) - floor(group.height * 0.00000 + 0.5)))
         maskPath.addClip()
 
 
         //// Arrow Drawing
-        let arrowRect = CGRectMake(group.minX + floor(group.width * -0.01310 - 0.3) + 0.8, group.minY + floor(group.height * -0.01282 - 0.3) + 0.8, floor(group.width * 1.01310 - 0.3) - floor(group.width * -0.01310 - 0.3), floor(group.height * 1.01282 - 0.3) - floor(group.height * -0.01282 - 0.3))
+        let arrowRect = CGRectMake(group.minX + floor(group.width * -0.03333 + 0.5), group.minY + floor(group.height * -0.03333 + 0.5), floor(group.width * 1.03333 + 0.5) - floor(group.width * -0.03333 + 0.5), floor(group.height * 1.03333 + 0.5) - floor(group.height * -0.03333 + 0.5))
         let arrowPath = UIBezierPath()
-        arrowPath.addArcWithCenter(CGPointMake(0.0, 0.0), radius: arrowRect.width / 2, startAngle: -lower * CGFloat(M_PI)/180, endAngle: -upper * CGFloat(M_PI)/180, clockwise: true)
-        arrowPath.addLineToPoint(CGPointMake(0.0, 0.0))
+        arrowPath.addArcWithCenter(CGPointMake(arrowRect.midX, arrowRect.midY), radius: arrowRect.width / 2, startAngle: -lower * CGFloat(M_PI)/180, endAngle: -upper * CGFloat(M_PI)/180, clockwise: true)
+        arrowPath.addLineToPoint(CGPointMake(arrowRect.midX, arrowRect.midY))
         arrowPath.closePath()
-
-        var arrowTransform = CGAffineTransformMakeTranslation(CGRectGetMidX(arrowRect), CGRectGetMidY(arrowRect))
-        arrowTransform = CGAffineTransformScale(arrowTransform, 1, arrowRect.height / arrowRect.width)
-        arrowPath.applyTransform(arrowTransform)
 
         arrowColor.setStroke()
         arrowPath.lineWidth = 2
