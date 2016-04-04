@@ -60,7 +60,7 @@ class WeatherService {
             print("weather update")
             downloadWeather(initial: true)
         }
-        if _lastForecast.olderThan(inMinutes: 120) || _locationNew || _lastForecastIncomplete {
+        if _lastForecast.olderThan(inMinutes: 60) || _locationNew || _lastForecastIncomplete {
             print("forecast update")
             downloadForecast(initial: true)
         }
