@@ -56,7 +56,7 @@ class WeatherService {
         _downloadCount = 0
         _downloadCountTarget = 0
         
-        if _lastWeather.olderThan(inMinutes: 30) || _locationNew || _lastWeatherIncomplete {
+        if _lastWeather.olderThan(inMinutes: 15) || _locationNew || _lastWeatherIncomplete {
             print("weather update")
             downloadWeather(initial: true)
         }

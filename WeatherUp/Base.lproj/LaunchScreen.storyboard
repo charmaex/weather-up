@@ -83,7 +83,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 3" translatesAutoresizingMaskIntoConstraints="NO" id="Fqk-14-UEL">
-                                <rect key="frame" x="381" y="20" width="240" height="130"/>
+                                <rect key="frame" x="381" y="1" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="J4n-YH-ppK"/>
                                     <constraint firstAttribute="width" constant="240" id="X53-pu-VTk"/>
@@ -112,7 +112,8 @@
                             <constraint firstItem="afE-D5-pFd" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="52" id="8eN-1w-owA"/>
                             <constraint firstItem="Rkb-DW-U3v" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AXs-bf-5KP"/>
                             <constraint firstItem="5fx-0D-GYC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FP8-E0-yfw"/>
-                            <constraint firstItem="Fqk-14-UEL" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="G0I-uG-c34"/>
+                            <constraint firstItem="Fqk-14-UEL" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" priority="800" id="G0I-uG-c34"/>
+                            <constraint firstItem="jjH-dz-Nae" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fqk-14-UEL" secondAttribute="bottom" id="SMo-tx-Otv"/>
                             <constraint firstItem="Rkb-DW-U3v" firstAttribute="top" secondItem="ofI-d2-MNh" secondAttribute="bottom" constant="-23" id="Svr-oi-bTn"/>
                             <constraint firstItem="jjH-dz-Nae" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aRy-Tv-3hV"/>
                             <constraint firstItem="5fx-0D-GYC" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="10" id="aeB-hQ-A9A"/>
