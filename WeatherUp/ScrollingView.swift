@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ScrollingViewDelegate: NSObjectProtocol {
-    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat)
+    func scrollingView(leftAlpha left: CGFloat, MoveWithRightAlpha right: CGFloat, arrow: CGFloat)
 }
 
 class ScrollingView: UIView {
@@ -59,7 +59,7 @@ class ScrollingView: UIView {
         }
     }
     
-    private func dragPercent(pos: CGFloat) -> (Direction, CGFloat, CGFloat) {
+    private func dragPercent(pos: CGFloat) -> (Direction, CGFloat) {
         
         let dragAct = dragStart - pos
         let percentFull = abs(dragAct / fullDrag)
@@ -75,7 +75,16 @@ class ScrollingView: UIView {
         
         let percent = percentFull <= 1 ? percentFull : 1
         
-        return (dir, percent, percentFull) // percentFull needed in Version 1.1
+        return (dir, percent)
+    }
+    
+    private func arrowPercent(point pos: CGFloat) -> CGFloat {
+        let distance = right - left
+        return (pos - left) / distance
+    }
+    
+    private func arrowPercent(position pos: CGFloat) -> CGFloat {
+        return arrowPercent(point: pos + offset)
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -108,7 +117,8 @@ class ScrollingView: UIView {
             return
         }
         
-        let (dir, percent, _) = dragPercent(position.x)
+        let (dir, percent) = dragPercent(position.x)
+        let arrow = arrowPercent(position: position.x)
         
         let leftAlpha: CGFloat
         let rightAlpha: CGFloat
@@ -124,7 +134,7 @@ class ScrollingView: UIView {
             return
         }
 
-        delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha)
+        delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha, arrow: arrow)
 
     }
     
@@ -135,7 +145,7 @@ class ScrollingView: UIView {
         
         let dragPos = position.x + offset
         
-        let (dir, percent, _) = dragPercent(position.x)
+        let (dir, percent) = dragPercent(position.x)
         
         var direction: Direction
         
@@ -188,13 +198,14 @@ class ScrollingView: UIView {
             return
         }
         
+        let arrow = arrowPercent(point: newCenter)
         let centerPoint = CGPointMake(newCenter, horizontalPostion)
         
         positionInView = centerPoint
         
         UIView.animateWithDuration(0.3, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
             self.center = centerPoint
-            self.delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha)
+            self.delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha, arrow: arrow)
         }) { _ in }
         
     }
