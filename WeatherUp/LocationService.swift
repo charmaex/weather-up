@@ -19,6 +19,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     private var _lastUpdate: NSDate!
     
+    private var _counter = 0
+    
     var apiLocation: String {
         guard _lat != nil && _lon != nil else {
             return ""
@@ -27,7 +29,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func getLocation() -> Bool {
-        guard _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
+        guard _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 10) else {
             print("no location updated needed")
             locationIsAvailable()
             return false
@@ -40,6 +42,14 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         guard let location = manager.location else {
             return locationIsNotAvailable()
         }
+        guard _counter >= 3 else {
+            //locationManager returns last location for about 2-3 times.
+            //this prevents getting the old location by taking the 4th location.
+            _counter += 1
+            return
+        }
+        
+        _counter = 0
         
         locationManager.stopUpdatingLocation()
         

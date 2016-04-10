@@ -118,8 +118,8 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: "locationIsNotAvailable", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: "locationAuthError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: "updatedWeatherData", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: "hadWeatherData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: WeatherService.WeatherNotifications.Updated.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: WeatherService.WeatherNotifications.OldData.rawValue, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
     }

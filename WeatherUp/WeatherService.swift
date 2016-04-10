@@ -36,7 +36,7 @@ class WeatherService {
         return _forecasts
     }
     
-    private enum WeatherNotifications: String {
+    enum WeatherNotifications: String {
         case Updated = "updatedWeatherData"
         case OldData = "hadWeatherData"
     }
