@@ -8,79 +8,44 @@
 
 import UIKit
 
+@IBDesignable
 class StyledLabel: UILabel {
-    private var style: FontStyles?
+    
+    @IBInspectable var style: String = "TextStyle"
+    @IBInspectable var orientation: String = "Center"
+    
+    private enum Orientation: String {
+        case Left, Center, Right
+    }
+    
+    func orientationStyle() -> NSTextAlignment {
+        guard let orient = Orientation(rawValue: orientation),
+              let x = NSTextAlignment(rawValue: orient.hashValue) else {
+            return .Center
+        }
+        
+        return x
+    }
+    
+    func fontStyle() -> FontStyles {
+        guard let x = FontStyles(rawValue: style) else {
+            return .TextStyle
+        }
+        
+        return x
+    }
     
     override func awakeFromNib() {
-        guard let style = style else {
-            return
-        }
-        self.applyFontStyle(style)
+        styleLabel()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        styleLabel()
+    }
+    
+    private func styleLabel() {
+        self.applyFontStyle(fontStyle())
         self.minimumScaleFactor = 0.8
-        self.textAlignment = .Center
+        self.textAlignment = orientationStyle()
     }
 }
-
-class H1Label: StyledLabel {
-    override func awakeFromNib() {
-        style = .H1
-        super.awakeFromNib()
-    }
-}
-
-class H2Label: StyledLabel {
-    override func awakeFromNib() {
-        style = .H2
-        super.awakeFromNib()
-    }
-}
-
-class H3Label: StyledLabel {
-    override func awakeFromNib() {
-        style = .H3
-        super.awakeFromNib()
-    }
-}
-
-class ParagraphLabel: StyledLabel {
-    override func awakeFromNib() {
-        style = .Paragraph
-        super.awakeFromNib()
-    }
-}
-
-class ParagraphLeftLabel: ParagraphLabel {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.textAlignment = .Left
-    }
-}
-
-class ParagraphRightLabel: ParagraphLabel {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.textAlignment = .Right
-    }
-}
-
-class H5Label: StyledLabel {
-    override func awakeFromNib() {
-        style = .H5
-        super.awakeFromNib()
-    }
-}
-
-class H6Label: StyledLabel {
-    override func awakeFromNib() {
-        style = .H6
-        super.awakeFromNib()
-    }
-}
-
-class TextStyleLabel: StyledLabel {
-    override func awakeFromNib() {
-        style = .TextStyle
-        super.awakeFromNib()
-    }
-}
-

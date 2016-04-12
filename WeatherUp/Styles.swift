@@ -46,7 +46,7 @@ enum Fonts: FontList {
 }
 
 
-enum FontStyles: FontStylesList {
+enum FontStyles: String, FontStylesList {
     
     case H1, H2, H3, Paragraph, H5, H6, TextStyle
     

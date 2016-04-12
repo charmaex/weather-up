@@ -17,17 +17,17 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     @IBOutlet weak var weatherConstraint: NSLayoutConstraint!
     @IBOutlet weak var weatherSV: UIStackView!
     @IBOutlet weak var weatherImV: UIImageView!
-    @IBOutlet weak var weatherLbl: ParagraphLabel!
+    @IBOutlet weak var weatherLbl: StyledLabel!
     
     @IBOutlet weak var arrowView: ArrowView!
     
     @IBOutlet weak var infoConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoSV: UIStackView!
-    @IBOutlet weak var cloudsLbl: ParagraphRightLabel!
-    @IBOutlet weak var rainLbl: ParagraphRightLabel!
-    @IBOutlet weak var windLbl: ParagraphRightLabel!
-    @IBOutlet weak var pressureLbl: ParagraphRightLabel!
-    @IBOutlet weak var humidityLbl: ParagraphRightLabel!
+    @IBOutlet weak var cloudsLbl: StyledLabel!
+    @IBOutlet weak var rainLbl: StyledLabel!
+    @IBOutlet weak var windLbl: StyledLabel!
+    @IBOutlet weak var pressureLbl: StyledLabel!
+    @IBOutlet weak var humidityLbl: StyledLabel!
     
     private var screenWidth: CGFloat!
     private var spacing: CGFloat!

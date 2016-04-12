@@ -17,17 +17,17 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     @IBOutlet weak var introHill: NSLayoutConstraint!
     
     @IBOutlet weak var tempView: TappableStackView!
-    @IBOutlet weak var tempActLbl: H1Label!
-    @IBOutlet weak var tempMinLbl: ParagraphLabel!
-    @IBOutlet weak var tempMaxLbl: ParagraphLabel!
+    @IBOutlet weak var tempActLbl: StyledLabel!
+    @IBOutlet weak var tempMinLbl: StyledLabel!
+    @IBOutlet weak var tempMaxLbl: StyledLabel!
     
     @IBOutlet weak var weatherPlaceholder: UIView!
     var weather: WeatherVC!
     
     @IBOutlet weak var infoView: UIStackView!
-    @IBOutlet weak var infoTextLbl: H3Label!
-    @IBOutlet weak var infoCityLbl: H5Label!
-    @IBOutlet weak var infoTimeLbl: H6Label!
+    @IBOutlet weak var infoTextLbl: StyledLabel!
+    @IBOutlet weak var infoCityLbl: StyledLabel!
+    @IBOutlet weak var infoTimeLbl: StyledLabel!
     
     @IBOutlet weak var forecastView: UIStackView!
     var forecasts = [ForecastVC]()

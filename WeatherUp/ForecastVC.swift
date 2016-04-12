@@ -10,9 +10,9 @@ import UIKit
 
 class ForecastVC: UIViewController {
     
-    @IBOutlet weak var dayLbl: H6Label!
+    @IBOutlet weak var dayLbl: StyledLabel!
     @IBOutlet weak var weatherImg: UIImageView!
-    @IBOutlet weak var degreesLbl: H5Label!
+    @IBOutlet weak var degreesLbl: StyledLabel!
     
     func initWithForecast(f: Forecast) {
         let img = UIImage(named: f.imageName)
