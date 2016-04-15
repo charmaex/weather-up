@@ -6,8 +6,7 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-import Foundation
-import MapKit
+import CoreLocation
 
 class LocationService: NSObject, CLLocationManagerDelegate {
     static let inst = LocationService()
