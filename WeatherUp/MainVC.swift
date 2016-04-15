@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MainVC: UIViewController, TappableStackViewDelegate {
+class MainVC: UIViewController {
+    
+    private let NOTIF_OBJECT: Notification.Listener = .MainVC
     
     @IBOutlet weak var introLogo: UILabel!
     @IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
@@ -24,7 +26,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     @IBOutlet weak var weatherPlaceholder: UIView!
     var weather: WeatherVC!
     
-    @IBOutlet weak var infoView: UIStackView!
+    @IBOutlet weak var infoView: TappableStackView!
     @IBOutlet weak var infoTextLbl: StyledLabel!
     @IBOutlet weak var infoCityLbl: StyledLabel!
     @IBOutlet weak var infoTimeLbl: StyledLabel!
@@ -47,7 +49,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
         positionWeather()
         positionForecasts()
         
-        tempView.delegate = self
+        initializeTapViews()
         
         setObservers()
     }
@@ -87,7 +89,7 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     
     func switchUnits() {
         UnitService.inst.switchUnit()
-        displayWeatherData(animated: false)
+        displayWeather()
     }
     
     func displayWeather() {
@@ -115,11 +117,14 @@ class MainVC: UIViewController, TappableStackViewDelegate {
     }
     
     private func setObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: "locationIsAvailable", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: "locationIsNotAvailable", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: "locationAuthError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: WeatherService.WeatherNotifications.Updated.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: WeatherService.WeatherNotifications.OldData.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: Notification.LocationAvailable.name, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: Notification.LocationUnavailable.name, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: Notification.LocationAuthError.name, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: Notification.WeatherUpdated.name, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: Notification.WeatherOldData.name, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.switchUnits), name: Notification.UserSwitchUnits.name, object: NOTIF_OBJECT.object)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
     }
@@ -152,6 +157,10 @@ class MainVC: UIViewController, TappableStackViewDelegate {
             self.infoView.alpha = 1
         }) { _ in }
         
+    }
+    
+    private func initializeTapViews() {
+        tempView.configureAction(trigger: .Start, action: .UserSwitchUnits, listener: NOTIF_OBJECT)
     }
     
     private func layoutView() {

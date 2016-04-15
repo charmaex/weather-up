@@ -37,3 +37,28 @@ let MES_LOCATE = "Locating..."
 let MES_WEATHER = "Downloading weather info..."
 
 typealias Completion = () -> ()
+
+enum Notification: String {
+    
+    case LocationAvailable
+    case LocationUnavailable
+    case LocationAuthError
+    
+    case WeatherUpdated
+    case WeatherOldData
+    
+    case UserSwitchUnits
+    case UserUpdateLocation
+    
+    var name: String {
+        return self.rawValue
+    }
+    
+    enum Listener {
+        case MainVC
+        
+        var object: Int {
+            return self.hashValue
+        }
+    }
+}
