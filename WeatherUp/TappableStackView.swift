@@ -41,10 +41,9 @@ class TappableStackView: UIStackView {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         alpha = 1
         
-        guard let position = getPosition(touches, absolutePosition: true) else {
+        guard let position = getPosition(touches, absolutePosition: false) else {
             return
         }
-        
         
         if frame.contains(position) {
             if _trigger == .Stop || _trigger == .StartAndStop {
