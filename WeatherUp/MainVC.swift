@@ -24,7 +24,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var tempMaxLbl: StyledLabel!
     
     @IBOutlet weak var weatherPlaceholder: UIView!
-    var weather: WeatherVC!
+    private var weather: WeatherVC!
     
     @IBOutlet weak var infoView: TappableStackView!
     @IBOutlet weak var infoTextLbl: StyledLabel!
@@ -32,10 +32,11 @@ class MainVC: UIViewController {
     @IBOutlet weak var infoTimeLbl: StyledLabel!
     
     @IBOutlet weak var forecastView: UIStackView!
-    var forecasts = [ForecastVC]()
+    private var forecasts = [ForecastVC]()
     
-    var introDone = false
-    var reopenedApp = false
+    private var introDone = false
+    private var reopenedApp = false
+    private var forceUpdate = false
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -62,15 +63,15 @@ class MainVC: UIViewController {
         updateLocation()
     }
     
-    func updateLocation() {
-        if LocationService.inst.getLocation() {
-            infoTextLbl.text = MES_LOCATE
-        }
+    func updateWeatherForced() {
+        forceUpdate = true
+        updateLocation()
     }
     
     func updateWeather() {
         infoTextLbl.text = MES_WEATHER
-        WeatherService.inst.getData(nil)
+        WeatherService.inst.getData(nil, forced: forceUpdate)
+        forceUpdate = false
     }
     
     func notifNoLocation() {
@@ -125,6 +126,7 @@ class MainVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: Notification.WeatherOldData.name, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.switchUnits), name: Notification.UserSwitchUnits.name, object: NOTIF_OBJECT.object)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: Notification.UserUpdateLocation.name, object: NOTIF_OBJECT.object)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
     }
@@ -159,8 +161,18 @@ class MainVC: UIViewController {
         
     }
     
+    private func updateLocation() {
+        if LocationService.inst.getLocation(forceUpdate) {
+            infoTextLbl.text = MES_LOCATE
+            infoCityLbl.text = nil
+            infoTimeLbl.text = nil
+            layoutForUpdate()
+        }
+    }
+    
     private func initializeTapViews() {
         tempView.configureAction(trigger: .Start, action: .UserSwitchUnits, listener: NOTIF_OBJECT)
+        infoView.configureAction(trigger: .Stop, action: .UserUpdateLocation, listener: NOTIF_OBJECT)
     }
     
     private func layoutView() {
@@ -168,11 +180,15 @@ class MainVC: UIViewController {
         view.backgroundGradient()
     }
     
-    private func layoutForAnimations() {
+    private func layoutForUpdate() {
         tempView.alpha = 0
-        infoView.alpha = 0
         forecastView.alpha = 0
         weather.arrowView.alpha = 0
+    }
+    
+    private func layoutForAnimations() {
+        infoView.alpha = 0
+        layoutForUpdate()
     }
     
     private func layoutForWeatherAnimations() {

@@ -27,8 +27,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         return "\(API_LAT)\(_lat)\(API_LON)\(_lon)"
     }
     
-    func getLocation() -> Bool {
-        guard _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 10) else {
+    func getLocation(forced: Bool) -> Bool {
+        guard forced || _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
             print("no location updated needed")
             locationIsAvailable()
             return false

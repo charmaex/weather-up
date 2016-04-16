@@ -35,7 +35,7 @@ class WeatherService {
         return _forecasts
     }
     
-    func getData(destination: String?) {
+    func getData(destination: String?, forced: Bool) {
         
         if let dest = destination {
             _locationNew = _apiLocation != dest
@@ -50,11 +50,11 @@ class WeatherService {
         _downloadCount = 0
         _downloadCountTarget = 0
         
-        if _lastWeather.olderThan(inMinutes: 15) || _locationNew || _lastWeatherIncomplete {
+        if forced || _lastWeather.olderThan(inMinutes: 15) || _locationNew || _lastWeatherIncomplete {
             print("weather update")
             downloadWeather(initial: true)
         }
-        if _lastForecast.olderThan(inMinutes: 60) || _locationNew || _lastForecastIncomplete {
+        if forced || _lastForecast.olderThan(inMinutes: 60) || _locationNew || _lastForecastIncomplete {
             print("forecast update")
             downloadForecast(initial: true)
         }
