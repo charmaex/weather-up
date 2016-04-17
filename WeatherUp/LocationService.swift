@@ -41,7 +41,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         guard let location = manager.location else {
             return locationIsNotAvailable()
         }
-        guard _counter >= 3 else {
+        guard _counter >= 0 else {
             //locationManager returns last location for about 2-3 times.
             //this prevents getting the old location by taking the 4th location.
             _counter += 1
