@@ -11,7 +11,7 @@ import CoreLocation
 class LocationService: NSObject, CLLocationManagerDelegate {
     static let inst = LocationService()
     
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
     private var _lat: String!
     private var _lon: String!
@@ -41,11 +41,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         guard let location = manager.location else {
             return locationIsNotAvailable()
         }
-        guard _counter >= 0 else {
-            //locationManager returns last location for about 2-3 times.
+    
+        guard _counter >= 3 else {
+            //locationManager returns last location for the first three times.
             //this prevents getting the old location by taking the 4th location.
-            _counter += 1
-            return
+            return _counter += 1
         }
         
         _counter = 0
@@ -53,8 +53,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         let position = location.coordinate
-        _lat = "\(position.latitude.roundTo(decimals: 2))"
-        _lon = "\(position.longitude.roundTo(decimals: 2))"
+        _lat = "\(position.latitude.roundTo(decimals: 3))"
+        _lon = "\(position.longitude.roundTo(decimals: 3))"
         
         _lastUpdate = NSDate()
         
@@ -82,7 +82,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     private func locationRequest() -> Bool {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
         return true
     }
