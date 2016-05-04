@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-pO-aDM">
-                                <rect key="frame" x="0.0" y="30" width="600" height="550"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="552"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-02-qZ1" userLabel="Degrees" customClass="TappableStackView" customModule="WeatherUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
@@ -79,7 +79,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4Yz-6w-arF" userLabel="Info" customClass="TappableStackView" customModule="WeatherUp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="361" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="363" width="600" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zi2-XS-aXR" customClass="StyledLabel" customModule="WeatherUp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -120,7 +120,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-gM-nfU" userLabel="Forecast">
-                                        <rect key="frame" x="20" y="452" width="560" height="98"/>
+                                        <rect key="frame" x="20" y="454" width="560" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="5N9-7u-Ug3"/>
                                         </constraints>
@@ -136,7 +136,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="openweathermap.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22O-I5-zHU" customClass="StyledLabel" customModule="WeatherUp" customModuleProvider="target">
-                                <rect key="frame" x="512" y="587" width="86" height="11"/>
+                                <rect key="frame" x="510" y="585" width="86" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="dIi-NG-i9R"/>
                                 </constraints>
@@ -149,7 +149,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan Dammshäuser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-xP-4Wv" customClass="StyledLabel" customModule="WeatherUp" customModuleProvider="target">
-                                <rect key="frame" x="2" y="587" width="73" height="11"/>
+                                <rect key="frame" x="4" y="585" width="73" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="GPc-Cp-MRP"/>
                                 </constraints>
@@ -162,34 +162,34 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 1" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-pl-xnj">
-                                <rect key="frame" x="112" y="214" width="240" height="130"/>
+                                <rect key="frame" x="112" y="212" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="jtg-Aq-H47"/>
                                     <constraint firstAttribute="width" constant="240" id="l6x-xE-H27"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 2" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-vX-4GQ">
-                                <rect key="frame" x="436" y="301" width="240" height="130"/>
+                                <rect key="frame" x="436" y="299" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4xy-fs-zEB"/>
                                     <constraint firstAttribute="height" constant="130" id="Bfz-z3-fFu"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud 3" translatesAutoresizingMaskIntoConstraints="NO" id="Utm-jp-qKj">
-                                <rect key="frame" x="381" y="1" width="240" height="130"/>
+                                <rect key="frame" x="381" y="-1" width="240" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="0JL-Jt-DDB"/>
                                     <constraint firstAttribute="width" constant="240" id="nhf-Zj-3vp"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hill" translatesAutoresizingMaskIntoConstraints="NO" id="NnO-ZS-hmI">
-                                <rect key="frame" x="-130" y="408" width="860" height="192"/>
+                                <rect key="frame" x="-130" y="406" width="860" height="194"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="800" constant="200" id="GW2-QV-Bw3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-8x-EDP">
-                                <rect key="frame" x="155" y="131" width="290" height="41"/>
+                                <rect key="frame" x="155" y="129" width="290" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="Lu0-w8-1gz"/>
                                     <constraint firstAttribute="height" constant="41" id="mdZ-2q-u1Y"/>
@@ -210,10 +210,10 @@
                             <constraint firstItem="tAD-zT-ZZc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="QIf-xA-u5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1HE-pO-aDM" secondAttribute="bottom" constant="20" id="TeJ-xU-JdV"/>
                             <constraint firstItem="1HE-pO-aDM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V5D-yj-xNV"/>
-                            <constraint firstAttribute="trailing" secondItem="22O-I5-zHU" secondAttribute="trailing" constant="2" id="VOX-ty-ppd"/>
-                            <constraint firstItem="1HE-pO-aDM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="cWc-ar-33N"/>
+                            <constraint firstAttribute="trailing" secondItem="22O-I5-zHU" secondAttribute="trailing" constant="4" id="VOX-ty-ppd"/>
+                            <constraint firstItem="1HE-pO-aDM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="cWc-ar-33N"/>
                             <constraint firstAttribute="trailing" secondItem="Utm-jp-qKj" secondAttribute="trailing" constant="-21" id="d0j-ma-oQb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="22O-I5-zHU" secondAttribute="bottom" constant="2" id="eB9-sB-ulh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="22O-I5-zHU" secondAttribute="bottom" constant="4" id="eB9-sB-ulh"/>
                             <constraint firstItem="UFN-pl-xnj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="52" id="fKb-cw-64e"/>
                             <constraint firstAttribute="trailing" secondItem="1HE-pO-aDM" secondAttribute="trailing" id="fUe-QO-gcn"/>
                             <constraint firstAttribute="trailing" secondItem="sS3-vX-4GQ" secondAttribute="trailing" constant="-76" id="fgA-Jq-KQu"/>
@@ -222,8 +222,8 @@
                             <constraint firstItem="Utm-jp-qKj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="800" id="nc8-uG-dXi"/>
                             <constraint firstItem="NnO-ZS-hmI" firstAttribute="top" secondItem="sS3-vX-4GQ" secondAttribute="bottom" constant="-23" id="nzt-5a-BpB"/>
                             <constraint firstItem="NnO-ZS-hmI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tAD-zT-ZZc" secondAttribute="bottom" constant="40" id="qf9-Bp-Fyg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OBf-xP-4Wv" secondAttribute="bottom" constant="2" id="rky-4W-d6Q"/>
-                            <constraint firstItem="OBf-xP-4Wv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="v53-0w-WEq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OBf-xP-4Wv" secondAttribute="bottom" constant="4" id="rky-4W-d6Q"/>
+                            <constraint firstItem="OBf-xP-4Wv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="v53-0w-WEq"/>
                             <constraint firstItem="UFN-pl-xnj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="999" constant="-240" id="xkp-Sf-iJz"/>
                         </constraints>
                         <variation key="default">
