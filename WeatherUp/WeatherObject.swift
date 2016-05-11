@@ -34,6 +34,9 @@ extension WeatherObject {
             return ""
         }
         let x = d.weekday()
+        if x == NSDate().weekday() {
+            return "Today"
+        }
         return x.capitalizedString
     }
     
