@@ -6,7 +6,7 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class Weather: NSObject, NSCoding, WeatherObject {
     
@@ -28,12 +28,12 @@ class Weather: NSObject, NSCoding, WeatherObject {
     private var _pressure: Double!
     private var _humidity: Double!
     
-    private var imageName: String {
+    var imageName: String {
         return saveImageName(_img)
     }
     
-    var textColor: UIColor? {
-        return image?.averageColor()
+    var degreesDbl: Double {
+        return _degrees
     }
     
     var degrees: String {
@@ -46,10 +46,6 @@ class Weather: NSObject, NSCoding, WeatherObject {
     
     var maxDegr: String {
         return saveUnit(_maxDegr, type: .Temperature, nilValue: .Dash)
-    }
-
-    var image: UIImage? {
-        return UIImage(named: imageName)
     }
     
     var mainDesc: String {

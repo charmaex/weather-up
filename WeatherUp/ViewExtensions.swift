@@ -10,9 +10,9 @@ import UIKit
 
 extension UILabel {
     
-    func applyFontStyle(style: FontStyles) {
+    func applyFontStyle(style: FontStyles, color: UIColor) {
         self.font = style.font()
-        self.textColor = style.color()
+        self.textColor = color
     }
     
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Jan Dammshäuser. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol WeatherObject {
     func saveCaseCapString(s: String!) -> String
@@ -18,9 +18,43 @@ protocol WeatherObject {
     func saveWDay(d: NSDate!) -> String
     
     var IMG_SIZE: String { get }
+    var degreesDbl: Double { get }
+    var imageName: String { get }
+    var image: UIImage? { get }
+    var textColor: UIColor { get }
+    var bgColor: UIColor { get }
 }
 
 extension WeatherObject {
+    
+    var textColor: UIColor {
+        guard let img = self.image else {
+            return UIColor.whiteColor()
+        }
+        
+        img
+        
+        return UIColor.whiteColor()
+    }
+    
+    var bgColor: UIColor {
+        switch degreesDbl.kelvinToCelcius() {
+        case let x where x > 30:
+            return Colors.backgroundHot()
+        case let x where x > 20:
+            return Colors.backgroundWarm()
+        case let x where x > 10:
+            return Colors.backgroundModerate()
+        case let x where x > 0:
+            return Colors.backgroundCold()
+        default:
+            return Colors.backgroundFreeze()
+        }
+    }
+    
+    var image: UIImage? {
+        return UIImage(named: imageName)
+    }
     
     func saveTime(d: NSDate!) -> String {
         guard d != nil else {

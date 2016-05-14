@@ -24,6 +24,10 @@ class Forecast: NSObject, NSCoding, WeatherObject {
         return saveImageName(_img)
     }
     
+    var degreesDbl: Double {
+        return _degrees
+    }
+    
     var degrees: String {
         return saveUnit(_degrees, type: .Temperature, nilValue: .Dash)
     }

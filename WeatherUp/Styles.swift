@@ -10,27 +10,31 @@ import UIKit
 
 class Colors: ColorPalette {
     
-    class func textColor() -> UIColor {
-        return rgba(108, 244, 255, 1)
+    class func backgroundFreeze() -> UIColor {
+        return rgba(16, 96, 188, 1)
     }
     
-    class func arrowColor() -> UIColor {
-        return rgba(108, 244, 255, 0.6)
+    class func backgroundCold() -> UIColor {
+        return rgba(16, 188, 182, 1)
     }
     
-    class func gradientTop() -> UIColor {
-        return rgba(52, 100, 143, 1)
+    class func backgroundModerate() -> UIColor {
+        return rgba(39, 181, 16, 1)
     }
     
-    class func background() -> UIColor {
-        return rgba(24, 53, 86, 1)
+    class func backgroundWarm() -> UIColor {
+        return rgba(188, 79, 16, 1)
+    }
+    
+    class func backgroundHot() -> UIColor {
+        return rgba(188, 16, 16, 1)
     }
     
     class func backgroundGradient() -> [CGColor] {
         var out = [CGColor]()
         
-        out.append(gradientTop().CGColor)
         out.append(UIColor.clearColor().CGColor)
+        out.append(UIColor.blackColor().colorWithAlphaComponent(0.5).CGColor)
         
         return out
     }
@@ -48,13 +52,6 @@ enum Fonts: FontList {
 enum FontStyles: String, FontStylesList {
     
     case H1, H2, H3, Paragraph, H5, H6, TextStyle
-    
-    func color() -> UIColor {
-        switch self {
-        default:
-            return Colors.textColor()
-        }
-    }
     
     func font() -> UIFont {
         switch self {

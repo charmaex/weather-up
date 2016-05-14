@@ -44,8 +44,12 @@ class StyledLabel: UILabel {
     }
     
     private func styleLabel() {
-        self.applyFontStyle(fontStyle())
+        self.applyTextColor()
         self.minimumScaleFactor = 0.8
         self.textAlignment = orientationStyle()
+    }
+    
+    func applyTextColor(color: UIColor = WeatherService.inst.weather.textColor) {
+        self.applyFontStyle(fontStyle(), color: color)
     }
 }

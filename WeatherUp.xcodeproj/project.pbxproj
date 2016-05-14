@@ -30,7 +30,6 @@
 		13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */; };
 		13BF16681CA1D2E5003BB4AE /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */; };
 		13BF166A1CA1DC34003BB4AE /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16691CA1DC34003BB4AE /* StyledLabel.swift */; };
-		13CD43771CE3DDF0005C374B /* UIImageAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CD43761CE3DDF0005C374B /* UIImageAverageColor.m */; };
 		13DAC4B71CA71C3900D7A246 /* ScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */; };
 		13DAC4B91CA86E3C00D7A246 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4B81CA86E3C00D7A246 /* AlertVC.swift */; };
 		13DAC4BB1CA9077700D7A246 /* WeatherObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DAC4BA1CA9077700D7A246 /* WeatherObject.swift */; };
@@ -91,9 +90,6 @@
 		13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideProtocols.swift; sourceTree = "<group>"; };
 		13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		13BF16691CA1DC34003BB4AE /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
-		13CD43731CE3DDD1005C374B /* WeatherUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherUp-Bridging-Header.h"; sourceTree = "<group>"; };
-		13CD43751CE3DDF0005C374B /* UIImageAverageColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColor.h; sourceTree = "<group>"; };
-		13CD43761CE3DDF0005C374B /* UIImageAverageColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColor.m; sourceTree = "<group>"; };
 		13DAC4B61CA71C3900D7A246 /* ScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingView.swift; sourceTree = "<group>"; };
 		13DAC4B81CA86E3C00D7A246 /* AlertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		13DAC4BA1CA9077700D7A246 /* WeatherObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherObject.swift; sourceTree = "<group>"; };
@@ -182,7 +178,6 @@
 				136060521C860F0900599733 /* AppDelegate.swift */,
 				136060591C860F0900599733 /* Assets.xcassets */,
 				1360605E1C860F0900599733 /* Info.plist */,
-				13CD43731CE3DDD1005C374B /* WeatherUp-Bridging-Header.h */,
 			);
 			path = WeatherUp;
 			sourceTree = "<group>";
@@ -212,8 +207,6 @@
 				13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */,
 				136A6BBB1CA6776E00347216 /* ApiKey.swift */,
 				1306BB881CA33F2B0006D397 /* Constants.swift */,
-				13CD43751CE3DDF0005C374B /* UIImageAverageColor.h */,
-				13CD43761CE3DDF0005C374B /* UIImageAverageColor.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -563,7 +556,6 @@
 				1306BB851CA331270006D397 /* Forecast.swift in Sources */,
 				13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */,
 				13DAC4B91CA86E3C00D7A246 /* AlertVC.swift in Sources */,
-				13CD43771CE3DDF0005C374B /* UIImageAverageColor.m in Sources */,
 				13DAC4BD1CA9091800D7A246 /* Units.swift in Sources */,
 				1306BB8E1CA537710006D397 /* ModelExtensions.swift in Sources */,
 				13BF166A1CA1DC34003BB4AE /* StyledLabel.swift in Sources */,
@@ -723,7 +715,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeatherUp/WeatherUp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -743,7 +734,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeatherUp/WeatherUp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -19,7 +19,7 @@ class ArrowView: UIView {
     
     override func drawRect(rect: CGRect) {
         
-        WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: Colors.arrowColor(), arrowValue: fraction)
+        WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: WeatherService.inst.weather.textColor, arrowValue: fraction)
         
     }
     

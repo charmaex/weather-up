@@ -176,7 +176,7 @@ class MainVC: UIViewController {
     }
     
     private func layoutView() {
-        view.backgroundColor = Colors.background()
+        view.backgroundColor = WeatherService.inst.weather.bgColor
         view.backgroundGradient()
     }
     
@@ -208,6 +208,10 @@ class MainVC: UIViewController {
         }
         
         let delayInc = 0.15
+        
+        UIView.animateWithDuration(1) { 
+            self.view.backgroundColor = WeatherService.inst.weather.bgColor
+        }
         
         UIView.animateWithDuration(0.5, delay: delayInc * 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
             self.tempView.alpha = 1

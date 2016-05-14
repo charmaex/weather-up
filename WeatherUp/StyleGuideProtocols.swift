@@ -30,7 +30,6 @@ extension ColorPalette {
 
 
 protocol FontStylesList {
-    func color() -> UIColor
     func font() -> UIFont
 }
 
