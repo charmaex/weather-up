@@ -20,7 +20,7 @@ protocol WeatherObject {
     var IMG_SIZE: String { get }
     var degreesDbl: Double { get }
     var imageName: String { get }
-    var image: UIImage? { get }
+    
     var textColor: UIColor { get }
     var bgColor: UIColor { get }
 }
@@ -28,13 +28,7 @@ protocol WeatherObject {
 extension WeatherObject {
     
     var textColor: UIColor {
-        guard let img = self.image else {
-            return UIColor.whiteColor()
-        }
-        
-        img
-        
-        return UIColor.whiteColor()
+        return imageName.textColorFromWeatherCode()
     }
     
     var bgColor: UIColor {
@@ -50,10 +44,6 @@ extension WeatherObject {
         default:
             return Colors.backgroundFreeze()
         }
-    }
-    
-    var image: UIImage? {
-        return UIImage(named: imageName)
     }
     
     func saveTime(d: NSDate!) -> String {

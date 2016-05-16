@@ -17,10 +17,22 @@ class ArrowView: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        setObservers()
+    }
+    
     override func drawRect(rect: CGRect) {
         
         WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: WeatherService.inst.weather.textColor, arrowValue: fraction)
         
+    }
+    
+    func updateColor() {
+        setNeedsDisplay()
+    }
+    
+    func setObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ArrowView.updateColor), name: Notification.UpdateStyles.name, object: nil)
     }
     
 }

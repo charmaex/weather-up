@@ -58,8 +58,9 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     }
     
     func initWithWeather(w: Weather) {
+        let img = UIImage(named: w.imageName)
         
-        weatherImV.image = w.image
+        weatherImV.image = img
         weatherLbl.text = w.mainDesc
         
         cloudsLbl.text = w.clouds

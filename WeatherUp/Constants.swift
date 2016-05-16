@@ -50,6 +50,8 @@ enum Notification: String {
     case UserSwitchUnits
     case UserUpdateLocation
     
+    case UpdateStyles
+    
     var name: String {
         return self.rawValue
     }

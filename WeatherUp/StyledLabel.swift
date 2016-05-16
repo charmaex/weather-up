@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class StyledLabel: UILabel {
     
+    var forecast: Forecast?
+    
     @IBInspectable var style: String = "TextStyle"
     @IBInspectable var orientation: String = "Center"
     
@@ -37,6 +39,7 @@ class StyledLabel: UILabel {
     
     override func awakeFromNib() {
         styleLabel()
+        setObservers()
     }
     
     override func prepareForInterfaceBuilder() {
@@ -49,7 +52,20 @@ class StyledLabel: UILabel {
         self.textAlignment = orientationStyle()
     }
     
-    func applyTextColor(color: UIColor = WeatherService.inst.weather.textColor) {
+    func applyTextColor() {
+        let color: UIColor
+        
+        if let f = forecast {
+            color = f.textColor
+        } else {
+            color = WeatherService.inst.weather.textColor
+        }
+        
         self.applyFontStyle(fontStyle(), color: color)
     }
+    
+    func setObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: Notification.UpdateStyles.name, object: nil)
+    }
+    
 }

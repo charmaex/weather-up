@@ -208,10 +208,16 @@ class MainVC: UIViewController {
         }
         
         let delayInc = 0.15
+        let delayStyle = 1.0
         
-        UIView.animateWithDuration(1) { 
+        UIView.animateWithDuration(delayStyle) {
             self.view.backgroundColor = WeatherService.inst.weather.bgColor
         }
+        
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayStyle / 2 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.UpdateStyles.name, object: nil)
+        })
         
         UIView.animateWithDuration(0.5, delay: delayInc * 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
             self.tempView.alpha = 1
