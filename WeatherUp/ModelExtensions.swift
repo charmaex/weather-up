@@ -77,6 +77,22 @@ extension String {
         return self.toDate(withFormat: "yyyy-MM-dd HH:mm:ss")
     }
     
+    func trunc(length: Int) -> String {
+        if self.characters.count > length {
+            return self.substringToIndex(self.startIndex.advancedBy(length))
+        } else {
+            return self
+        }
+    }
+    
+    func removeRight(length: Int) -> String {
+        let x = self.characters.count - length
+        guard x > 0 else {
+            return ""
+        }
+        return self.trunc(x)
+    }
+    
 }
 
 extension NSDate {

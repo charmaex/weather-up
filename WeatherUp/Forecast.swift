@@ -10,7 +10,7 @@ import Foundation
 
 class Forecast: NSObject, NSCoding, WeatherObject {
     
-    let IMG_SIZE = "55"
+    let IMG_SIZE = "055"
     
     private var _date: NSDate!
     private var _img: String!
