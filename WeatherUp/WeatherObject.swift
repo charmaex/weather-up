@@ -28,7 +28,7 @@ protocol WeatherObject {
 extension WeatherObject {
     
     var textColor: UIColor {
-        return imageName.textColorFromWeatherCode()
+        return Colors.textColor()
     }
     
     var bgColor: UIColor {

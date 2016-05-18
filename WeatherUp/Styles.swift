@@ -30,16 +30,8 @@ class Colors: ColorPalette {
         return rgba(188, 16, 16, 1)
     }
     
-    class func textYellow() -> UIColor {
-        return rgba(255, 216, 79, 1)
-    }
-    
-    class func textGray() -> UIColor {
-        return rgba(228, 228, 228, 1)
-    }
-    
-    class func textDarkGray() -> UIColor {
-        return rgba(188, 188, 188, 1)
+    class func textColor() -> UIColor {
+        return UIColor.whiteColor()
     }
     
     class func backgroundGradient() -> [CGColor] {
