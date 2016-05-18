@@ -4,7 +4,7 @@
 
 A free, open source weather app
 
-
+![WeatherUp Promo Image] (http://jandamm.de/wp-content/uploads/2016/03/WeatherUp_Mockup.png)
 
 ###Features:
 * Displays Weather data depending on your location
