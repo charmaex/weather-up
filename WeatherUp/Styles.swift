@@ -31,7 +31,7 @@ class Colors: ColorPalette {
     }
     
     class func textColor() -> UIColor {
-        return UIColor.whiteColor()
+        return rgba(255, 255, 255, 1)
     }
     
     class func backgroundGradient() -> [CGColor] {
