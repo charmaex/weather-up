@@ -35,7 +35,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
+        setDelegates()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -84,6 +84,10 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         
         weatherConstraint.constant = spacing
         infoConstraint.constant = spacing
+    }
+    
+    private func setDelegates() {
+        scrollView.delegate = self
     }
     
 }

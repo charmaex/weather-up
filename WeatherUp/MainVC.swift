@@ -163,6 +163,7 @@ class MainVC: UIViewController {
     
     private func updateLocation() {
         if LocationService.inst.getLocation(forceUpdate) {
+            weather.scrollView.deactivate()
             infoTextLbl.text = MES_LOCATE
             infoCityLbl.text = nil
             infoTimeLbl.text = nil
@@ -256,6 +257,8 @@ class MainVC: UIViewController {
         infoTextLbl.text = w.desc
         infoCityLbl.text = w.location
         infoTimeLbl.text = w.time
+        
+        weather.scrollView.activate()
 
         displayForecasts()
     }

@@ -16,7 +16,7 @@ class ScrollingView: UIView {
     
     var delegate: ScrollingViewDelegate!
     
-    private var tappable = true
+    private var tappable = false
     
     private var positionInView: CGPoint!
     
@@ -51,6 +51,14 @@ class ScrollingView: UIView {
             }
             return .None
         }
+    }
+    
+    func activate() {
+        tappable = true
+    }
+    
+    func deactivate() {
+        tappable = false
     }
     
     func positionView() {
@@ -88,7 +96,7 @@ class ScrollingView: UIView {
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard let position = getPosition(touches) else {
+        guard tappable, let position = getPosition(touches) else {
             return
         }
         
@@ -101,7 +109,7 @@ class ScrollingView: UIView {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard let position = getPosition(touches) else {
+        guard tappable, let position = getPosition(touches) else {
             return
         }
         
@@ -139,7 +147,7 @@ class ScrollingView: UIView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard let position = getPosition(touches) else {
+        guard tappable, let position = getPosition(touches) else {
             return
         }
         
