@@ -57,11 +57,18 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         arrowView.fraction = arrow
     }
     
+    func reset() {
+        defaultImage()
+        weatherLbl.alpha = 0
+        scrollView.reset()
+    }
+    
     func initWithWeather(w: Weather) {
         let img = UIImage(named: w.imageName)
         
         weatherImV.image = img
         weatherLbl.text = w.mainDesc
+        weatherLbl.alpha = 1
         
         cloudsLbl.text = w.clouds
         rainLbl.text = w.rain
@@ -74,6 +81,12 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         let viewWidth = screenWidth * 2 - spacing + 20
         
         view.frame = CGRectMake(0, 0, viewWidth, 184)
+    }
+    
+    private func defaultImage() {
+        let img = UIImage(named: "01d160")
+        
+        weatherImV.image = img
     }
     
     private func initializeView() {

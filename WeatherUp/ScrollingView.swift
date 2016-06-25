@@ -16,25 +16,25 @@ class ScrollingView: UIView {
     
     var delegate: ScrollingViewDelegate!
     
-    private var tappable = false
+    private var _tappable = false
     
-    private var positionInView: CGPoint!
+    private var _positionInView: CGPoint!
     
-    private var fullDrag: CGFloat!
-    private var dragStart: CGFloat!
-    private var horizontalPostion: CGFloat!
-    private var offset: CGFloat!
+    private var _fullDrag: CGFloat!
+    private var _dragStart: CGFloat!
+    private var _horizontalPosition: CGFloat!
+    private var _offset: CGFloat!
     
-    private var left: CGFloat {
+    private var _left: CGFloat {
         return UIScreen.mainScreen().bounds.width - bounds.width / 2
     }
     
-    private var right: CGFloat {
+    private var _right: CGFloat {
         return bounds.width / 2
     }
     
-    private var damping: CGFloat {
-        return ((left + right) / 2) * 0.25
+    private var _damping: CGFloat {
+        return ((_left + _right) / 2) * 0.25
     }
     
     private enum Direction {
@@ -54,23 +54,37 @@ class ScrollingView: UIView {
     }
     
     func activate() {
-        tappable = true
+        _tappable = true
     }
     
-    func deactivate() {
-        tappable = false
+    private func deactivate() {
+        _tappable = false
+    }
+    
+    func reset() {
+        if let horizontalPosition = _horizontalPosition {
+            _positionInView = CGPointMake(_right, horizontalPosition)
+        }
+        
+        delegate.scrollingView(leftAlpha: 1, MoveWithRightAlpha: 0, arrow: 1)
+        positionView()
+        deactivate()
     }
     
     func positionView() {
-        if positionInView != nil {
-            center = positionInView
+        if _positionInView != nil {
+            center = _positionInView
         }
+    }
+    
+    private func setHorizontalPosition() {
+        _horizontalPosition = center.y
     }
     
     private func dragPercent(pos: CGFloat) -> (Direction, CGFloat) {
         
-        let dragAct = dragStart - pos
-        let percentFull = abs(dragAct / fullDrag)
+        let dragAct = _dragStart - pos
+        let percentFull = abs(dragAct / _fullDrag)
         
         let dir: Direction
         if dragAct > 0 {
@@ -87,41 +101,41 @@ class ScrollingView: UIView {
     }
     
     private func arrowPercent(point pos: CGFloat) -> CGFloat {
-        let distance = right - left
-        return (pos - left) / distance
+        let distance = _right - _left
+        return (pos - _left) / distance
     }
     
     private func arrowPercent(position pos: CGFloat) -> CGFloat {
-        return arrowPercent(point: pos + offset)
+        return arrowPercent(point: pos + _offset)
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard tappable, let position = getPosition(touches) else {
+        guard _tappable, let position = getPosition(touches) else {
             return
         }
         
-        fullDrag = bounds.width - UIScreen.mainScreen().bounds.width
-        horizontalPostion = center.y
-        dragStart = position.x
+        _fullDrag = bounds.width - UIScreen.mainScreen().bounds.width
+        setHorizontalPosition()
+        _dragStart = position.x
         
-        offset = center.x - position.x
+        _offset = center.x - position.x
 
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard tappable, let position = getPosition(touches) else {
+        guard _tappable, let position = getPosition(touches) else {
             return
         }
         
-        let newCenter = position.x + offset
+        let newCenter = position.x + _offset
         
-        guard newCenter >= left - damping && newCenter <= right + damping else {
+        guard newCenter >= _left - _damping && newCenter <= _right + _damping else {
             return
         }
         
-        center = CGPointMake(newCenter, horizontalPostion)
+        center = CGPointMake(newCenter, _horizontalPosition)
         
-        guard newCenter >= left && newCenter <= right else {
+        guard newCenter >= _left && newCenter <= _right else {
             return
         }
         
@@ -147,17 +161,17 @@ class ScrollingView: UIView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard tappable, let position = getPosition(touches) else {
+        guard _tappable, let position = getPosition(touches) else {
             return
         }
         
-        let dragPos = position.x + offset
+        let dragPos = position.x + _offset
         
         let (dir, percent) = dragPercent(position.x)
         
         var direction: Direction
         
-        if dragPos < left || dragPos > right {
+        if dragPos < _left || dragPos > _right {
             direction = dir
         } else {
             direction = percent >= 0.2 ? dir : dir.opposite
@@ -173,17 +187,17 @@ class ScrollingView: UIView {
             let x = center.x
             let off: CGFloat
             switch x {
-            case left:
+            case _left:
                 off = -15
                 direction = .Left
-            case right:
+            case _right:
                 off = 15
                 direction = .Right
             default:
                 return
             }
             
-            let centerPoint = CGPointMake(x - off, horizontalPostion)
+            let centerPoint = CGPointMake(x - off, _horizontalPosition)
             
             delay = 0.1
             
@@ -194,26 +208,27 @@ class ScrollingView: UIView {
         
         switch direction {
         case .Left:
-            newCenter = left
+            newCenter = _left
             leftAlpha = 0
             rightAlpha = 1
         case .Right:
-            newCenter = right
+            newCenter = _right
             leftAlpha = 1
             rightAlpha = 0
         case .None:
-            positionInView = center
+            _positionInView = center
             return
         }
         
         let arrow = arrowPercent(point: newCenter)
-        let centerPoint = CGPointMake(newCenter, horizontalPostion)
+        let centerPoint = CGPointMake(newCenter, _horizontalPosition)
         
-        positionInView = centerPoint
+        _positionInView = centerPoint
         
         UIView.animateWithDuration(0.3, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .CurveEaseOut, animations: {
             self.center = centerPoint
             self.delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha, arrow: arrow)
+            print(arrow)
         }) { _ in }
         
     }
