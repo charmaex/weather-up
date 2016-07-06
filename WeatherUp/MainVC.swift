@@ -275,16 +275,22 @@ class MainVC: UIViewController {
         for _ in 1...fcount {
             let fc = ForecastVC()
             forecasts.append(fc)
-            forecastView.addArrangedSubview(fc.view)
         }
     }
     
     private func displayForecasts() {
+        for v in forecastView.subviews {
+            forecastView.removeArrangedSubview(v)
+        }
+        
         for (i, fc) in forecasts.enumerate() {
             guard WeatherService.inst.forecasts.count > i else {
                 continue
             }
+
             let forecast = WeatherService.inst.forecasts[i]
+            
+            forecastView.addArrangedSubview(fc.view)
             fc.initWithForecast(forecast)
         }
     }
