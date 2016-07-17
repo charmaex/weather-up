@@ -232,7 +232,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="forecastView" destination="I1l-gM-nfU" id="TNm-QO-brZ"/>
                         <outlet property="infoCityLbl" destination="dfe-u8-xgM" id="ecJ-sa-1gh"/>

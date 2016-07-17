@@ -39,7 +39,7 @@ class MainVC: UIViewController {
     private var forceUpdate = false
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return .LightContent
     }
     
     override func viewDidLoad() {
