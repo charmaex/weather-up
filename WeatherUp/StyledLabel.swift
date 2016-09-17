@@ -16,14 +16,14 @@ class StyledLabel: UILabel {
     @IBInspectable var style: String = "TextStyle"
     @IBInspectable var orientation: String = "Center"
     
-    private enum Orientation: String {
+    fileprivate enum Orientation: String {
         case Left, Center, Right
     }
     
     func orientationStyle() -> NSTextAlignment {
         guard let orient = Orientation(rawValue: orientation),
               let x = NSTextAlignment(rawValue: orient.hashValue) else {
-            return .Center
+            return .center
         }
         
         return x
@@ -46,7 +46,7 @@ class StyledLabel: UILabel {
         styleLabel()
     }
     
-    private func styleLabel() {
+    fileprivate func styleLabel() {
         self.applyTextColor()
         self.minimumScaleFactor = 0.8
         self.textAlignment = orientationStyle()
@@ -65,7 +65,7 @@ class StyledLabel: UILabel {
     }
     
     func setObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: Notification.UpdateStyles.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: NSNotification.Name(rawValue: Notification.UpdateStyles.name), object: nil)
     }
     
 }

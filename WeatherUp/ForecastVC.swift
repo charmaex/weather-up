@@ -14,7 +14,7 @@ class ForecastVC: UIViewController {
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var degreesLbl: StyledLabel!
     
-    func initWithForecast(f: Forecast) {
+    func initWithForecast(_ f: Forecast) {
         let img = UIImage(named: f.imageName)
         
         dayLbl.text = f.weekday

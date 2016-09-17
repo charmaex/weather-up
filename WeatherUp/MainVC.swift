@@ -10,7 +10,7 @@ import UIKit
 
 class MainVC: UIViewController {
     
-    private let NOTIF_OBJECT: Notification.Listener = .MainVC
+    fileprivate let NOTIF_OBJECT: Notification.Listener = .mainVC
     
     @IBOutlet weak var introLogo: UILabel!
     @IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
@@ -24,7 +24,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var tempMaxLbl: StyledLabel!
     
     @IBOutlet weak var weatherPlaceholder: UIView!
-    private var weather: WeatherVC!
+    fileprivate var weather: WeatherVC!
     
     @IBOutlet weak var infoView: TappableStackView!
     @IBOutlet weak var infoTextLbl: StyledLabel!
@@ -32,14 +32,14 @@ class MainVC: UIViewController {
     @IBOutlet weak var infoTimeLbl: StyledLabel!
     
     @IBOutlet weak var forecastView: UIStackView!
-    private var forecasts = [ForecastVC]()
+    fileprivate var forecasts = [ForecastVC]()
     
-    private var introDone = false
-    private var reopenedApp = false
-    private var forceUpdate = false
+    fileprivate var introDone = false
+    fileprivate var reopenedApp = false
+    fileprivate var forceUpdate = false
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class MainVC: UIViewController {
         setObservers()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         introAnimation(delayed: 0.3)
@@ -85,7 +85,7 @@ class MainVC: UIViewController {
         let alert = AlertVC()
         alert.configureLocationAlert()
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func switchUnits() {
@@ -106,8 +106,8 @@ class MainVC: UIViewController {
             t = 0
         }
         
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(t * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+        let dispatchTime = DispatchTime.now() + Double(Int64(t * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             self.displayWeatherData(animated: true)
         })
     }
@@ -117,51 +117,51 @@ class MainVC: UIViewController {
         updateLocation()
     }
     
-    private func setObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeather), name: Notification.LocationAvailable.name, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifNoLocation), name: Notification.LocationUnavailable.name, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: Notification.LocationAuthError.name, object: nil)
+    fileprivate func setObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeather), name: NSNotification.Name(rawValue: Notification.LocationAvailable.name), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifNoLocation), name: NSNotification.Name(rawValue: Notification.LocationUnavailable.name), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: NSNotification.Name(rawValue: Notification.LocationAuthError.name), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: Notification.WeatherUpdated.name, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.displayWeather), name: Notification.WeatherOldData.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: NSNotification.Name(rawValue: Notification.WeatherUpdated.name), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeather), name: NSNotification.Name(rawValue: Notification.WeatherOldData.name), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.switchUnits), name: Notification.UserSwitchUnits.name, object: NOTIF_OBJECT.object)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: Notification.UserUpdateLocation.name, object: NOTIF_OBJECT.object)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.switchUnits), name: NSNotification.Name(rawValue: Notification.UserSwitchUnits.name), object: NOTIF_OBJECT.object)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: NSNotification.Name(rawValue: Notification.UserUpdateLocation.name), object: NOTIF_OBJECT.object)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
     }
     
-    private func introAnimation(delayed t: Double) {
+    fileprivate func introAnimation(delayed t: Double) {
         layoutForAnimations()
         
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(t * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(t * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             self.introAnimation()
         })
     }
     
-    private func introAnimation() {
+    fileprivate func introAnimation() {
         layoutForAnimations()
         
-        introCloud1Disable.active = false
+        introCloud1Disable.isActive = false
         introCloud2.constant = -240
         introCloud3.constant = -240
         introHill.constant = -200
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.introLogo.alpha = 0
             }) { b in
                 self.introDone = b
         }
         
-        UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.infoView.alpha = 1
         }) { _ in }
         
     }
     
-    private func updateLocation() {
+    fileprivate func updateLocation() {
         if LocationService.inst.getLocation(forceUpdate) {
             weather.reset()
             infoTextLbl.text = MES_LOCATE
@@ -171,38 +171,38 @@ class MainVC: UIViewController {
         }
     }
     
-    private func initializeTapViews() {
-        tempView.configureAction(trigger: .Start, action: .UserSwitchUnits, listener: NOTIF_OBJECT)
-        infoView.configureAction(trigger: .Stop, action: .UserUpdateLocation, listener: NOTIF_OBJECT)
+    fileprivate func initializeTapViews() {
+        tempView.configureAction(trigger: .start, action: .UserSwitchUnits, listener: NOTIF_OBJECT)
+        infoView.configureAction(trigger: .stop, action: .UserUpdateLocation, listener: NOTIF_OBJECT)
     }
     
-    private func layoutView() {
+    fileprivate func layoutView() {
         view.backgroundColor = WeatherService.inst.weather.bgColor
         view.backgroundGradient()
     }
     
-    private func layoutForUpdate() {
+    fileprivate func layoutForUpdate() {
         tempView.alpha = 0
         forecastView.alpha = 0
         weather.arrowView.alpha = 0
     }
     
-    private func layoutForAnimations() {
+    fileprivate func layoutForAnimations() {
         infoView.alpha = 0
         layoutForUpdate()
     }
     
-    private func layoutForWeatherAnimations() {
+    fileprivate func layoutForWeatherAnimations() {
         weatherPlaceholder.alpha = 0
         layoutForAnimations()
     }
     
-    private func updateWeatherAnimation() {
+    fileprivate func updateWeatherAnimation() {
         layoutForWeatherAnimations()
         
         guard introDone else {
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                 self.updateWeatherAnimation()
             })
             return
@@ -211,37 +211,37 @@ class MainVC: UIViewController {
         let delayInc = 0.15
         let delayStyle = 1.0
         
-        UIView.animateWithDuration(delayStyle) {
+        UIView.animate(withDuration: delayStyle, animations: {
             self.view.backgroundColor = WeatherService.inst.weather.bgColor
-        }
+        }) 
         
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayStyle / 2 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            NSNotificationCenter.defaultCenter().postNotificationName(Notification.UpdateStyles.name, object: nil)
+        let dispatchTime = DispatchTime.now() + Double(Int64(delayStyle / 2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+            NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.UpdateStyles.name), object: nil)
         })
         
-        UIView.animateWithDuration(0.5, delay: delayInc * 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delayInc * 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.tempView.alpha = 1
         }) { _ in }
         
-        UIView.animateWithDuration(0.5, delay: delayInc * 1, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delayInc * 1, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.weatherPlaceholder.alpha = 1
         }) { _ in }
         
-        UIView.animateWithDuration(0.5, delay: delayInc * 2, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delayInc * 2, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.infoView.alpha = 1
         }) { _ in }
         
-        UIView.animateWithDuration(0.5, delay: delayInc * 3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delayInc * 3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.forecastView.alpha = 1
         }) { _ in }
         
-        UIView.animateWithDuration(0.5, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.weather.arrowView.alpha = 1
         }) { _ in }
     }
     
-    private func displayWeatherData(animated b: Bool) {
+    fileprivate func displayWeatherData(animated b: Bool) {
         if b {
             updateWeatherAnimation()
         }
@@ -263,14 +263,14 @@ class MainVC: UIViewController {
         displayForecasts()
     }
     
-    private func positionWeather() {
+    fileprivate func positionWeather() {
         weather = WeatherVC()
         
         weatherPlaceholder.addSubview(weather.view)
     }
     
-    private func positionForecasts() {
-        let fcount = UIScreen.mainScreen().bounds.width <= 320 ? 4 : 5
+    fileprivate func positionForecasts() {
+        let fcount = UIScreen.main.bounds.width <= 320 ? 4 : 5
         
         for _ in 1...fcount {
             let fc = ForecastVC()
@@ -278,12 +278,12 @@ class MainVC: UIViewController {
         }
     }
     
-    private func displayForecasts() {
+    fileprivate func displayForecasts() {
         for v in forecastView.subviews {
             forecastView.removeArrangedSubview(v)
         }
         
-        for (i, fc) in forecasts.enumerate() {
+        for (i, fc) in forecasts.enumerated() {
             guard WeatherService.inst.forecasts.count > i else {
                 continue
             }

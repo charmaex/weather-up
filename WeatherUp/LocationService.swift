@@ -11,14 +11,14 @@ import CoreLocation
 class LocationService: NSObject, CLLocationManagerDelegate {
     static let inst = LocationService()
     
-    private let locationManager = CLLocationManager()
+    fileprivate let locationManager = CLLocationManager()
     
-    private var _lat: String!
-    private var _lon: String!
+    fileprivate var _lat: String!
+    fileprivate var _lon: String!
     
-    private var _lastUpdate: NSDate!
+    fileprivate var _lastUpdate: Date!
     
-    private var _counter = 0
+    fileprivate var _counter = 0
     
     var apiLocation: String {
         guard _lat != nil && _lon != nil else {
@@ -27,7 +27,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         return "\(API_LAT)\(_lat)\(API_LON)\(_lon)"
     }
     
-    func getLocation(forced: Bool) -> Bool {
+    func getLocation(_ forced: Bool) -> Bool {
         guard forced || _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
             print("no location updated needed")
             locationIsAvailable()
@@ -37,7 +37,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         return locationAuthStatus()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else {
             return locationIsNotAvailable()
         }
@@ -56,23 +56,23 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         _lat = "\(position.latitude.roundTo(decimals: 3))"
         _lon = "\(position.longitude.roundTo(decimals: 3))"
         
-        _lastUpdate = NSDate()
+        _lastUpdate = Date()
         
         locationIsAvailable()
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         locationIsNotAvailable()
     }
 
-    private func locationAuthStatus() -> Bool {
+    fileprivate func locationAuthStatus() -> Bool {
         let status = CLLocationManager.authorizationStatus()
         
         switch status {
-        case .AuthorizedWhenInUse, .AuthorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             return locationRequest()
-        case .NotDetermined:
+        case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             return locationAuthStatus()
         default:
@@ -80,24 +80,24 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func locationRequest() -> Bool {
+    fileprivate func locationRequest() -> Bool {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
         return true
     }
     
-    private func locationAuthError() -> Bool {
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.LocationAuthError.name, object: nil)
+    fileprivate func locationAuthError() -> Bool {
+        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationAuthError.name), object: nil)
         return false
     }
     
-    private func locationIsNotAvailable() {
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.LocationUnavailable.name, object: nil)
+    fileprivate func locationIsNotAvailable() {
+        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationUnavailable.name), object: nil)
     }
     
-    private func locationIsAvailable() {
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.LocationAvailable.name, object: nil)
+    fileprivate func locationIsAvailable() {
+        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationAvailable.name), object: nil)
     }
 
 }

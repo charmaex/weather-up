@@ -37,8 +37,8 @@ class Colors: ColorPalette {
     class func backgroundGradient() -> [CGColor] {
         var out = [CGColor]()
         
-        out.append(UIColor.clearColor().CGColor)
-        out.append(UIColor.blackColor().colorWithAlphaComponent(0.5).CGColor)
+        out.append(UIColor.clear.cgColor)
+        out.append(UIColor.black.withAlphaComponent(0.5).cgColor)
         
         return out
     }
@@ -48,7 +48,7 @@ class Colors: ColorPalette {
 
 enum Fonts: FontList {
     
-    case GillSans
+    case gillSans
     
 }
 
@@ -60,19 +60,19 @@ enum FontStyles: String, FontStylesList {
     func font() -> UIFont {
         switch self {
         case .H1:
-            return UIFont(name: Fonts.GillSans.name(weight: .Light), size: 94)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Light), size: 94)!
         case .H2:
-            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 36)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Italic), size: 36)!
         case .H3:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 14)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Regular), size: 14)!
         case .Paragraph:
-            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 14)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Italic), size: 14)!
         case .H5:
-            return UIFont(name: Fonts.GillSans.name(weight: .Italic), size: 12)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Italic), size: 12)!
         case .H6:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 11)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Regular), size: 11)!
         case .TextStyle:
-            return UIFont(name: Fonts.GillSans.name(weight: .Regular), size: 10)!
+            return UIFont(name: Fonts.gillSans.name(weight: .Regular), size: 10)!
         }
     }
     

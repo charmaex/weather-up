@@ -47,45 +47,45 @@ extension Double {
         return round(self * inc) / inc
     }
     
-    private func roundToString(decimals i: Int) -> String {
+    fileprivate func roundToString(decimals i: Int) -> String {
         let x = self.roundTo(decimals: i)
         return x.toString()
     }
     
-    private func toString() -> String {
-        return String(self).stringByReplacingOccurrencesOfString(".0", withString: "")
+    fileprivate func toString() -> String {
+        return String(self).replacingOccurrences(of: ".0", with: "")
     }
     
 }
 
 extension String {
     
-    func append(s: String, separator: String) -> String {
+    func append(_ s: String, separator: String) -> String {
         guard self != "" && s != "" else {
             return self
         }
         return "\(self)\(separator)\(s)"
     }
     
-    func toDate(withFormat format: String) -> NSDate? {
-        let dateFormatter = NSDateFormatter()
+    func toDate(withFormat format: String) -> Date? {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.dateFromString(self)
+        return dateFormatter.date(from: self)
     }
     
-    func toDate() -> NSDate? {
+    func toDate() -> Date? {
         return self.toDate(withFormat: "yyyy-MM-dd HH:mm:ss")
     }
     
-    func trunc(length: Int) -> String {
+    func trunc(_ length: Int) -> String {
         if self.characters.count > length {
-            return self.substringToIndex(self.startIndex.advancedBy(length))
+            return self.substring(to: self.characters.index(self.startIndex, offsetBy: length))
         } else {
             return self
         }
     }
     
-    func removeRight(length: Int) -> String {
+    func removeRight(_ length: Int) -> String {
         let x = self.characters.count - length
         guard x > 0 else {
             return ""
@@ -95,12 +95,12 @@ extension String {
     
 }
 
-extension NSDate {
+extension Date {
     
     func timeToString(withFormat format: String) -> String {
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     func timeToString() -> String {

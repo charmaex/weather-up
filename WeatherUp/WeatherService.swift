@@ -11,18 +11,18 @@ import Alamofire
 class WeatherService {
     static let inst = WeatherService()
     
-    private var _apiLocation = ""
-    private var _locationNew = true
+    fileprivate var _apiLocation = ""
+    fileprivate var _locationNew = true
     
-    private var _weather: Weather!
-    private var _forecasts = [Forecast]()
-    private var _lastWeather: NSDate!
-    private var _lastForecast: NSDate!
-    private var _lastWeatherIncomplete = true
-    private var _lastForecastIncomplete = true
+    fileprivate var _weather: Weather!
+    fileprivate var _forecasts = [Forecast]()
+    fileprivate var _lastWeather: NSDate!
+    fileprivate var _lastForecast: NSDate!
+    fileprivate var _lastWeatherIncomplete = true
+    fileprivate var _lastForecastIncomplete = true
     
-    private var _downloadCount = 0
-    private var _downloadCountTarget = 0
+    fileprivate var _downloadCount = 0
+    fileprivate var _downloadCountTarget = 0
     
     var weather: Weather {
         guard let x = _weather else {
@@ -35,7 +35,7 @@ class WeatherService {
         return _forecasts
     }
     
-    func getData(destination: String?, forced: Bool) {
+    func getData(_ destination: String?, forced: Bool) {
         
         if let dest = destination {
             _locationNew = _apiLocation != dest
@@ -66,7 +66,7 @@ class WeatherService {
         
     }
     
-    private func finishGetData() {
+    fileprivate func finishGetData() {
         guard _downloadCount == _downloadCountTarget && _downloadCount > 0 else {
             return
         }
@@ -75,11 +75,11 @@ class WeatherService {
         postNotification(.WeatherUpdated)
     }
     
-    private func postNotification(type: Notification) {
+    fileprivate func postNotification(_ type: Notification) {
         NSNotificationCenter.defaultCenter().postNotificationName(type.name, object: nil)
     }
     
-    private func getNSUD() {
+    fileprivate func getNSUD() {
         if let weatherData = NSUserDefaults.standardUserDefaults().objectForKey("weather") as? NSData {
             if let weatherClass = NSKeyedUnarchiver.unarchiveObjectWithData(weatherData) as? Weather {
                 _weather = weatherClass
@@ -104,7 +104,7 @@ class WeatherService {
         }
     }
     
-    private func saveNSUD() {
+    fileprivate func saveNSUD() {
         let weatherData = NSKeyedArchiver.archivedDataWithRootObject(_weather)
         NSUserDefaults.standardUserDefaults().setObject(weatherData, forKey: "weather")
         
@@ -117,7 +117,7 @@ class WeatherService {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    private func downloadWeather(initial b: Bool) {
+    fileprivate func downloadWeather(initial b: Bool) {
         if b {
             _downloadCountTarget += 1
         }
@@ -128,7 +128,7 @@ class WeatherService {
         }
     }
     
-    private func downloadForecast(initial b: Bool) {
+    fileprivate func downloadForecast(initial b: Bool) {
         if b {
             _downloadCountTarget += 1
         }
@@ -139,7 +139,7 @@ class WeatherService {
         }
     }
     
-    private func downloadWeather(completion: Completion) {
+    fileprivate func downloadWeather(_ completion: @escaping Completion) {
         guard let url = NSURL(string: "\(API_BASE)\(API_WEATHER)\(_apiLocation)\(API_APPID)") else {
             print("wrong url")
             return
@@ -259,7 +259,7 @@ class WeatherService {
         }
     }
     
-    private func downloadForecast(completion: Completion) {
+    fileprivate func downloadForecast(_ completion: @escaping Completion) {
         guard let url = NSURL(string: "\(API_BASE)\(API_FORECAST)\(_apiLocation)\(API_APPID)") else {
             print("wrong url")
             return completion()

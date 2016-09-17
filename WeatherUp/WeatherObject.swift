@@ -9,13 +9,13 @@
 import UIKit
 
 protocol WeatherObject {
-    func saveCaseCapString(s: String!) -> String
-    func saveCaseUppString(s: String!) -> String
-    func saveImageName(s: String!) -> String
-    func saveSum(d1 d1: Double!, d2: Double!) -> Double
-    func saveTime(d: NSDate!) -> String
-    func saveUnit(d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String
-    func saveWDay(d: NSDate!) -> String
+    func saveCaseCapString(_ s: String!) -> String
+    func saveCaseUppString(_ s: String!) -> String
+    func saveImageName(_ s: String!) -> String
+    func saveSum(d1: Double!, d2: Double!) -> Double
+    func saveTime(_ d: Date!) -> String
+    func saveUnit(_ d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String
+    func saveWDay(_ d: Date!) -> String
     
     var IMG_SIZE: String { get }
     var degreesDbl: Double { get }
@@ -46,48 +46,48 @@ extension WeatherObject {
         }
     }
     
-    func saveTime(d: NSDate!) -> String {
+    func saveTime(_ d: Date!) -> String {
         guard d != nil else {
             return ""
         }
         return d.timeToString()
     }
     
-    func saveWDay(d: NSDate!) -> String {
+    func saveWDay(_ d: Date!) -> String {
         guard d != nil else {
             return ""
         }
         let x = d.weekday()
-        if x == NSDate().weekday() {
+        if x == Date().weekday() {
             return "Today"
         }
-        return x.capitalizedString
+        return x.capitalized
     }
     
-    func saveSum(d1 d1: Double!, d2: Double!) -> Double {
+    func saveSum(d1: Double!, d2: Double!) -> Double {
         let d1: Double = d1 == nil || d1 == DEF_VALUE ? 0 : d1
         let d2: Double = d2 == nil || d2 == DEF_VALUE ? 0 : d2
         return d1 + d2
     }
     
-    func saveImageName(s: String!) -> String {
+    func saveImageName(_ s: String!) -> String {
         let s = s == nil ? "error" : s
         return "\(s)\(IMG_SIZE)"
     }
     
-    func saveCaseCapString(s: String!) -> String {
+    func saveCaseCapString(_ s: String!) -> String {
         guard s != nil else {
             return ""
         }
-        return s.capitalizedString
+        return s.capitalized
     }
     
-    func saveCaseUppString(s: String!) -> String {
+    func saveCaseUppString(_ s: String!) -> String {
         let s = saveCaseCapString(s)
-        return s.uppercaseString
+        return s.uppercased()
     }
     
-    func saveUnit(d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String {
+    func saveUnit(_ d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String {
         guard d != nil && d != DEF_VALUE else {
             return UnitService.inst.unit.unitForValue(nilValue.rawValue, type: type)
         }

@@ -12,9 +12,9 @@ class Forecast: NSObject, NSCoding, WeatherObject {
     
     let IMG_SIZE = "055"
     
-    private var _date: NSDate!
-    private var _img: String!
-    private var _degrees: Double!
+    fileprivate var _date: Date!
+    fileprivate var _img: String!
+    fileprivate var _degrees: Double!
     
     var weekday: String {
         return saveWDay(_date)
@@ -29,17 +29,17 @@ class Forecast: NSObject, NSCoding, WeatherObject {
     }
     
     var degrees: String {
-        return saveUnit(_degrees, type: .Temperature, nilValue: .Dash)
+        return saveUnit(_degrees, type: .temperature, nilValue: .Dash)
     }
     
-    init(date: NSDate, img: String, degrees: Double) {
+    init(date: Date, img: String, degrees: Double) {
         _date = date
         _img = img
         _degrees = degrees
     }
     
     override init() {
-        _date = DEF_DATE
+        _date = DEF_DATE as Date!
         _img = DEF_IMG
         _degrees = DEF_VALUE
     }
@@ -47,15 +47,15 @@ class Forecast: NSObject, NSCoding, WeatherObject {
     convenience required init?(coder aDecoder: NSCoder) {
         self.init()
         
-        self._date = aDecoder.decodeObjectForKey("date") as? NSDate
-        self._img = aDecoder.decodeObjectForKey("img") as? String
-        self._degrees = aDecoder.decodeObjectForKey("degrees") as? Double
+        self._date = aDecoder.decodeObject(forKey: "date") as? Date
+        self._img = aDecoder.decodeObject(forKey: "img") as? String
+        self._degrees = aDecoder.decodeObject(forKey: "degrees") as? Double
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self._date, forKey: "date")
-        aCoder.encodeObject(self._img, forKey: "img")
-        aCoder.encodeObject(self._degrees, forKey: "degrees")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self._date, forKey: "date")
+        aCoder.encode(self._img, forKey: "img")
+        aCoder.encode(self._degrees, forKey: "degrees")
     }
     
 }

@@ -19,7 +19,7 @@ let API_LON = "&lon="
 //let API_APPID = "&appid=#openweathermap.org_appID#"
 
 // Defaults
-let DEF_DATE = NSDate(timeIntervalSince1970: 0)
+let DEF_DATE = Date(timeIntervalSince1970: 0)
 let DEF_IMG = ""
 let DEF_VALUE = -1.0
 
@@ -57,7 +57,7 @@ enum Notification: String {
     }
     
     enum Listener {
-        case MainVC
+        case mainVC
         
         var object: Int {
             return self.hashValue

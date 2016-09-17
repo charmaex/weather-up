@@ -29,8 +29,8 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
     @IBOutlet weak var pressureLbl: StyledLabel!
     @IBOutlet weak var humidityLbl: StyledLabel!
     
-    private var screenWidth: CGFloat!
-    private var spacing: CGFloat!
+    fileprivate var screenWidth: CGFloat!
+    fileprivate var spacing: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         setDelegates()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         initializeView()
@@ -63,7 +63,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         scrollView.reset()
     }
     
-    func initWithWeather(w: Weather) {
+    func initWithWeather(_ w: Weather) {
         let img = UIImage(named: w.imageName)
         
         weatherImV.image = img
@@ -77,29 +77,29 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
         humidityLbl.text = w.humidity
     }
     
-    private func setViewWidth() {
+    fileprivate func setViewWidth() {
         let viewWidth = screenWidth * 2 - spacing + 20
         
-        view.frame = CGRectMake(0, 0, viewWidth, 184)
+        view.frame = CGRect(x: 0, y: 0, width: viewWidth, height: 184)
     }
     
-    private func defaultImage() {
+    fileprivate func defaultImage() {
         let img = UIImage(named: "01d160")
         
         weatherImV.image = img
     }
     
-    private func initializeView() {
+    fileprivate func initializeView() {
         infoSV.alpha = 0
         
-        screenWidth = UIScreen.mainScreen().bounds.width
+        screenWidth = UIScreen.main.bounds.width
         spacing = (screenWidth - 160) / 2
         
         weatherConstraint.constant = spacing
         infoConstraint.constant = spacing
     }
     
-    private func setDelegates() {
+    fileprivate func setDelegates() {
         scrollView.delegate = self
     }
     

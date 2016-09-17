@@ -21,7 +21,7 @@ class ArrowView: UIView {
         setObservers()
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: WeatherService.inst.weather.textColor, arrowValue: fraction)
         
@@ -32,7 +32,7 @@ class ArrowView: UIView {
     }
     
     func setObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ArrowView.updateColor), name: Notification.UpdateStyles.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ArrowView.updateColor), name: NSNotification.Name(rawValue: Notification.UpdateStyles.name), object: nil)
     }
     
 }

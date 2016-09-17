@@ -351,15 +351,18 @@
 					1360604E1C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 7TCLF98BX7;
+						LastSwiftMigration = 0800;
 					};
 					136060621C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6N9Z26P656;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1360604E1C860F0900599733;
 					};
 					1360606D1C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6N9Z26P656;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1360604E1C860F0900599733;
 					};
 				};
@@ -716,6 +719,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -734,6 +738,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -747,6 +752,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherUp.app/WeatherUp";
 			};
 			name = Debug;
@@ -760,6 +766,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherUp.app/WeatherUp";
 			};
 			name = Release;
@@ -772,6 +779,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WeatherUp;
 				USES_XCTRUNNER = YES;
 			};
@@ -785,6 +793,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WeatherUp;
 				USES_XCTRUNNER = YES;
 			};

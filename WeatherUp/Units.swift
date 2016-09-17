@@ -13,55 +13,55 @@ enum UnitSystem: String {
     case Metric
     
     enum Unit {
-        case Percent
-        case Pressure
-        case Speed
-        case Temperature
-        case Volume
+        case percent
+        case pressure
+        case speed
+        case temperature
+        case volume
     }
     
-    func unitForValue(v: String, type t: Unit) -> String {
+    func unitForValue(_ v: String, type t: Unit) -> String {
         let unit: String
         
         switch t {
-        case .Percent:
+        case .percent:
             unit = "%"
-        case .Pressure where self == .Imperial:
+        case .pressure where self == .Imperial:
             unit = "in-Hg"
-        case .Pressure:
+        case .pressure:
             unit = "hpa"
-        case .Speed where self == .Imperial:
+        case .speed where self == .Imperial:
             unit = "mph"
-        case .Speed:
+        case .speed:
             unit = "km/h"
-        case .Temperature where self == .Imperial:
+        case .temperature where self == .Imperial:
             unit = "°F"
-        case .Temperature:
+        case .temperature:
             unit = "°C"
-        case .Volume where self == .Imperial:
+        case .volume where self == .Imperial:
             unit = "inch"
-        case .Volume:
+        case .volume:
             unit = "mm"
         }
         
         return "\(v)\(unit)"
     }
     
-    func unitForValue(v: Double, type t: Unit) -> String {
+    func unitForValue(_ v: Double, type t: Unit) -> String {
         let value: Double
         
         switch t {
-        case .Pressure where self == .Imperial:
+        case .pressure where self == .Imperial:
             value = v.hpaToinhg()
-        case .Speed where self == .Imperial:
+        case .speed where self == .Imperial:
             value = v.msTomph()
-        case .Speed:
+        case .speed:
             value = v.msTokmh()
-        case .Temperature where self == .Imperial:
+        case .temperature where self == .Imperial:
             value = v.kelvinToFahrenheit()
-        case .Temperature:
+        case .temperature:
             value = v.kelvinToCelcius()
-        case .Volume where self == .Imperial:
+        case .volume where self == .Imperial:
             value = v.mmToinch()
         default:
             value = v
