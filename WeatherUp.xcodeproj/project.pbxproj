@@ -282,6 +282,7 @@
 			buildConfigurationList = 136060771C860F0900599733 /* Build configuration list for PBXNativeTarget "WeatherUp" */;
 			buildPhases = (
 				A79D27212E13F8C4CCD07306 /* [CP] Check Pods Manifest.lock */,
+				133012921D8D4AD500E4B8D7 /* SwiftFormat */,
 				1360604B1C860F0900599733 /* Sources */,
 				1360604C1C860F0900599733 /* Frameworks */,
 				1360604D1C860F0900599733 /* Resources */,
@@ -418,6 +419,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		133012921D8D4AD500E4B8D7 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "${SRCROOT}/swiftformat0.9.5 insighter -s \"never\" -i \"tab\"";
+			shellScript = "";
+		};
 		19311B2DA299B0876B0326B0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
