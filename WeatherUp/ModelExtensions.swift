@@ -44,7 +44,7 @@ extension Double {
 		}
 		let inc = pow(10, Double(i))
 
-		return round(self * inc) / inc
+		return (self * inc).rounded() / inc
 	}
 
 	fileprivate func roundToString(decimals i: Int) -> String {

@@ -71,7 +71,7 @@ extension WeatherObject {
 	}
 
 	func saveImageName(_ s: String!) -> String {
-		let s = s == nil ? "error" : s
+		let s = s == nil ? "error" : s!
 		return "\(s)\(IMG_SIZE)"
 	}
 

@@ -21,10 +21,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 	fileprivate var _counter = 0
 
 	var apiLocation: String {
-		guard _lat != nil && _lon != nil else {
+		guard let lat = _lat, let lon = _lon else {
 			return ""
 		}
-		return "\(API_LAT)\(_lat)\(API_LON)\(_lon)"
+
+		return "\(API_LAT)\(lat)\(API_LON)\(lon)"
 	}
 
 	func getLocation(_ forced: Bool) -> Bool {
