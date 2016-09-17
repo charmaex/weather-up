@@ -9,27 +9,25 @@
 import UIKit
 
 extension UILabel {
-    
-    func applyFontStyle(style: FontStyles, color: UIColor) {
-        self.font = style.font()
-        self.textColor = color
-    }
-    
+
+	func applyFontStyle(_ style: FontStyles, color: UIColor) {
+		self.font = style.font()
+		self.textColor = color
+	}
 }
 
 extension UIView {
-    
-    private func addGradientLayer(colors: [CGColor]) {
-        let gradient = CAGradientLayer()
-        gradient.frame.size = self.frame.size
-        gradient.frame.origin = CGPointMake(0.0,0.0)
-        
-        gradient.colors = colors
-        self.layer.insertSublayer(gradient, atIndex: 0)
-    }
-    
-    func backgroundGradient() {
-        self.addGradientLayer(Colors.backgroundGradient())
-    }
-    
+
+	fileprivate func addGradientLayer(_ colors: [CGColor]) {
+		let gradient = CAGradientLayer()
+		gradient.frame.size = self.frame.size
+		gradient.frame.origin = CGPoint(x: 0.0, y: 0.0)
+
+		gradient.colors = colors
+		self.layer.insertSublayer(gradient, at: 0)
+	}
+
+	func backgroundGradient() {
+		self.addGradientLayer(Colors.backgroundGradient())
+	}
 }

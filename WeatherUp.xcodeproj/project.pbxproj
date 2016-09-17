@@ -281,12 +281,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 136060771C860F0900599733 /* Build configuration list for PBXNativeTarget "WeatherUp" */;
 			buildPhases = (
-				A79D27212E13F8C4CCD07306 /* 📦 Check Pods Manifest.lock */,
+				A79D27212E13F8C4CCD07306 /* [CP] Check Pods Manifest.lock */,
+				133012921D8D4AD500E4B8D7 /* SwiftFormat */,
 				1360604B1C860F0900599733 /* Sources */,
 				1360604C1C860F0900599733 /* Frameworks */,
 				1360604D1C860F0900599733 /* Resources */,
-				19311B2DA299B0876B0326B0 /* 📦 Embed Pods Frameworks */,
-				463C8BEB3EAA16F8CD354A1C /* 📦 Copy Pods Resources */,
+				19311B2DA299B0876B0326B0 /* [CP] Embed Pods Frameworks */,
+				463C8BEB3EAA16F8CD354A1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,12 +302,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1360607A1C860F0900599733 /* Build configuration list for PBXNativeTarget "WeatherUpTests" */;
 			buildPhases = (
-				4F692A04DCB51BACB3327336 /* 📦 Check Pods Manifest.lock */,
+				4F692A04DCB51BACB3327336 /* [CP] Check Pods Manifest.lock */,
 				1360605F1C860F0900599733 /* Sources */,
 				136060601C860F0900599733 /* Frameworks */,
 				136060611C860F0900599733 /* Resources */,
-				28516B8AEB44C4A13F959183 /* 📦 Embed Pods Frameworks */,
-				E33B192467CC307696FFD42D /* 📦 Copy Pods Resources */,
+				28516B8AEB44C4A13F959183 /* [CP] Embed Pods Frameworks */,
+				E33B192467CC307696FFD42D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,11 +323,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1360607D1C860F0900599733 /* Build configuration list for PBXNativeTarget "WeatherUpUITests" */;
 			buildPhases = (
-				5FE4FC353594BD63EBE22251 /* 📦 Check Pods Manifest.lock */,
+				5FE4FC353594BD63EBE22251 /* [CP] Check Pods Manifest.lock */,
 				1360606A1C860F0900599733 /* Sources */,
 				1360606B1C860F0900599733 /* Frameworks */,
 				1360606C1C860F0900599733 /* Resources */,
-				3F74BAF4420C3E0F9E16C53E /* 📦 Copy Pods Resources */,
+				3F74BAF4420C3E0F9E16C53E /* [CP] Copy Pods Resources */,
+				99BE41A2B04F25DA7D75B7D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,21 +347,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Jan Dammshäuser";
 				TargetAttributes = {
 					1360604E1C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 7TCLF98BX7;
+						LastSwiftMigration = 0800;
 					};
 					136060621C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6N9Z26P656;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1360604E1C860F0900599733;
 					};
 					1360606D1C860F0900599733 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 6N9Z26P656;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1360604E1C860F0900599733;
 					};
 				};
@@ -414,14 +419,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19311B2DA299B0876B0326B0 /* 📦 Embed Pods Frameworks */ = {
+		133012921D8D4AD500E4B8D7 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = SwiftFormat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "${SRCROOT}/swiftformat0.9.5 WeatherUp -s \"never\" -i \"tab\"";
+			shellScript = "";
+		};
+		19311B2DA299B0876B0326B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,14 +448,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherUp/Pods-WeatherUp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		28516B8AEB44C4A13F959183 /* 📦 Embed Pods Frameworks */ = {
+		28516B8AEB44C4A13F959183 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,14 +463,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherUpTests/Pods-WeatherUpTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3F74BAF4420C3E0F9E16C53E /* 📦 Copy Pods Resources */ = {
+		3F74BAF4420C3E0F9E16C53E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,14 +478,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherUpUITests/Pods-WeatherUpUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		463C8BEB3EAA16F8CD354A1C /* 📦 Copy Pods Resources */ = {
+		463C8BEB3EAA16F8CD354A1C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,59 +493,74 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherUp/Pods-WeatherUp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F692A04DCB51BACB3327336 /* 📦 Check Pods Manifest.lock */ = {
+		4F692A04DCB51BACB3327336 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5FE4FC353594BD63EBE22251 /* 📦 Check Pods Manifest.lock */ = {
+		5FE4FC353594BD63EBE22251 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A79D27212E13F8C4CCD07306 /* 📦 Check Pods Manifest.lock */ = {
+		99BE41A2B04F25DA7D75B7D7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherUpUITests/Pods-WeatherUpUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E33B192467CC307696FFD42D /* 📦 Copy Pods Resources */ = {
+		A79D27212E13F8C4CCD07306 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E33B192467CC307696FFD42D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,8 +665,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -676,8 +712,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -696,6 +734,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -716,6 +755,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -734,6 +774,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.jandamm.Weather-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -747,6 +788,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherUp.app/WeatherUp";
 			};
 			name = Debug;
@@ -760,6 +802,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherUp.app/WeatherUp";
 			};
 			name = Release;
@@ -772,6 +815,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WeatherUp;
 				USES_XCTRUNNER = YES;
 			};
@@ -785,6 +829,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.WeatherUpUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WeatherUp;
 				USES_XCTRUNNER = YES;
 			};
