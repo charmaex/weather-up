@@ -10,8 +10,6 @@ import UIKit
 
 class MainVC: UIViewController {
 
-	fileprivate let NOTIF_OBJECT: Notification.Listener = .mainVC
-
 	@IBOutlet weak var introLogo: UILabel!
 	@IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
 	@IBOutlet weak var introCloud2: NSLayoutConstraint!
@@ -118,15 +116,16 @@ class MainVC: UIViewController {
 	}
 
 	fileprivate func setObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeather), name: NSNotification.Name(rawValue: Notification.LocationAvailable.name), object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifNoLocation), name: NSNotification.Name(rawValue: Notification.LocationUnavailable.name), object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: NSNotification.Name(rawValue: Notification.LocationAuthError.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeather), name: NSNotification.Name(rawValue: Notification.locationAvailable.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifNoLocation), name: NSNotification.Name(rawValue: Notification.locationUnavailable.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.notifLocationNoAuth), name: NSNotification.Name(rawValue: Notification.locationAuthError.name), object: nil)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: NSNotification.Name(rawValue: Notification.WeatherUpdated.name), object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeather), name: NSNotification.Name(rawValue: Notification.WeatherOldData.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeatherAnimated), name: NSNotification.Name(rawValue: Notification.weatherUpdated.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.displayWeather), name: NSNotification.Name(rawValue: Notification.weatherOldData.name), object: nil)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.switchUnits), name: NSNotification.Name(rawValue: Notification.UserSwitchUnits.name), object: NOTIF_OBJECT.object)
-		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: NSNotification.Name(rawValue: Notification.UserUpdateLocation.name), object: NOTIF_OBJECT.object)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.switchUnits), name: NSNotification.Name(rawValue: Notification.userSwitchUnits.name), object: tempView)
+
+		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: NSNotification.Name(rawValue: Notification.userUpdateLocation.name), object: infoView)
 
 		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
 	}
@@ -171,8 +170,8 @@ class MainVC: UIViewController {
 	}
 
 	fileprivate func initializeTapViews() {
-		tempView.configureAction(trigger: .start, action: .UserSwitchUnits, listener: NOTIF_OBJECT)
-		infoView.configureAction(trigger: .stop, action: .UserUpdateLocation, listener: NOTIF_OBJECT)
+		tempView.configureAction(trigger: .start, action: .userSwitchUnits)
+		infoView.configureAction(trigger: .stop, action: .userUpdateLocation)
 	}
 
 	fileprivate func layoutView() {
@@ -216,7 +215,7 @@ class MainVC: UIViewController {
 
 		let dispatchTime = DispatchTime.now() + Double(Int64(delayStyle / 2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-			NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.UpdateStyles.name), object: nil)
+			NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.updateStyles.name), object: nil)
 		})
 
 		UIView.animate(withDuration: 0.5, delay: delayInc * 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {

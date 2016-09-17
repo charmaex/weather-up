@@ -61,7 +61,7 @@ class WeatherService {
 
 		if _downloadCountTarget == 0 {
 			print("no weather update needed")
-			postNotification(.WeatherOldData)
+			postNotification(.weatherOldData)
 		}
 	}
 
@@ -71,7 +71,7 @@ class WeatherService {
 		}
 
 		saveNSUD()
-		postNotification(.WeatherUpdated)
+		postNotification(.weatherUpdated)
 	}
 
 	fileprivate func postNotification(_ type: Notification) {

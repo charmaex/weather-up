@@ -226,7 +226,6 @@ class ScrollingView: UIView {
 		UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .curveEaseOut, animations: {
 			self.center = centerPoint
 			self.delegate.scrollingView(leftAlpha: leftAlpha, MoveWithRightAlpha: rightAlpha, arrow: arrow)
-			print(arrow)
 		}) { _ in }
 	}
 

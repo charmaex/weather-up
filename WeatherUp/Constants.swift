@@ -40,27 +40,19 @@ typealias Completion = () -> ()
 
 enum Notification: String {
 
-	case LocationAvailable
-	case LocationUnavailable
-	case LocationAuthError
+	case locationAvailable
+	case locationUnavailable
+	case locationAuthError
 
-	case WeatherUpdated
-	case WeatherOldData
+	case weatherUpdated
+	case weatherOldData
 
-	case UserSwitchUnits
-	case UserUpdateLocation
+	case userSwitchUnits
+	case userUpdateLocation
 
-	case UpdateStyles
+	case updateStyles
 
 	var name: String {
 		return self.rawValue
-	}
-
-	enum Listener {
-		case mainVC
-
-		var object: Int {
-			return self.hashValue
-		}
 	}
 }

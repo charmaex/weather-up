@@ -65,6 +65,6 @@ class StyledLabel: UILabel {
 	}
 
 	func setObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: NSNotification.Name(rawValue: Notification.UpdateStyles.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: NSNotification.Name(rawValue: Notification.updateStyles.name), object: nil)
 	}
 }

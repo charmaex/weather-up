@@ -89,15 +89,15 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 	}
 
 	fileprivate func locationAuthError() -> Bool {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationAuthError.name), object: nil)
+		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationAuthError.name), object: nil)
 		return false
 	}
 
 	fileprivate func locationIsNotAvailable() {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationUnavailable.name), object: nil)
+		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationUnavailable.name), object: nil)
 	}
 
 	fileprivate func locationIsAvailable() {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.LocationAvailable.name), object: nil)
+		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationAvailable.name), object: nil)
 	}
 }
