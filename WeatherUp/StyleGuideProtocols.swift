@@ -34,7 +34,7 @@ protocol FontStylesList {
 }
 
 enum FontWeights: String {
-	case Regular = ""
-	case Italic = "-Italic"
-	case Light = "-Light"
+	case regular = ""
+	case italic = "-Italic"
+	case light = "-Light"
 }

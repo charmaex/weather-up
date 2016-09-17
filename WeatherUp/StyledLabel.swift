@@ -17,7 +17,7 @@ class StyledLabel: UILabel {
 	@IBInspectable var orientation: String = "Center"
 
 	fileprivate enum Orientation: String {
-		case Left, Center, Right
+		case left, center, right
 	}
 
 	func orientationStyle() -> NSTextAlignment {

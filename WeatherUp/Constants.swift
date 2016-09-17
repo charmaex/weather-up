@@ -24,8 +24,8 @@ let DEF_IMG = ""
 let DEF_VALUE = -1.0
 
 enum DefaultNilValue: String {
-	case Zero = "0"
-	case Dash = "--"
+	case zero = "0"
+	case dash = "--"
 }
 
 // Errors

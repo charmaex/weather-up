@@ -9,8 +9,8 @@
 import Foundation
 
 enum UnitSystem: String {
-	case Imperial
-	case Metric
+	case imperial
+	case metric
 
 	enum Unit {
 		case percent
@@ -26,19 +26,19 @@ enum UnitSystem: String {
 		switch t {
 		case .percent:
 			unit = "%"
-		case .pressure where self == .Imperial:
+		case .pressure where self == .imperial:
 			unit = "in-Hg"
 		case .pressure:
 			unit = "hpa"
-		case .speed where self == .Imperial:
+		case .speed where self == .imperial:
 			unit = "mph"
 		case .speed:
 			unit = "km/h"
-		case .temperature where self == .Imperial:
+		case .temperature where self == .imperial:
 			unit = "°F"
 		case .temperature:
 			unit = "°C"
-		case .volume where self == .Imperial:
+		case .volume where self == .imperial:
 			unit = "inch"
 		case .volume:
 			unit = "mm"
@@ -51,17 +51,17 @@ enum UnitSystem: String {
 		let value: Double
 
 		switch t {
-		case .pressure where self == .Imperial:
+		case .pressure where self == .imperial:
 			value = v.hpaToinhg()
-		case .speed where self == .Imperial:
+		case .speed where self == .imperial:
 			value = v.msTomph()
 		case .speed:
 			value = v.msTokmh()
-		case .temperature where self == .Imperial:
+		case .temperature where self == .imperial:
 			value = v.kelvinToFahrenheit()
 		case .temperature:
 			value = v.kelvinToCelcius()
-		case .volume where self == .Imperial:
+		case .volume where self == .imperial:
 			value = v.mmToinch()
 		default:
 			value = v

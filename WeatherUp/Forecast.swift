@@ -29,7 +29,7 @@ class Forecast: NSObject, NSCoding, WeatherObject {
 	}
 
 	var degrees: String {
-		return saveUnit(_degrees, type: .temperature, nilValue: .Dash)
+		return saveUnit(_degrees, type: .temperature, nilValue: .dash)
 	}
 
 	init(date: Date, img: String, degrees: Double) {

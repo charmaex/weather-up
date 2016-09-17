@@ -11,7 +11,7 @@ import Foundation
 class UnitService {
 	static let inst = UnitService()
 
-	fileprivate var _unit: UnitSystem = .Metric
+	fileprivate var _unit: UnitSystem = .metric
 
 	var unit: UnitSystem {
 		return _unit
@@ -25,10 +25,10 @@ class UnitService {
 
 	func switchUnit() {
 		switch _unit {
-		case .Metric:
-			_unit = .Imperial
-		case .Imperial:
-			_unit = .Metric
+		case .metric:
+			_unit = .imperial
+		case .imperial:
+			_unit = .metric
 		}
 		saveUnit()
 	}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1303FE4E1D8DAC2A002337DE /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1303FE4D1D8DAC2A002337DE /* ApiKey.swift */; };
 		1306BB7C1CA1F3870006D397 /* ForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306BB7A1CA1F3870006D397 /* ForecastVC.swift */; };
 		1306BB7D1CA1F3870006D397 /* ForecastVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1306BB7B1CA1F3870006D397 /* ForecastVC.xib */; };
 		1306BB831CA330E50006D397 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306BB821CA330E50006D397 /* WeatherService.swift */; };
@@ -23,7 +24,6 @@
 		1360605D1C860F0900599733 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1360605B1C860F0900599733 /* LaunchScreen.storyboard */; };
 		136060681C860F0900599733 /* WeatherUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060671C860F0900599733 /* WeatherUpTests.swift */; };
 		136060731C860F0900599733 /* WeatherUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136060721C860F0900599733 /* WeatherUpUITests.swift */; };
-		136A6BBC1CA6776E00347216 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6BBB1CA6776E00347216 /* ApiKey.swift */; };
 		136A6BBF1CA69F5F00347216 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6BBD1CA69F5F00347216 /* WeatherVC.swift */; };
 		136A6BC01CA69F5F00347216 /* WeatherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A6BBE1CA69F5F00347216 /* WeatherVC.xib */; };
 		13A67E321CB0370500BAEB28 /* WeatherUpKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A67E311CB0370500BAEB28 /* WeatherUpKit.swift */; };
@@ -61,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0C34741C9DF0EE301FE6018E /* Pods-WeatherUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherUp/Pods-WeatherUp.debug.xcconfig"; sourceTree = "<group>"; };
+		1303FE4D1D8DAC2A002337DE /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		1306BB7A1CA1F3870006D397 /* ForecastVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
 		1306BB7B1CA1F3870006D397 /* ForecastVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastVC.xib; sourceTree = "<group>"; };
 		1306BB821CA330E50006D397 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		1360606E1C860F0900599733 /* WeatherUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		136060721C860F0900599733 /* WeatherUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpUITests.swift; sourceTree = "<group>"; };
 		136060741C860F0900599733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		136A6BBB1CA6776E00347216 /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		136A6BBD1CA69F5F00347216 /* WeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
 		136A6BBE1CA69F5F00347216 /* WeatherVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherVC.xib; sourceTree = "<group>"; };
 		13A67E311CB0370500BAEB28 /* WeatherUpKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpKit.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				13A67E311CB0370500BAEB28 /* WeatherUpKit.swift */,
 				13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */,
-				136A6BBB1CA6776E00347216 /* ApiKey.swift */,
+				1303FE4D1D8DAC2A002337DE /* ApiKey.swift */,
 				1306BB881CA33F2B0006D397 /* Constants.swift */,
 			);
 			name = Utils;
@@ -583,8 +583,8 @@
 				13F7AC1D1C9EB58B006BBD86 /* Styles.swift in Sources */,
 				135AA0541CAAB35400050D11 /* ArrowView.swift in Sources */,
 				136A6BBF1CA69F5F00347216 /* WeatherVC.swift in Sources */,
-				136A6BBC1CA6776E00347216 /* ApiKey.swift in Sources */,
 				13DAC4B71CA71C3900D7A246 /* ScrollingView.swift in Sources */,
+				1303FE4E1D8DAC2A002337DE /* ApiKey.swift in Sources */,
 				136060551C860F0900599733 /* MainVC.swift in Sources */,
 				1306BB871CA331A20006D397 /* Weather.swift in Sources */,
 				1306BB851CA331270006D397 /* Forecast.swift in Sources */,
