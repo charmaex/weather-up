@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import WeatherUp
 
 class WeatherUpTests: XCTestCase {
     
