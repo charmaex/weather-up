@@ -7,15 +7,36 @@
 //
 
 import UIKit
+import JDCoordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
+	var appCoordinator: JDCoordinator!
+	var rootViewController: UINavigationController!
+
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
-		return true
+
+		let windowFrame = UIScreen.main.bounds
+		window = UIWindow(frame: windowFrame)
+
+		rootViewController = JDBasicNavController()
+
+		appCoordinator = AppCoordinator(withNavigationController: rootViewController)
+
+		if let window = self.window {
+			window.rootViewController = rootViewController
+
+			appCoordinator.start()
+
+			window.makeKeyAndVisible()
+
+			return true
+		}
+
+		return false
 	}
 
 	func applicationWillResignActive(_ application: UIApplication) {
