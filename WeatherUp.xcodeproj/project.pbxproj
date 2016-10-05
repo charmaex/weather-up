@@ -441,7 +441,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "${SRCROOT}/swiftformat0.9.6 WeatherUp -s \"never\" -i \"tab\"";
+			shellPath = "${SRCROOT}/swiftformat WeatherUp -s \"never\" -i \"tab\"";
 			shellScript = "";
 		};
 		19311B2DA299B0876B0326B0 /* [CP] Embed Pods Frameworks */ = {
