@@ -1,17 +1,20 @@
-# Uncomment this line to define a global platform for your project
 platform :ios, '9.0'
-# Uncomment this line if you're using Swift
-use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@gitlab.com:charmaex/JDPodSpec.git'
 
 target 'WeatherUp' do
-pod 'Alamofire', '~> 4.0'
+  use_frameworks!
+
+  pod 'Alamofire', '~> 4.0'
+  pod 'JDCoordinator'
+
+  target 'WeatherUpTests' do
+    inherit! :search_paths
+  end
+
+  target 'WeatherUpUITests' do
+    inherit! :search_paths
+  end
+
 end
-
-target 'WeatherUpTests' do
-
-end
-
-target 'WeatherUpUITests' do
-
-end
-

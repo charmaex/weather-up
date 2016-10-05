@@ -1,12 +1,15 @@
 PODS:
-  - Alamofire (4.0.0)
+  - Alamofire (4.0.1)
+  - JDCoordinator (0.2.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - JDCoordinator
 
 SPEC CHECKSUMS:
-  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  JDCoordinator: 2a1e6428ed2087294b9b99766f7a619b8d8c6de8
 
-PODFILE CHECKSUM: 32df1797a7a36585e7c855c34c20e4a9bfe4be50
+PODFILE CHECKSUM: 3ac43e1ad410bcf4eb7049e41680c1af0525106b
 
 COCOAPODS: 1.1.0.rc.2
