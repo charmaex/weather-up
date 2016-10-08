@@ -28,6 +28,8 @@
 		13A41CFF1DA593250064ED96 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A41CFE1DA593250064ED96 /* AppCoordinator.swift */; };
 		13A41D011DA5945F0064ED96 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A41D001DA5945F0064ED96 /* MainVC.xib */; };
 		13A67E321CB0370500BAEB28 /* WeatherUpKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A67E311CB0370500BAEB28 /* WeatherUpKit.swift */; };
+		13B4DCA31DA98E460008F26F /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B4DCA11DA98E460008F26F /* IntroVC.swift */; };
+		13B4DCA41DA98E460008F26F /* IntroVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B4DCA21DA98E460008F26F /* IntroVC.xib */; };
 		13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */; };
 		13BF16681CA1D2E5003BB4AE /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */; };
 		13BF166A1CA1DC34003BB4AE /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF16691CA1DC34003BB4AE /* StyledLabel.swift */; };
@@ -89,6 +91,8 @@
 		13A41CFE1DA593250064ED96 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		13A41D001DA5945F0064ED96 /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		13A67E311CB0370500BAEB28 /* WeatherUpKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpKit.swift; sourceTree = "<group>"; };
+		13B4DCA11DA98E460008F26F /* IntroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
+		13B4DCA21DA98E460008F26F /* IntroVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroVC.xib; sourceTree = "<group>"; };
 		13BF16641CA1D252003BB4AE /* StyleGuideProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuideProtocols.swift; sourceTree = "<group>"; };
 		13BF16671CA1D2E5003BB4AE /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		13BF16691CA1DC34003BB4AE /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 		13F7AC191C9EB55B006BBD86 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13B4DCA21DA98E460008F26F /* IntroVC.xib */,
 				13A41D001DA5945F0064ED96 /* MainVC.xib */,
 				1360605B1C860F0900599733 /* LaunchScreen.storyboard */,
 				1306BB7B1CA1F3870006D397 /* ForecastVC.xib */,
@@ -250,6 +255,7 @@
 		13F7AC1A1C9EB566006BBD86 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				13B4DCA11DA98E460008F26F /* IntroVC.swift */,
 				136060541C860F0900599733 /* MainVC.swift */,
 				1306BB7A1CA1F3870006D397 /* ForecastVC.swift */,
 				136A6BBD1CA69F5F00347216 /* WeatherVC.swift */,
@@ -418,6 +424,7 @@
 				136A6BC01CA69F5F00347216 /* WeatherVC.xib in Resources */,
 				13A41D011DA5945F0064ED96 /* MainVC.xib in Resources */,
 				1306BB7D1CA1F3870006D397 /* ForecastVC.xib in Resources */,
+				13B4DCA41DA98E460008F26F /* IntroVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +616,7 @@
 				13A41CFF1DA593250064ED96 /* AppCoordinator.swift in Sources */,
 				1306BB851CA331270006D397 /* Forecast.swift in Sources */,
 				13BF16651CA1D252003BB4AE /* StyleGuideProtocols.swift in Sources */,
+				13B4DCA31DA98E460008F26F /* IntroVC.swift in Sources */,
 				13DAC4B91CA86E3C00D7A246 /* AlertVC.swift in Sources */,
 				13DAC4BD1CA9091800D7A246 /* Units.swift in Sources */,
 				1306BB8E1CA537710006D397 /* ModelExtensions.swift in Sources */,

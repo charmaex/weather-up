@@ -16,6 +16,12 @@ class AppCoordinator: JDCoordinator {
 	}
 
 	// MARK: - Show Methods
+    
+    private func showIntro() {
+        let intro = IntroVC()
+        
+        setViewControllers(intro, animated: false)
+    }
 
 	private func showMain() {
 		let main = MainVC()

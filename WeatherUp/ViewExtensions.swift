@@ -20,7 +20,7 @@ extension UIView {
 
 	fileprivate func addGradientLayer(_ colors: [CGColor]) {
 		let gradient = CAGradientLayer()
-		gradient.frame.size = self.frame.size
+		gradient.frame.size = UIScreen.main.bounds.size
 		gradient.frame.origin = CGPoint(x: 0.0, y: 0.0)
 
 		gradient.colors = colors

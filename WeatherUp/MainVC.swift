@@ -10,12 +10,6 @@ import UIKit
 
 class MainVC: UIViewController {
 
-	@IBOutlet weak var introLogo: UILabel!
-	@IBOutlet weak var introCloud1Disable: NSLayoutConstraint!
-	@IBOutlet weak var introCloud2: NSLayoutConstraint!
-	@IBOutlet weak var introCloud3: NSLayoutConstraint!
-	@IBOutlet weak var introHill: NSLayoutConstraint!
-
 	@IBOutlet weak var tempView: TappableStackView!
 	@IBOutlet weak var tempActLbl: StyledLabel!
 	@IBOutlet weak var tempMinLbl: StyledLabel!
@@ -55,8 +49,6 @@ class MainVC: UIViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-
-		introAnimation(delayed: 0.3)
 
 		updateLocation()
 	}
@@ -128,35 +120,6 @@ class MainVC: UIViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.updateWeatherForced), name: NSNotification.Name(rawValue: Notification.userUpdateLocation.name), object: infoView)
 
 		NotificationCenter.default.addObserver(self, selector: #selector(MainVC.appEnteredForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
-	}
-
-	fileprivate func introAnimation(delayed t: Double) {
-		layoutForAnimations()
-
-		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(t * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-			self.introAnimation()
-		})
-	}
-
-	fileprivate func introAnimation() {
-		layoutForAnimations()
-
-		introCloud1Disable.isActive = false
-		introCloud2.constant = -240
-		introCloud3.constant = -240
-		introHill.constant = -200
-
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-			self.view.layoutIfNeeded()
-			self.introLogo.alpha = 0
-		}) { b in
-			self.introDone = b
-		}
-
-		UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-			self.infoView.alpha = 1
-		}) { _ in }
 	}
 
 	fileprivate func updateLocation() {
