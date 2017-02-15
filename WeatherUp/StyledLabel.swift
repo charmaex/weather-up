@@ -53,18 +53,11 @@ class StyledLabel: UILabel {
 	}
 
 	func applyTextColor() {
-		let color: UIColor
-
-		if let f = forecast {
-			color = f.textColor
-		} else {
-			color = WeatherService.inst.weather.textColor
-		}
-
-		self.applyFontStyle(fontStyle(), color: color)
+		let color = forecast?.textColor ?? WeatherService.inst.weather.textColor
+		applyFontStyle(fontStyle(), color: color)
 	}
 
 	func setObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: NSNotification.Name(rawValue: Notification.updateStyles.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(StyledLabel.applyTextColor), name: Notifications.updateStyles.name, object: nil)
 	}
 }

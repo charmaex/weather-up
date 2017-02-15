@@ -9,30 +9,23 @@
 import UIKit
 
 protocol WeatherObject {
-	func saveCaseCapString(_ s: String!) -> String
-	func saveCaseUppString(_ s: String!) -> String
-	func saveImageName(_ s: String!) -> String
-	func saveSum(d1: Double!, d2: Double!) -> Double
-	func saveTime(_ d: Date!) -> String
-	func saveUnit(_ d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String
-	func saveWDay(_ d: Date!) -> String
-
-	var IMG_SIZE: String { get }
-	var degreesDbl: Double { get }
+	var imageSize: String { get }
+	var degrees: Double { get }
 	var imageName: String { get }
-
-	var textColor: UIColor { get }
-	var bgColor: UIColor { get }
 }
 
 extension WeatherObject {
+
+	var image: UIImage? {
+		return UIImage(named: "\(imageName)\(imageSize)")
+	}
 
 	var textColor: UIColor {
 		return Colors.textColor()
 	}
 
 	var bgColor: UIColor {
-		switch degreesDbl.kelvinToCelcius() {
+		switch degrees.kelvinToCelcius() {
 		case let x where x > 30:
 			return Colors.backgroundHot()
 		case let x where x > 20:
@@ -72,7 +65,7 @@ extension WeatherObject {
 
 	func saveImageName(_ s: String!) -> String {
 		let s = s == nil ? "error" : s!
-		return "\(s)\(IMG_SIZE)"
+		return "\(s)\(imageSize)"
 	}
 
 	func saveCaseCapString(_ s: String!) -> String {
@@ -89,8 +82,8 @@ extension WeatherObject {
 
 	func saveUnit(_ d: Double!, type: UnitSystem.Unit, nilValue: DefaultNilValue) -> String {
 		guard d != nil && d != DEF_VALUE else {
-			return UnitService.inst.unit.unitForValue(nilValue.rawValue, type: type)
+			return UnitService.inst.unit.unit(for: nilValue.rawValue, withUnit: type)
 		}
-		return UnitService.inst.unit.unitForValue(d, type: type)
+		return UnitService.inst.unit.unit(for: d, withUnit: type)
 	}
 }

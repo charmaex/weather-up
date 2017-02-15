@@ -8,158 +8,125 @@
 
 import Foundation
 
-class Weather: NSObject, NSCoding, WeatherObject {
+struct Weather: WeatherObject {
+	let imageSize = "160"
 
-	let IMG_SIZE = "160"
+	let degrees: Double
+	let minimumDegrees: Double
+	let maximumDegrees: Double
+	let imageName: String
+	let mainDescription: String
+	let description: String
+	let date: Date
+	let city: String
+	let country: String
+	let clouds: Double
+	let rain: Double
+	let snow: Double
+	let wind: Double
+	let pressure: Double
+	let humidity: Double
 
-	fileprivate var _degrees: Double!
-	fileprivate var _minDegr: Double!
-	fileprivate var _maxDegr: Double!
-	fileprivate var _img: String!
-	fileprivate var _mainDesc: String!
-	fileprivate var _desc: String!
-	fileprivate var _date: Date!
-	fileprivate var _city: String!
-	fileprivate var _country: String!
-	fileprivate var _clouds: Double!
-	fileprivate var _rain: Double!
-	fileprivate var _snow: Double!
-	fileprivate var _wind: Double!
-	fileprivate var _pressure: Double!
-	fileprivate var _humidity: Double!
-
-	var imageName: String {
-		return saveImageName(_img)
+	var degreesText: String {
+		return saveUnit(degrees, type: .temperature, nilValue: .dash)
 	}
 
-	var degreesDbl: Double {
-		return _degrees
+	var minimumDegreesText: String {
+		return saveUnit(minimumDegrees, type: .temperature, nilValue: .dash)
 	}
 
-	var degrees: String {
-		return saveUnit(_degrees, type: .temperature, nilValue: .dash)
-	}
-
-	var minDegr: String {
-		return saveUnit(_minDegr, type: .temperature, nilValue: .dash)
-	}
-
-	var maxDegr: String {
-		return saveUnit(_maxDegr, type: .temperature, nilValue: .dash)
-	}
-
-	var mainDesc: String {
-		return saveCaseCapString(_mainDesc)
-	}
-
-	var desc: String {
-		return saveCaseCapString(_desc)
+	var maximumDegreesText: String {
+		return saveUnit(maximumDegrees, type: .temperature, nilValue: .dash)
 	}
 
 	var location: String {
-		let city = saveCaseCapString(_city)
-		let country = saveCaseUppString(_country)
+		let city = saveCaseCapString(self.city)
+		let country = saveCaseUppString(self.country)
 
 		return city.append(country, separator: ", ")
 	}
 
 	var time: String {
-		let x = saveTime(_date)
+		let x = saveTime(date)
 		return x == "" ? "" : "at: \(x)"
 	}
 
-	var clouds: String {
-		return saveUnit(_clouds, type: .percent, nilValue: .zero)
+	var cloudsText: String {
+		return saveUnit(clouds, type: .percent, nilValue: .zero)
 	}
 
-	var rain: String {
-		let x = saveSum(d1: _rain, d2: _snow)
-		return saveUnit(x, type: .volume, nilValue: .zero)
+	var rainText: String {
+		return saveUnit(rain + snow, type: .volume, nilValue: .zero)
 	}
 
-	var wind: String {
-		return saveUnit(_wind, type: .speed, nilValue: .zero)
+	var windText: String {
+		return saveUnit(wind, type: .speed, nilValue: .zero)
 	}
 
-	var pressure: String {
-		return saveUnit(_pressure, type: .pressure, nilValue: .dash)
+	var pressureText: String {
+		return saveUnit(pressure, type: .pressure, nilValue: .dash)
 	}
 
-	var humidity: String {
-		return saveUnit(_humidity, type: .percent, nilValue: .zero)
+	var humidityText: String {
+		return saveUnit(humidity, type: .percent, nilValue: .zero)
 	}
 
-	init(degrees: Double, minDegr: Double, maxDegr: Double, img: String, mainDesc: String, desc: String, date: Date, city: String, country: String, clouds: Double, rain: Double, snow: Double, wind: Double, pressure: Double, humidity: Double) {
-		_degrees = degrees
-		_minDegr = minDegr
-		_maxDegr = maxDegr
-		_mainDesc = mainDesc
-		_desc = desc
-		_img = img
-		_date = date
-		_city = city
-		_country = country
-		_clouds = clouds
-		_rain = rain
-		_snow = snow
-		_wind = wind
-		_pressure = pressure
-		_humidity = humidity
+	var encoded: [String: AnyObject] {
+		var data: [String: AnyObject] = [:]
+		data["degrees"] = degrees as AnyObject?
+		data["minDegr"] = minimumDegrees as AnyObject?
+		data["maxDegr"] = maximumDegrees as AnyObject?
+		data["mainDesc"] = mainDescription as AnyObject?
+		data["desc"] = description as AnyObject?
+		data["img"] = imageName as AnyObject?
+		data["date"] = date as AnyObject?
+		data["city"] = city as AnyObject?
+		data["country"] = country as AnyObject?
+		data["clouds"] = clouds as AnyObject?
+		data["rain"] = rain as AnyObject?
+		data["snow"] = snow as AnyObject?
+		data["wind"] = wind as AnyObject?
+		data["pressure"] = pressure as AnyObject?
+		data["humidity"] = humidity as AnyObject?
+		return data
+	}
+}
+
+extension Weather {
+
+	init() {
+		degrees = DEF_VALUE
+		minimumDegrees = DEF_VALUE
+		maximumDegrees = DEF_VALUE
+		mainDescription = ""
+		description = ""
+		imageName = DEF_IMG
+		date = DEF_DATE as Date!
+		city = ""
+		country = ""
+		clouds = DEF_VALUE
+		rain = DEF_VALUE
+		snow = DEF_VALUE
+		wind = DEF_VALUE
+		pressure = DEF_VALUE
+		humidity = DEF_VALUE
 	}
 
-	override init() {
-		_degrees = DEF_VALUE
-		_minDegr = DEF_VALUE
-		_maxDegr = DEF_VALUE
-		_mainDesc = ""
-		_desc = ""
-		_img = DEF_IMG
-		_date = DEF_DATE as Date!
-		_city = ""
-		_country = ""
-		_clouds = DEF_VALUE
-		_rain = DEF_VALUE
-		_snow = DEF_VALUE
-		_wind = DEF_VALUE
-		_pressure = DEF_VALUE
-		_humidity = DEF_VALUE
-	}
-
-	required convenience init?(coder aDecoder: NSCoder) {
-		self.init()
-
-		_degrees = aDecoder.decodeObject(forKey: "degrees") as? Double
-		_minDegr = aDecoder.decodeObject(forKey: "minDegr") as? Double
-		_maxDegr = aDecoder.decodeObject(forKey: "maxDegr") as? Double
-		_mainDesc = aDecoder.decodeObject(forKey: "mainDesc") as? String
-		_desc = aDecoder.decodeObject(forKey: "desc") as? String
-		_img = aDecoder.decodeObject(forKey: "img") as? String
-		_date = aDecoder.decodeObject(forKey: "date") as? Date
-		_city = aDecoder.decodeObject(forKey: "city") as? String
-		_country = aDecoder.decodeObject(forKey: "country") as? String
-		_clouds = aDecoder.decodeObject(forKey: "clouds") as? Double
-		_rain = aDecoder.decodeObject(forKey: "rain") as? Double
-		_snow = aDecoder.decodeObject(forKey: "snow") as? Double
-		_wind = aDecoder.decodeObject(forKey: "wind") as? Double
-		_pressure = aDecoder.decodeObject(forKey: "pressure") as? Double
-		_humidity = aDecoder.decodeObject(forKey: "humidity") as? Double
-	}
-
-	func encode(with aCoder: NSCoder) {
-		aCoder.encode(_degrees, forKey: "degrees")
-		aCoder.encode(_minDegr, forKey: "minDegr")
-		aCoder.encode(_maxDegr, forKey: "maxDegr")
-		aCoder.encode(_mainDesc, forKey: "mainDesc")
-		aCoder.encode(_desc, forKey: "desc")
-		aCoder.encode(_img, forKey: "img")
-		aCoder.encode(_date, forKey: "date")
-		aCoder.encode(_city, forKey: "city")
-		aCoder.encode(_country, forKey: "country")
-		aCoder.encode(_clouds, forKey: "clouds")
-		aCoder.encode(_rain, forKey: "rain")
-		aCoder.encode(_snow, forKey: "snow")
-		aCoder.encode(_wind, forKey: "wind")
-		aCoder.encode(_pressure, forKey: "pressure")
-		aCoder.encode(_humidity, forKey: "humidity")
+	init(decodeFrom dictionary: [String: AnyObject]) {
+		degrees = dictionary["degrees"] as! Double
+		minimumDegrees = dictionary["minDegr"] as! Double
+		maximumDegrees = dictionary["maxDegr"] as! Double
+		mainDescription = dictionary["mainDesc"] as! String
+		description = dictionary["desc"] as! String
+		imageName = dictionary["img"] as! String
+		date = dictionary["date"] as! Date
+		city = dictionary["city"] as! String
+		country = dictionary["country"] as! String
+		clouds = dictionary["clouds"] as! Double
+		rain = dictionary["rain"] as! Double
+		snow = dictionary["snow"] as! Double
+		wind = dictionary["wind"] as! Double
+		pressure = dictionary["pressure"] as! Double
+		humidity = dictionary["humidity"] as! Double
 	}
 }

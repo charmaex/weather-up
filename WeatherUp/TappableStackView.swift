@@ -10,8 +10,8 @@ import UIKit
 
 class TappableStackView: UIStackView {
 
-	fileprivate var _trigger: Trigger = .none
-	fileprivate var _notifName: Notification!
+	fileprivate var trigger: Trigger = .none
+	fileprivate var notification: Notifications!
 
 	enum Trigger {
 		case none
@@ -20,17 +20,17 @@ class TappableStackView: UIStackView {
 		case stop
 	}
 
-	func configureAction(trigger t: Trigger, action n: Notification) {
-		_trigger = t
-		_notifName = n
+	func configureAction(trigger: Trigger, action notification: Notifications) {
+		self.trigger = trigger
+		self.notification = notification
 	}
 
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		if _trigger != .none {
+		if trigger != .none {
 			alpha = 0.5
 		}
 
-		if _trigger == .start || _trigger == .startAndStop {
+		if trigger == .start || trigger == .startAndStop {
 			postNotif()
 		}
 	}
@@ -43,18 +43,18 @@ class TappableStackView: UIStackView {
 		}
 
 		if frame.contains(position) {
-			if _trigger == .stop || _trigger == .startAndStop {
+			if trigger == .stop || trigger == .startAndStop {
 				postNotif()
 			}
 		}
 	}
 
 	fileprivate func postNotif() {
-		guard _trigger != .none else {
+		guard trigger != .none else {
 			return
 		}
 
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: _notifName.name), object: self)
+		NotificationCenter.default.post(name: notification.name, object: self)
 	}
 
 	fileprivate func getPosition(_ input: Set<UITouch>, absolutePosition: Bool) -> CGPoint? {

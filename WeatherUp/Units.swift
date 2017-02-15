@@ -20,55 +20,46 @@ enum UnitSystem: String {
 		case volume
 	}
 
-	func unitForValue(_ v: String, type t: Unit) -> String {
-		let unit: String
-
-		switch t {
-		case .percent:
-			unit = "%"
-		case .pressure where self == .imperial:
-			unit = "in-Hg"
-		case .pressure:
-			unit = "hpa"
-		case .speed where self == .imperial:
-			unit = "mph"
-		case .speed:
-			unit = "km/h"
-		case .temperature where self == .imperial:
-			unit = "°F"
-		case .temperature:
-			unit = "°C"
-		case .volume where self == .imperial:
-			unit = "inch"
-		case .volume:
-			unit = "mm"
+	mutating func next() {
+		switch self {
+		case .metric: self = .imperial
+		case .imperial: self = .metric
 		}
-
-		return "\(v)\(unit)"
 	}
 
-	func unitForValue(_ v: Double, type t: Unit) -> String {
-		let value: Double
+	func unit(for value: String, withUnit type: Unit) -> String {
+		let unit: String
 
-		switch t {
-		case .pressure where self == .imperial:
-			value = v.hpaToinhg()
-		case .speed where self == .imperial:
-			value = v.msTomph()
-		case .speed:
-			value = v.msTokmh()
-		case .temperature where self == .imperial:
-			value = v.kelvinToFahrenheit()
-		case .temperature:
-			value = v.kelvinToCelcius()
-		case .volume where self == .imperial:
-			value = v.mmToinch()
-		default:
-			value = v
+		switch type {
+		case .percent: unit = "%"
+		case .pressure where self == .imperial: unit = "in-Hg"
+		case .pressure: unit = "hpa"
+		case .speed where self == .imperial: unit = "mph"
+		case .speed: unit = "km/h"
+		case .temperature where self == .imperial: unit = "°F"
+		case .temperature: unit = "°C"
+		case .volume where self == .imperial: unit = "inch"
+		case .volume: unit = "mm"
+		}
+
+		return "\(value)\(unit)"
+	}
+
+	func unit(for value: Double, withUnit type: Unit) -> String {
+		var value = value
+
+		switch type {
+		case .pressure where self == .imperial: value = value.hpaToinhg()
+		case .speed where self == .imperial: value = value.msTomph()
+		case .speed: value = value.msTokmh()
+		case .temperature where self == .imperial: value = value.kelvinToFahrenheit()
+		case .temperature: value = value.kelvinToCelcius()
+		case .volume where self == .imperial: value = value.mmToinch()
+		default: break
 		}
 
 		let valueStr = value.roundToStringForUnits()
 
-		return unitForValue(valueStr, type: t)
+		return unit(for: valueStr, withUnit: type)
 	}
 }

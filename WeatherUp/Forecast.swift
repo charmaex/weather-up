@@ -8,53 +8,41 @@
 
 import Foundation
 
-class Forecast: NSObject, NSCoding, WeatherObject {
+struct Forecast: WeatherObject {
+	let imageSize = "055"
 
-	let IMG_SIZE = "055"
-
-	fileprivate var _date: Date!
-	fileprivate var _img: String!
-	fileprivate var _degrees: Double!
+	let date: Date
+	let imageName: String
+	let degrees: Double
 
 	var weekday: String {
-		return saveWDay(_date)
+		return saveWDay(date)
 	}
 
-	var imageName: String {
-		return saveImageName(_img)
+	var degreesText: String {
+		return saveUnit(degrees, type: .temperature, nilValue: .dash)
 	}
 
-	var degreesDbl: Double {
-		return _degrees
+	var encoded: [String: AnyObject] {
+		var data: [String: AnyObject] = [:]
+		data["date"] = date as AnyObject
+		data["img"] = imageName as AnyObject
+		data["degrees"] = degrees as AnyObject
+		return data
+	}
+}
+
+extension Forecast {
+
+	init() {
+		date = DEF_DATE
+		imageName = DEF_IMG
+		degrees = DEF_VALUE
 	}
 
-	var degrees: String {
-		return saveUnit(_degrees, type: .temperature, nilValue: .dash)
-	}
-
-	init(date: Date, img: String, degrees: Double) {
-		_date = date
-		_img = img
-		_degrees = degrees
-	}
-
-	override init() {
-		_date = DEF_DATE as Date!
-		_img = DEF_IMG
-		_degrees = DEF_VALUE
-	}
-
-	required convenience init?(coder aDecoder: NSCoder) {
-		self.init()
-
-		self._date = aDecoder.decodeObject(forKey: "date") as? Date
-		self._img = aDecoder.decodeObject(forKey: "img") as? String
-		self._degrees = aDecoder.decodeObject(forKey: "degrees") as? Double
-	}
-
-	func encode(with aCoder: NSCoder) {
-		aCoder.encode(self._date, forKey: "date")
-		aCoder.encode(self._img, forKey: "img")
-		aCoder.encode(self._degrees, forKey: "degrees")
+	init(decodeFrom dictionary: [String: AnyObject]) {
+		date = dictionary["date"] as! Date
+		imageName = dictionary["img"] as! String
+		degrees = dictionary["degrees"] as! Double
 	}
 }

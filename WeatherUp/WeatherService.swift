@@ -11,29 +11,18 @@ import Alamofire
 class WeatherService {
 	static let inst = WeatherService()
 
-	fileprivate var _apiLocation = ""
-	fileprivate var _locationNew = true
+	private var _apiLocation = ""
+	private var _locationNew = true
 
-	fileprivate var _weather: Weather!
-	fileprivate var _forecasts = [Forecast]()
-	fileprivate var _lastWeather: Date!
-	fileprivate var _lastForecast: Date!
-	fileprivate var _lastWeatherIncomplete = true
-	fileprivate var _lastForecastIncomplete = true
+	private(set) lazy var weather: Weather = Weather()
+	private(set) var forecasts = [Forecast]()
+	private var _lastWeather: Date!
+	private var _lastForecast: Date!
+	private var _lastWeatherIncomplete = true
+	private var _lastForecastIncomplete = true
 
-	fileprivate var _downloadCount = 0
-	fileprivate var _downloadCountTarget = 0
-
-	var weather: Weather {
-		guard let x = _weather else {
-			return Weather()
-		}
-		return x
-	}
-
-	var forecasts: [Forecast] {
-		return _forecasts
-	}
+	private var _downloadCount = 0
+	private var _downloadCountTarget = 0
 
 	func getData(_ destination: String?, forced: Bool) {
 
@@ -41,8 +30,8 @@ class WeatherService {
 			_locationNew = _apiLocation != dest
 			_apiLocation = dest
 		} else {
-			_locationNew = _apiLocation != LocationService.inst.apiLocation
-			_apiLocation = LocationService.inst.apiLocation
+			_locationNew = _apiLocation != LocationService.shared.apiLocation
+			_apiLocation = LocationService.shared.apiLocation
 		}
 
 		getNSUD()
@@ -65,7 +54,7 @@ class WeatherService {
 		}
 	}
 
-	fileprivate func finishGetData() {
+	private func finishGetData() {
 		guard _downloadCount == _downloadCountTarget && _downloadCount > 0 else {
 			return
 		}
@@ -74,20 +63,16 @@ class WeatherService {
 		postNotification(.weatherUpdated)
 	}
 
-	fileprivate func postNotification(_ type: Notification) {
-		NotificationCenter.default.post(name: NSNotification.Name(rawValue: type.name), object: nil)
+	private func postNotification(_ type: Notifications) {
+		NotificationCenter.default.post(name: type.name, object: nil)
 	}
 
-	fileprivate func getNSUD() {
-		if let weatherData = UserDefaults.standard.object(forKey: "weather") as? Data {
-			if let weatherClass = NSKeyedUnarchiver.unarchiveObject(with: weatherData) as? Weather {
-				_weather = weatherClass
-			}
+	private func getNSUD() {
+		if let weatherData = UserDefaults.standard.object(forKey: "weather") as? [String: AnyObject] {
+			self.weather = Weather(decodeFrom: weatherData)
 		}
-		if let forecastData = UserDefaults.standard.object(forKey: "forecasts") as? Data {
-			if let forecastArray = NSKeyedUnarchiver.unarchiveObject(with: forecastData) as? [Forecast] {
-				_forecasts = forecastArray
-			}
+		if let forecastData = UserDefaults.standard.object(forKey: "forecasts") as? [[String: AnyObject]] {
+			forecasts = forecastData.map { Forecast(decodeFrom: $0) }
 		}
 
 		if let w = UserDefaults.standard.object(forKey: "lastWeather") as? Date {
@@ -103,11 +88,11 @@ class WeatherService {
 		}
 	}
 
-	fileprivate func saveNSUD() {
-		let weatherData = NSKeyedArchiver.archivedData(withRootObject: _weather)
+	private func saveNSUD() {
+		let weatherData = weather.encoded
 		UserDefaults.standard.set(weatherData, forKey: "weather")
 
-		let forecastsData = NSKeyedArchiver.archivedData(withRootObject: _forecasts)
+		let forecastsData = forecasts.map { $0.encoded }
 		UserDefaults.standard.set(forecastsData, forKey: "forecasts")
 
 		UserDefaults.standard.set(_lastWeather, forKey: "lastWeather")
@@ -116,7 +101,7 @@ class WeatherService {
 		UserDefaults.standard.synchronize()
 	}
 
-	fileprivate func downloadWeather(initial b: Bool) {
+	private func downloadWeather(initial b: Bool) {
 		if b {
 			_downloadCountTarget += 1
 		}
@@ -127,7 +112,7 @@ class WeatherService {
 		}
 	}
 
-	fileprivate func downloadForecast(initial b: Bool) {
+	private func downloadForecast(initial b: Bool) {
 		if b {
 			_downloadCountTarget += 1
 		}
@@ -138,7 +123,7 @@ class WeatherService {
 		}
 	}
 
-	fileprivate func downloadWeather(_ completion: @escaping Completion) {
+	private func downloadWeather(_ completion: @escaping Completion) {
 		let url = "\(API_BASE)\(API_WEATHER)\(_apiLocation)\(API_APPID)"
 
 		Alamofire.request(url).responseJSON { response in
@@ -244,18 +229,18 @@ class WeatherService {
 
 			let date = Date()
 
-			let weather = Weather(degrees: degrees, minDegr: minDegr, maxDegr: maxDegr, img: img, mainDesc: mainDesc, desc: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, snow: snow, wind: wind, pressure: pressure, humidity: humidity)
+			let weather = Weather(degrees: degrees, minimumDegrees: minDegr, maximumDegrees: maxDegr, imageName: img, mainDescription: mainDesc, description: desc, date: date, city: city, country: country, clouds: clouds, rain: rain, snow: snow, wind: wind, pressure: pressure, humidity: humidity)
 
 			self._lastWeatherIncomplete = counter > 0
 
 			self._lastWeather = date
-			self._weather = weather
+			self.weather = weather
 
 			completion()
 		}
 	}
 
-	fileprivate func downloadForecast(_ completion: @escaping Completion) {
+	private func downloadForecast(_ completion: @escaping Completion) {
 		let url = "\(API_BASE)\(API_FORECAST)\(_apiLocation)\(API_APPID)"
 
 		Alamofire.request(url).responseJSON { response in
@@ -301,14 +286,14 @@ class WeatherService {
 					}
 				}
 
-				let forecast = Forecast(date: date, img: img, degrees: degrees)
+				let forecast = Forecast(date: date, imageName: img, degrees: degrees)
 				forecasts.append(forecast)
 			}
 
 			self._lastForecastIncomplete = counter > 0
 
 			self._lastForecast = Date()
-			self._forecasts = forecasts
+			self.forecasts = forecasts
 
 			completion()
 		}

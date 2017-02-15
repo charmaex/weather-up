@@ -31,6 +31,6 @@ class ArrowView: UIView {
 	}
 
 	func setObservers() {
-		NotificationCenter.default.addObserver(self, selector: #selector(ArrowView.updateColor), name: NSNotification.Name(rawValue: Notification.updateStyles.name), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ArrowView.updateColor), name: Notifications.updateStyles.name, object: nil)
 	}
 }

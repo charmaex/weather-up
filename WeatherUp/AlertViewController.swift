@@ -1,5 +1,5 @@
 //
-//  AlertVC.swift
+//  AlertViewController.swift
 //  WeatherUp
 //
 //  Created by Jan Dammshäuser on 27.03.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertVC: UIAlertController {
+class AlertViewController: UIAlertController {
 
 	override var preferredStyle: UIAlertControllerStyle {
 		return .alert

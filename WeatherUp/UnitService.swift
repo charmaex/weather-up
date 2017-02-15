@@ -11,30 +11,16 @@ import Foundation
 class UnitService {
 	static let inst = UnitService()
 
-	fileprivate var _unit: UnitSystem = .metric
-
-	var unit: UnitSystem {
-		return _unit
-	}
+	private(set) var unit: UnitSystem = .metric
 
 	init() {
 		if let data = UserDefaults.standard.value(forKey: "unit") as? String, let unit = UnitSystem(rawValue: data) {
-			_unit = unit
+			self.unit = unit
 		}
 	}
 
 	func switchUnit() {
-		switch _unit {
-		case .metric:
-			_unit = .imperial
-		case .imperial:
-			_unit = .metric
-		}
-		saveUnit()
-	}
-
-	fileprivate func saveUnit() {
-		UserDefaults.standard.setValue(_unit.rawValue, forKey: "unit")
-		UserDefaults.standard.synchronize()
+		unit.next()
+		UserDefaults.standard.setValue(unit.rawValue, forKey: "unit")
 	}
 }

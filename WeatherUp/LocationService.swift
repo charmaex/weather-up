@@ -9,19 +9,19 @@
 import CoreLocation
 
 class LocationService: NSObject, CLLocationManagerDelegate {
-	static let inst = LocationService()
+	static let shared = LocationService()
 
-	fileprivate let locationManager = CLLocationManager()
+	private static var locationManager = CLLocationManager()
 
-	fileprivate var _lat: String!
-	fileprivate var _lon: String!
+	private var lat: String!
+	private var lon: String!
 
-	fileprivate var _lastUpdate: Date!
+	private var lastUpdate: Date!
 
-	fileprivate var _counter = 0
+	private var counter = 0
 
 	var apiLocation: String {
-		guard let lat = _lat, let lon = _lon else {
+		guard let lat = lat, let lon = lon else {
 			return ""
 		}
 
@@ -29,9 +29,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 	}
 
 	func getLocation(_ forced: Bool) -> Bool {
-		guard forced || _lastUpdate == nil || _lastUpdate.olderThan(inMinutes: 15) else {
+		guard forced || lastUpdate == nil || lastUpdate.olderThan(inMinutes: 15) else {
 			print("no location updated needed")
-			locationIsAvailable()
+			notification(for: .locationAvailable)
 			return false
 		}
 
@@ -40,64 +40,56 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = manager.location else {
-			return locationIsNotAvailable()
+			return notification(for: .locationUnavailable)
 		}
 
-		guard _counter >= 3 else {
+		guard counter >= 3 else {
 			// locationManager returns last location for the first three times.
 			// this prevents getting the old location by taking the 4th location.
-			return _counter += 1
+			return counter += 1
 		}
 
-		_counter = 0
+		counter = 0
 
-		locationManager.stopUpdatingLocation()
+		LocationService.locationManager.stopUpdatingLocation()
 
 		let position = location.coordinate
-		_lat = "\(position.latitude.roundTo(decimals: 3))"
-		_lon = "\(position.longitude.roundTo(decimals: 3))"
+		lat = "\(position.latitude.roundTo(decimals: 3))"
+		lon = "\(position.longitude.roundTo(decimals: 3))"
 
-		_lastUpdate = Date()
+		lastUpdate = Date()
 
-		locationIsAvailable()
+		notification(for: .locationAvailable)
 	}
 
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-		locationManager.stopUpdatingLocation()
-		locationIsNotAvailable()
+		LocationService.locationManager.stopUpdatingLocation()
+		notification(for: .locationUnavailable)
 	}
 
-	fileprivate func locationAuthStatus() -> Bool {
+	private func locationAuthStatus() -> Bool {
 		let status = CLLocationManager.authorizationStatus()
 
 		switch status {
 		case .authorizedWhenInUse, .authorizedAlways:
 			return locationRequest()
 		case .notDetermined:
-			locationManager.requestWhenInUseAuthorization()
+			LocationService.locationManager.requestWhenInUseAuthorization()
 			return locationAuthStatus()
 		default:
-			return locationAuthError()
+			notification(for: .locationAuthError)
+			return false
 		}
 	}
 
-	fileprivate func locationRequest() -> Bool {
-		locationManager.delegate = self
-		locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-		locationManager.startUpdatingLocation()
+	private func locationRequest() -> Bool {
+		LocationService.locationManager.delegate = self
+		LocationService.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+		LocationService.locationManager.startUpdatingLocation()
 		return true
 	}
 
-	fileprivate func locationAuthError() -> Bool {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationAuthError.name), object: nil)
-		return false
-	}
-
-	fileprivate func locationIsNotAvailable() {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationUnavailable.name), object: nil)
-	}
-
-	fileprivate func locationIsAvailable() {
-		NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: Notification.locationAvailable.name), object: nil)
+	private func notification(for notification: Notifications) {
+		NotificationCenter.default.post(name: notification.name, object: nil)
 	}
 }

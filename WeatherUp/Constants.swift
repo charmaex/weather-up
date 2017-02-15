@@ -38,7 +38,7 @@ let MES_WEATHER = "Downloading weather info..."
 
 typealias Completion = () -> ()
 
-enum Notification: String {
+enum Notifications: String {
 
 	case locationAvailable
 	case locationUnavailable
@@ -52,7 +52,7 @@ enum Notification: String {
 
 	case updateStyles
 
-	var name: String {
-		return self.rawValue
+	var name: Notification.Name {
+		return Notification.Name("\(self.rawValue)")
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  WeatherVC.swift
+//  WeatherViewController.swift
 //  WeatherUp
 //
 //  Created by Jan Dammshäuser on 26.03.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherVC: UIViewController, ScrollingViewDelegate {
+class WeatherViewController: UIViewController, ScrollingViewDelegate {
 
 	@IBOutlet weak var scrollView: ScrollingView!
 	@IBOutlet weak var svLeftConstraint: NSLayoutConstraint!
@@ -63,18 +63,16 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
 		scrollView.reset()
 	}
 
-	func initWithWeather(_ w: Weather) {
-		let img = UIImage(named: w.imageName)
-
-		weatherImV.image = img
-		weatherLbl.text = w.mainDesc
+	func initWithWeather(_ weather: Weather) {
+		weatherImV.image = weather.image
+		weatherLbl.text = weather.mainDescription
 		weatherLbl.alpha = 1
 
-		cloudsLbl.text = w.clouds
-		rainLbl.text = w.rain
-		windLbl.text = w.wind
-		pressureLbl.text = w.pressure
-		humidityLbl.text = w.humidity
+		cloudsLbl.text = weather.cloudsText
+		rainLbl.text = weather.rainText
+		windLbl.text = weather.windText
+		pressureLbl.text = weather.pressureText
+		humidityLbl.text = weather.humidityText
 	}
 
 	fileprivate func setViewWidth() {
@@ -84,9 +82,7 @@ class WeatherVC: UIViewController, ScrollingViewDelegate {
 	}
 
 	fileprivate func defaultImage() {
-		let img = UIImage(named: "01d160")
-
-		weatherImV.image = img
+		weatherImV.image = #imageLiteral(resourceName: "01d160")
 	}
 
 	fileprivate func initializeView() {
