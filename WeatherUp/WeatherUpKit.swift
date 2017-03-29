@@ -37,7 +37,7 @@ open class WeatherUpKit: NSObject {
 		/// / Arrow Drawing
 		let arrowRect = CGRect(x: group.minX + floor(group.width * -0.03333 + 0.5), y: group.minY + floor(group.height * -0.03333 + 0.5), width: floor(group.width * 1.03333 + 0.5) - floor(group.width * -0.03333 + 0.5), height: floor(group.height * 1.03333 + 0.5) - floor(group.height * -0.03333 + 0.5))
 		let arrowPath = UIBezierPath()
-		arrowPath.addArc(withCenter: CGPoint(x: arrowRect.midX, y: arrowRect.midY), radius: arrowRect.width / 2, startAngle: -lower * CGFloat(M_PI) / 180, endAngle: -upper * CGFloat(M_PI) / 180, clockwise: true)
+		arrowPath.addArc(withCenter: CGPoint(x: arrowRect.midX, y: arrowRect.midY), radius: arrowRect.width / 2, startAngle: -lower * CGFloat(Double.pi) / 180, endAngle: -upper * CGFloat(M_PI) / 180, clockwise: true)
 		arrowPath.addLine(to: CGPoint(x: arrowRect.midX, y: arrowRect.midY))
 		arrowPath.close()
 
