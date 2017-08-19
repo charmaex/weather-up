@@ -61,22 +61,22 @@ class MainViewController: UIViewController {
 		updateLocation()
 	}
 
-	func updateWeatherForced() {
+	@objc func updateWeatherForced() {
 		forceUpdate = true
 		updateLocation()
 	}
 
-	func updateWeather() {
+	@objc func updateWeather() {
 		infoTextLbl.text = MES_WEATHER
 		WeatherService.inst.getData(nil, forced: forceUpdate)
 		forceUpdate = false
 	}
 
-	func notifNoLocation() {
+	@objc func notifNoLocation() {
 		infoTextLbl.text = ERR_LOCATE
 	}
 
-	func notifLocationNoAuth() {
+	@objc func notifLocationNoAuth() {
 
 		infoTextLbl.text = ERR_NOAUTH
 
@@ -86,16 +86,16 @@ class MainViewController: UIViewController {
 		present(alert, animated: true, completion: nil)
 	}
 
-	func switchUnits() {
+	@objc func switchUnits() {
 		UnitService.inst.switchUnit()
 		displayWeather()
 	}
 
-	func displayWeather() {
+	@objc func displayWeather() {
 		displayWeatherData(animated: false)
 	}
 
-	func displayWeatherAnimated() {
+	@objc func displayWeatherAnimated() {
 		let t: Double
 		if reopenedApp {
 			layoutForWeatherAnimations()
@@ -110,7 +110,7 @@ class MainViewController: UIViewController {
 		})
 	}
 
-	func appEnteredForeground() {
+	@objc func appEnteredForeground() {
 		reopenedApp = true
 		updateLocation()
 	}

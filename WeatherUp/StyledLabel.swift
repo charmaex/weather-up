@@ -52,7 +52,7 @@ class StyledLabel: UILabel {
 		self.textAlignment = orientationStyle()
 	}
 
-	func applyTextColor() {
+	@objc func applyTextColor() {
 		let color = forecast?.textColor ?? WeatherService.inst.weather.textColor
 		applyFontStyle(fontStyle(), color: color)
 	}

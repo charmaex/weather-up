@@ -26,7 +26,7 @@ class ArrowView: UIView {
 		WeatherUpKit.drawCanvas1(frame: self.bounds, arrowColor: WeatherService.inst.weather.textColor, arrowValue: fraction)
 	}
 
-	func updateColor() {
+	@objc func updateColor() {
 		setNeedsDisplay()
 	}
 
