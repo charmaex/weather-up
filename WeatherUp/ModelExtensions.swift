@@ -77,8 +77,9 @@ extension String {
 	}
 
 	func trunc(_ length: Int) -> String {
-		if self.characters.count > length {
-			return self.substring(to: self.characters.index(self.startIndex, offsetBy: length))
+		if count > length {
+			let truncIndex = index(startIndex, offsetBy: length)
+			return String(self[startIndex ... truncIndex])
 		} else {
 			return self
 		}
